@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>กระดานจัดอันดับ · หมอเข้าใจ</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* =====================================
+   MOR KHAO JAI — LEADERBOARD
+===================================== */
+
+.leader-page{
+    max-width:850px !important;
+    margin:0 auto;
+    padding-bottom:70px;
+}
+
+/* TOP */
+
+.leader-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.back-link{
+    text-decoration:none;
+    color:#55766b;
+    font-size:17px;
+    font-weight:800;
+}
+
+.play-small{
+    text-decoration:none;
+    background:#dcefe7;
+    color:#4f806f;
+    padding:11px 17px;
+    border-radius:999px;
+    font-size:15px;
+    font-weight:900;
+    transition:.2s ease;
+}
+
+.play-small:hover{
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 10px 20px rgba(80,120,105,.13);
+}
+
+/* HEADER */
+
+.leader-hero{
+    text-align:center;
+    padding:42px 25px 34px !important;
+    border-radius:34px !important;
+    overflow:hidden;
+    position:relative;
+}
+
+.leader-hero::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:#e5f2ec;
+    top:-90px;
+    left:-60px;
+    opacity:.7;
+}
+
+.leader-hero::after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:#f7eddc;
+    bottom:-80px;
+    right:-45px;
+    opacity:.7;
+}
+
+.trophy{
+    position:relative;
+    z-index:2;
+    width:92px;
+    height:92px;
+    margin:0 auto 18px;
+    border-radius:31px;
+    background:#fff8e9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:48px;
+    box-shadow:0 15px 35px rgba(100,90,60,.12);
+    animation:trophyFloat 3s ease-in-out infinite;
+}
+
+@keyframes trophyFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-3deg);
+    }
+    50%{
+        transform:translateY(-9px) rotate(3deg);
+    }
+}
+
+.leader-hero h1{
+    position:relative;
+    z-index:2;
+    font-size:clamp(31px,6vw,46px);
+    line-height:1.25;
+    margin:0 0 10px;
+}
+
+.leader-hero p{
+    position:relative;
+    z-index:2;
+    font-size:17px;
+    line-height:1.7;
+    color:#748079;
+    margin:0;
+}
+
+/* STATS */
+
+.leader-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+    margin:18px 0 25px;
+}
+
+.leader-stat{
+    background:#fff;
+    border:1px solid #E6EFED;
+    border-radius:22px;
+    padding:20px 10px;
+    text-align:center;
+    box-shadow:0 9px 25px rgba(70,90,80,.06);
+    transition:.2s ease;
+}
+
+.leader-stat:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(70,90,80,.1);
+}
+
+.leader-stat-icon{
+    font-size:27px;
+    margin-bottom:5px;
+}
+
+.leader-stat strong{
+    display:block;
+    font-size:24px;
+    color:#55766b;
+    line-height:1.2;
+}
+
+.leader-stat span{
+    display:block;
+    margin-top:5px;
+    font-size:14px;
+    color:#87918c;
+}
+
+/* BOARD */
+
+.board{
+    padding:27px !important;
+    border-radius:30px !important;
+}
+
+.board-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.board-heading h2{
+    margin:0;
+    font-size:25px;
+}
+
+.board-heading span{
+    font-size:14px;
+    color:#8a958f;
+}
+
+/* TOP 3 */
+
+.podium{
+    display:grid;
+    grid-template-columns:1fr 1.15fr 1fr;
+    align-items:end;
+    gap:12px;
+    margin-bottom:27px;
+}
+
+.podium-card{
+    position:relative;
+    text-align:center;
+    border-radius:25px;
+    padding:22px 10px 20px;
+    background:#f7faf8;
+    border:2px solid transparent;
+    transition:.25s ease;
+}
+
+.podium-card:hover{
+    transform:translateY(-9px) scale(1.025);
+    box-shadow:0 18px 35px rgba(70,100,85,.12);
+}
+
+.podium-card.first{
+    background:#fff8e7;
+    border-color:#ead49a;
+    padding-top:29px;
+}
+
+.podium-card.second{
+    background:#f5f7f6;
+    border-color:#dce3df;
+}
+
+.podium-card.third{
+    background:#faf4ed;
+    border-color:#e8d7c4;
+}
+
+.crown{
+    position:absolute;
+    top:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:30px;
+    animation:crownFloat 2s ease-in-out infinite;
+}
+
+@keyframes crownFloat{
+    0%,100%{transform:translateX(-50%) translateY(0)}
+    50%{transform:translateX(-50%) translateY(-5px)}
+}
+
+.rank-medal{
+    font-size:35px;
+    margin-bottom:7px;
+}
+
+.podium-name{
+    font-size:18px;
+    font-weight:950;
+    color:#4d625a;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.podium-score{
+    margin-top:6px;
+    font-size:27px;
+    font-weight:950;
+    color:#55766b;
+}
+
+.podium-score small{
+    font-size:13px;
+    font-weight:800;
+    color:#89938e;
+}
+
+/* LIST */
+
+.rank-list{
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+}
+
+.rank-row{
+    display:grid;
+    grid-template-columns:54px 1fr auto;
+    align-items:center;
+    gap:14px;
+    min-height:76px;
+    padding:12px 16px;
+    background:#F3F9F8;
+    border:1px solid #e9efec;
+    border-radius:20px;
+    transition:.2s ease;
+}
+
+.rank-row:hover{
+    transform:translateX(6px) scale(1.015);
+    background:#fff;
+    border-color:#b9d9cc;
+    box-shadow:0 12px 28px rgba(70,100,85,.09);
+}
+
+.rank-number{
+    width:46px;
+    height:46px;
+    border-radius:16px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#e9f1ed;
+    color:#5d746b;
+    font-size:18px;
+    font-weight:950;
+}
+
+.rank-info{
+    min-width:0;
+}
+
+.rank-name{
+    font-size:18px;
+    font-weight:900;
+    color:#4c5f57;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.rank-detail{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:5px;
+}
+
+.rank-detail span{
+    font-size:13px;
+    color:#7d8983;
+}
+
+.rank-score{
+    text-align:right;
+}
+
+.rank-score strong{
+    display:block;
+    font-size:24px;
+    color:#55766b;
+    line-height:1.1;
+}
+
+.rank-score span{
+    font-size:12px;
+    color:#89938e;
+}
+
+/* EMPTY */
+
+.empty-board{
+    text-align:center;
+    padding:40px 20px;
+    color:#7c8882;
+}
+
+.empty-icon{
+    font-size:52px;
+    margin-bottom:12px;
+}
+
+.empty-board h3{
+    margin:0 0 8px;
+    font-size:22px;
+    color:#55766b;
+}
+
+.empty-board p{
+    font-size:16px;
+    line-height:1.7;
+    margin:0;
+}
+
+/* BUTTON */
+
+.bottom-actions{
+    margin-top:20px;
+    display:grid;
+    gap:12px;
+}
+
+.bottom-actions a{
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-sizing:border-box;
+    text-decoration:none;
+    font-size:18px !important;
+    font-weight:900;
+    border-radius:18px !important;
+    transition:.2s ease;
+}
+
+.bottom-actions a:hover{
+    transform:translateY(-4px);
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+    .leader-page{
+        padding-left:14px;
+        padding-right:14px;
+    }
+
+    .leader-hero{
+        padding:35px 18px 29px !important;
+    }
+
+    .leader-stats{
+        gap:9px;
+    }
+
+    .leader-stat{
+        padding:16px 7px;
+    }
+
+    .leader-stat strong{
+        font-size:20px;
+    }
+
+    .leader-stat span{
+        font-size:12px;
+    }
+
+    .board{
+        padding:18px !important;
+    }
+
+    .podium{
+        gap:7px;
+    }
+
+    .podium-card{
+        padding:17px 6px;
+        border-radius:19px;
+    }
+
+    .podium-card.first{
+        padding-top:24px;
+    }
+
+    .podium-name{
+        font-size:14px;
+    }
+
+    .podium-score{
+        font-size:22px;
+    }
+
+    .rank-row{
+        grid-template-columns:45px 1fr auto;
+        gap:10px;
+        padding:10px;
+    }
+
+    .rank-number{
+        width:40px;
+        height:40px;
+        border-radius:13px;
+    }
+
+    .rank-name{
+        font-size:16px;
+    }
+
+    .rank-score strong{
+        font-size:20px;
+    }
+
+    .rank-detail{
+        gap:5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-shell leader-page">
+
+    <div class="leader-top">
+        <a href="game.html" class="back-link">
+            ← กลับเกม
+        </a>
+
+        <a href="game.html" class="play-small">
+            🎮 เล่นเกม
+        </a>
+    </div>
+
+
+    <!-- HERO -->
+
+    <section class="form-card leader-hero">
+
+        <div class="trophy">
+            🏆
+        </div>
+
+        <p class="eyebrow">
+            SIGN LANGUAGE GAME
+        </p>
+
+        <h1>
+            Hall of Fame
+        </h1>
+
+        <p>
+            ใครจะเป็นเซียนภาษามืออันดับหนึ่ง?
+        </p>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <div class="leader-stats">
+
+        <div class="leader-stat">
+            <div class="leader-stat-icon">👑</div>
+            <strong id="totalPlayers">0</strong>
+            <span>ผู้เล่น</span>
+        </div>
+
+        <div class="leader-stat">
+            <div class="leader-stat-icon">🎯</div>
+            <strong id="bestScore">0</strong>
+            <span>คะแนนสูงสุด</span>
+        </div>
+
+        <div class="leader-stat">
+            <div class="leader-stat-icon">🔥</div>
+            <strong id="bestStreak">0</strong>
+            <span>Streak สูงสุด</span>
+        </div>
+
+    </div>
+
+
+    <!-- BOARD -->
+
+    <section class="form-card board">
+
+        <div class="board-heading">
+            <h2>🏆 อันดับวันนี้</h2>
+            <span>Top Players</span>
+        </div>
+
+        <div id="podium" class="podium"></div>
+
+        <div id="rankList" class="rank-list"></div>
+
+        <div id="emptyBoard" class="empty-board hidden">
+
+            <div class="empty-icon">
+                🌱
+            </div>
+
+            <h3>
+                ยังไม่มีใครขึ้นกระดาน
+            </h3>
+
+            <p>
+                เล่นเกมรอบแรกของคุณ<br>
+                แล้วมาเป็นคนเปิดตารางเลย!
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- BUTTON -->
+
+    <div class="bottom-actions">
+
+        <a href="game.html" class="primary">
+            🎮 เล่นเกมอีกครั้ง
+        </a>
+
+        <a href="index.html" class="secondary">
+            ← กลับหน้าหลัก
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const podium =
+    document.getElementById("podium");
+
+const rankList =
+    document.getElementById("rankList");
+
+const emptyBoard =
+    document.getElementById("emptyBoard");
+
+const totalPlayers =
+    document.getElementById("totalPlayers");
+
+const bestScore =
+    document.getElementById("bestScore");
+
+const bestStreak =
+    document.getElementById("bestStreak");
+
+
+/* =====================================
+   LOAD SCORES
+===================================== */
+
+let scores = [];
+
+try {
+
+    scores =
+        JSON.parse(
+            localStorage.getItem("mkj-scores") || "[]"
+        );
+
+} catch(error){
+
+    scores = [];
+
+}
+
+
+/* เรียงคะแนนจากมาก → น้อย
+   ถ้าคะแนนเท่ากัน ใช้เวลาน้อยกว่าอยู่ก่อน
+*/
+
+scores.sort((a,b) => {
+
+    if ((b.correct || 0) !== (a.correct || 0)) {
+        return (b.correct || 0) - (a.correct || 0);
+    }
+
+    return (a.time || 9999) - (b.time || 9999);
+
+});
+
+
+/* =====================================
+   STATS
+===================================== */
+
+totalPlayers.textContent =
+    scores.length;
+
+bestScore.textContent =
+    scores.length
+        ? `${scores[0].correct || 0}/5`
+        : "0";
+
+bestStreak.textContent =
+    scores.length
+        ? Math.max(
+            ...scores.map(x => x.streak || 0)
+          )
+        : "0";
+
+
+/* =====================================
+   EMPTY
+===================================== */
+
+if (!scores.length) {
+
+    podium.classList.add("hidden");
+    rankList.classList.add("hidden");
+    emptyBoard.classList.remove("hidden");
+
+}
+
+
+/* =====================================
+   TOP 3
+===================================== */
+
+const top3 = scores.slice(0,3);
+
+const medals = ["🥇","🥈","🥉"];
+
+const classes = ["first","second","third"];
+
+const order = [1,0,2];
+
+order.forEach(index => {
+
+    if (!top3[index]) return;
+
+    const item =
+        top3[index];
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        `podium-card ${classes[index]}`;
+
+    card.innerHTML = `
+
+        ${
+            index === 0
+            ? `<div class="crown">👑</div>`
+            : ""
+        }
+
+        <div class="rank-medal">
+            ${medals[index]}
+        </div>
+
+        <div class="podium-name">
+            ${escapeHtml(item.name || "ผู้เล่น")}
+        </div>
+
+        <div class="podium-score">
+            ${item.correct || 0}
+            <small>/ 5</small>
+        </div>
+
+    `;
+
+    podium.appendChild(card);
+
+});
+
+
+/* =====================================
+   RANK LIST
+===================================== */
+
+scores.slice(3).forEach((item,index) => {
+
+    const actualRank =
+        index + 4;
+
+    const row =
+        document.createElement("div");
+
+    row.className =
+        "rank-row";
+
+    row.innerHTML = `
+
+        <div class="rank-number">
+            #${actualRank}
+        </div>
+
+        <div class="rank-info">
+
+            <div class="rank-name">
+                ${escapeHtml(item.name || "ผู้เล่น")}
+            </div>
+
+            <div class="rank-detail">
+
+                <span>
+                    🔥 ${item.streak || 0} Streak
+                </span>
+
+                <span>
+                    ⏱ ${formatTime(item.time || 0)}
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="rank-score">
+
+            <strong>
+                ${item.correct || 0}/5
+            </strong>
+
+            <span>
+                คะแนน
+            </span>
+
+        </div>
+
+    `;
+
+    rankList.appendChild(row);
+
+});
+
+
+/* =====================================
+   FORMAT TIME
+===================================== */
+
+function formatTime(seconds){
+
+    const min =
+        Math.floor(seconds / 60);
+
+    const sec =
+        seconds % 60;
+
+    return (
+        String(min).padStart(2,"0")
+        +
+        ":"
+        +
+        String(sec).padStart(2,"0")
+    );
+
+}
+
+
+/* =====================================
+   SAFE TEXT
+===================================== */
+
+function escapeHtml(text){
+
+    return String(text).replace(
+        /[&<>"']/g,
+        char => ({
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            '"':"&quot;",
+            "'":"&#039;"
+        })[char]
+    );
+
+}
+
+</script>
+
+<script src="language.js"></script>
+
+<script src="mkj-navigation.js"></script>
+</body>
+</html>

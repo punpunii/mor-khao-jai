@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บัตรช่วยสื่อสาร · หมอเข้าใจ</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #F5F8F7;
+    color: #24484D;
+    font-family: inherit;
+}
+
+.card-page {
+    width: min(760px, calc(100% - 30px));
+    margin: auto;
+    padding: 30px 0 70px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #147B75;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.card-header {
+    margin-bottom: 27px;
+}
+
+.eyebrow {
+    color: #63C0A4;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    margin-bottom: 9px;
+}
+
+.card-header h1 {
+    margin: 0 0 10px;
+    color: #173F46;
+    font-size: clamp(30px, 5vw, 43px);
+    line-height: 1.2;
+}
+
+.card-header p {
+    margin: 0;
+    color: #687C81;
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.info-card,
+.selection-card,
+.preview-card {
+    background: rgba(255,255,255,.95);
+    border: 1px solid rgba(127,189,170,.18);
+    border-radius: 27px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 35px rgba(70,100,90,.08);
+}
+
+.info-card {
+    background: #EAF7F5;
+}
+
+.info-card strong {
+    color: #41695b;
+    font-size: 18px;
+}
+
+.info-card p {
+    margin: 7px 0 0;
+    color: #60767A;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.selection-card h2 {
+    margin: 0 0 7px;
+    color: #24545A;
+    font-size: 23px;
+}
+
+.selection-card > p {
+    margin: 0 0 22px;
+    color: #81908b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.communication-list {
+    display: grid;
+    gap: 12px;
+}
+
+.option {
+    position: relative;
+}
+
+.option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.option label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 80px;
+    padding: 16px;
+    border: 1.5px solid #CFE4E2;
+    border-radius: 18px;
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.option label:hover {
+    transform: translateY(-1px);
+    border-color: #7FCFC3;
+}
+
+.option input:checked + label {
+    background: #E0F6F1;
+    border-color: #63C0A4;
+}
+
+.option-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 14px;
+    background: #DFF4EF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+}
+
+.option-text {
+    flex: 1;
+}
+
+.option-title {
+    color: #24545A;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.option-desc {
+    margin-top: 3px;
+    color: #6F8185;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.option-check {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border: 2px solid #B8D5D1;
+    border-radius: 50%;
+}
+
+.option input:checked + label .option-check {
+    background: #63C0A4;
+    border-color: #63C0A4;
+    position: relative;
+}
+
+.option input:checked + label .option-check::after {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    left: 4px;
+    top: 0;
+}
+
+.generate-btn {
+    width: 100%;
+    min-height: 58px;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 18px;
+    background: #63C0A4;
+    color: white;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(127,189,170,.25);
+}
+
+.preview-card {
+    display: none;
+}
+
+.preview-card.show {
+    display: block;
+    animation: showCard .35s ease;
+}
+
+.preview-title {
+    color: #34594d;
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 17px;
+}
+
+.communication-card {
+    background: #f1f9f6;
+    border: 2px solid #A8D9CE;
+    border-radius: 23px;
+    padding: 25px;
+}
+
+.card-brand {
+    color: #147B75;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    margin-bottom: 7px;
+}
+
+.card-main-title {
+    margin: 0 0 5px;
+    color: #173F46;
+    font-size: 27px;
+}
+
+.card-subtitle {
+    margin: 0 0 20px;
+    color: #687C81;
+    font-size: 14px;
+}
+
+.selected-box {
+    background: white;
+    border-radius: 18px;
+    padding: 18px;
+}
+
+.selected-box strong {
+    display: block;
+    color: #24545A;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.selected-list {
+    color: #147B75;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.preview-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+    margin-top: 16px;
+}
+
+.preview-btn {
+    min-height: 53px;
+    border: 1.5px solid #CFE1E0;
+    border-radius: 16px;
+    background: white;
+    color: #3E5F64;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.preview-btn.primary {
+    background: #63C0A4;
+    border-color: #63C0A4;
+    color: white;
+}
+
+.preview-message {
+    min-height: 22px;
+    margin-top: 12px;
+    text-align: center;
+    color: #147B75;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+@keyframes showCard {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    body {
+        background: white;
+    }
+
+    .card-page {
+        width: 100%;
+        padding: 0;
+    }
+
+    .back-btn,
+    .card-header,
+    .info-card,
+    .selection-card,
+    .preview-title,
+    .preview-actions,
+    .preview-message {
+        display: none !important;
+    }
+
+    .preview-card {
+        display: block !important;
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .communication-card {
+        border: 1px solid #aaa;
+        border-radius: 0;
+        padding: 20px;
+    }
+
+    .card-main-title {
+        font-size: 24px;
+    }
+
+    .selected-list {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .card-page {
+        width: calc(100% - 24px);
+        padding-top: 22px;
+    }
+
+    .info-card,
+    .selection-card,
+    .preview-card {
+        padding: 21px 17px;
+        border-radius: 22px;
+    }
+
+    .card-header h1 {
+        font-size: 30px;
+    }
+
+    .card-header p {
+        font-size: 16px;
+    }
+
+    .option label {
+        padding: 14px;
+    }
+
+    .option-title {
+        font-size: 16px;
+    }
+
+    .preview-actions {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card-page">
+
+    <a href="symptomform.html" class="back-btn">
+        ← กลับไปใบซักประวัติ
+    </a>
+
+
+    <header class="card-header">
+
+        <div class="eyebrow">
+            COMMUNICATION CARD
+        </div>
+
+        <h1>
+            บัตรช่วยสื่อสาร
+        </h1>
+
+        <p>
+            เลือกวิธีการสื่อสารที่สะดวก
+            เพื่อให้บุคลากรเข้าใจความต้องการของคุณได้ง่ายขึ้น
+        </p>
+
+    </header>
+
+
+    <div class="info-card">
+
+        <strong>
+            💡 เลือกได้มากกว่าหนึ่งข้อ
+        </strong>
+
+        <p>
+            หากกำลังกรอกใบซักประวัติอยู่
+            สามารถเลือกส่วนการสื่อสารในใบเดียวกันได้เลย
+        </p>
+
+    </div>
+
+
+    <section class="selection-card">
+
+        <h2>
+            ฉันสะดวกสื่อสารแบบไหน?
+        </h2>
+
+        <p>
+            เลือกวิธีที่ต้องการให้บุคลากรใช้ในการสื่อสาร
+        </p>
+
+
+        <div class="communication-list">
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="face"
+                    value="หันหน้าเข้าหากัน"
+                >
+
+                <label for="face">
+
+                    <div class="option-icon">
+                        👀
+                    </div>
+
+                    <div class="option-text">
+
+                        <div class="option-title">
+                            หันหน้าเข้าหากัน
+                        </div>
+
+                        <div class="option-desc">
+                            ช่วยให้มองหน้าและอ่านปากได้สะดวกขึ้น
+                        </div>
+
+                    </div>
+
+                    <div class="option-check"></div>
+
+                </label>
+
+            </div>
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="writing"
+                    value="เขียนข้อความ"
+                >
+
+                <label for="writing">
+
+                    <div class="option-icon">
+                        ✏️
+                    </div>
+
+                    <div class="option-text">
+
+                        <div class="option-title">
+                            เขียนข้อความ
+                        </div>
+
+                        <div class="option-desc">
+                            ใช้การเขียนเพื่อช่วยในการสื่อสาร
+                        </div>
+
+                    </div>
+
+                    <div class="option-check"></div>
+
+                </label>
+
+            </div>
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="typing"
+                    value="พิมพ์ข้อความ"
+                >
+
+                <label for="typing">
+
+                    <div class="option-icon">
+                        ⌨️
+                    </div>
+
+                    <div class="option-text">
+
+                        <div class="option-title">
+                            พิมพ์ข้อความ
+                        </div>
+
+                        <div class="option-desc">
+                            ใช้โทรศัพท์หรืออุปกรณ์ช่วยพิมพ์
+                        </div>
+
+                    </div>
+
+                    <div class="option-check"></div>
+
+                </label>
+
+            </div>
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="sign"
+                    value="ภาษามือ"
+                >
+
+                <label for="sign">
+
+                    <div class="option-icon">
+                        🤟
+                    </div>
+
+                    <div class="option-text">
+
+                        <div class="option-title">
+                            ภาษามือ
+                        </div>
+
+                        <div class="option-desc">
+                            ใช้ภาษามือในการสื่อสาร
+                        </div>
+
+                    </div>
+
+                    <div class="option-check"></div>
+
+                </label>
+
+            </div>
+
+
+            <div class="option">
+
+                <input
+                    type="checkbox"
+                    id="clear"
+                    value="พูดชัดเจนและไม่เร็วเกินไป"
+                >
+
+                <label for="clear">
+
+                    <div class="option-icon">
+                        💬
+                    </div>
+
+                    <div class="option-text">
+
+                        <div class="option-title">
+                            พูดชัดเจนและไม่เร็วเกินไป
+                        </div>
+
+                        <div class="option-desc">
+                            ช่วยให้ฟังและทำความเข้าใจได้ง่ายขึ้น
+                        </div>
+
+                    </div>
+
+                    <div class="option-check"></div>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="generate-btn"
+            id="generateBtn"
+        >
+            สร้างบัตรช่วยสื่อสาร
+        </button>
+
+    </section>
+
+
+    <section
+        class="preview-card"
+        id="previewCard"
+    >
+
+        <div class="preview-title">
+            ตัวอย่างบัตรช่วยสื่อสาร
+        </div>
+
+
+        <div class="communication-card">
+
+            <div class="card-brand">
+                MOR KHAO JAI · หมอเข้าใจ
+            </div>
+
+            <h2 class="card-main-title">
+                ฉันต้องการการสื่อสารที่ชัดเจน
+            </h2>
+
+            <p class="card-subtitle">
+                Communication Card
+            </p>
+
+
+            <div class="selected-box">
+
+                <strong>
+                    กรุณาช่วยสื่อสารกับฉันโดย
+                </strong>
+
+                <div
+                    class="selected-list"
+                    id="selectedList"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="preview-actions">
+
+            <button
+                type="button"
+                class="preview-btn primary"
+                id="copyCardBtn"
+            >
+                คัดลอกข้อความ
+            </button>
+
+
+            <button
+                type="button"
+                class="preview-btn"
+                id="printCardBtn"
+            >
+                🖨️ ปริ้นบัตร
+            </button>
+
+        </div>
+
+
+        <div
+            class="preview-message"
+            id="previewMessage"
+        ></div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+let selectedCommunication = [];
+
+
+/* =========================
+   GENERATE
+========================= */
+
+document
+.getElementById("generateBtn")
+.addEventListener("click", function () {
+
+
+    selectedCommunication =
+        [
+            ...document.querySelectorAll(
+                '.option input:checked'
+            )
+        ].map(function(input) {
+            return input.value;
+        });
+
+
+    if (
+        selectedCommunication.length === 0
+    ) {
+
+        showMessage(
+            "กรุณาเลือกวิธีการสื่อสารอย่างน้อย 1 วิธี"
+        );
+
+        return;
+    }
+
+
+    const list =
+        document.getElementById(
+            "selectedList"
+        );
+
+
+    list.innerHTML =
+        selectedCommunication
+            .map(function(item) {
+                return "• " + item;
+            })
+            .join("<br>");
+
+
+    document
+        .getElementById(
+            "previewCard"
+        )
+        .classList.add("show");
+
+
+    document
+        .getElementById(
+            "previewCard"
+        )
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+});
+
+
+/* =========================
+   COPY CARD
+========================= */
+
+document
+.getElementById("copyCardBtn")
+.addEventListener("click", async function () {
+
+
+    const text =
+
+`หมอเข้าใจ · MOR KHAO JAI
+
+ฉันต้องการการสื่อสารที่ชัดเจน
+
+กรุณาช่วยสื่อสารกับฉันโดย
+${selectedCommunication
+    .map(function(item) {
+        return "• " + item;
+    })
+    .join("\n")}`;
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+        showMessage(
+            "คัดลอกข้อความเรียบร้อยแล้ว ✓"
+        );
+
+    } catch (error) {
+
+        showMessage(
+            "ไม่สามารถคัดลอกอัตโนมัติได้"
+        );
+
+    }
+
+});
+
+
+/* =========================
+   PRINT
+========================= */
+
+document
+.getElementById("printCardBtn")
+.addEventListener("click", function () {
+
+    if (
+        selectedCommunication.length === 0
+    ) {
+
+        showMessage(
+            "กรุณาสร้างบัตรก่อนปริ้น"
+        );
+
+        return;
+    }
+
+
+    window.print();
+
+});
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(message) {
+
+    const element =
+        document.getElementById(
+            "previewMessage"
+        );
+
+
+    element.textContent =
+        message;
+
+
+    clearTimeout(
+        window.communicationTimer
+    );
+
+
+    window.communicationTimer =
+        setTimeout(function() {
+
+            element.textContent =
+                "";
+
+        }, 3000);
+
+}
+
+</script>
+
+<script src="mkj-card-fullscreen.js"></script>
+<script src="language.js"></script>
+
+<script src="mkj-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>คลังภาษามือสุขภาพ · หมอเข้าใจ</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#f6f3ed;
+    --card:#fffdf9;
+    --text:#33433e;
+    --muted:#708187;
+    --sage:#9db6aa;
+    --sage-dark:#6f8f82;
+    --cream:#eee7dc;
+    --line:#e8e4dc;
+    --shadow:0 18px 50px rgba(82,93,87,.10);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 10% 5%, rgba(190,211,201,.42), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(236,218,192,.42), transparent 25%),
+        linear-gradient(180deg,#faf8f3 0%,#f4f1eb 100%);
+    padding:28px 18px 60px;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+    width:min(1050px,100%);
+    margin:auto;
+}
+
+.back{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    text-decoration:none;
+    color:#60767A;
+    font-size:14px;
+    font-weight:600;
+    padding:8px 12px;
+    border-radius:14px;
+    transition:.2s ease;
+}
+
+.back:hover{
+    background:rgba(255,255,255,.7);
+    transform:translateX(-2px);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    margin-top:12px;
+    padding:42px 34px 38px;
+    border:1px solid rgba(255,255,255,.9);
+    border-radius:34px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.88),
+            rgba(241,237,228,.72)
+        );
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(172,198,185,.18);
+    right:-60px;
+    top:-75px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:rgba(238,218,189,.20);
+    left:-35px;
+    bottom:-45px;
+}
+
+.eyebrow{
+    position:relative;
+    z-index:1;
+    margin:0 0 8px;
+    color:var(--sage-dark);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.04em;
+}
+
+.hero h1{
+    position:relative;
+    z-index:1;
+    margin:0;
+    font-size:clamp(31px,5vw,48px);
+    letter-spacing:-.045em;
+    line-height:1.15;
+}
+
+.hero p:last-child{
+    position:relative;
+    z-index:1;
+    margin:12px 0 0;
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.8;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.tools{
+    display:flex;
+    gap:12px;
+    margin:22px 0 18px;
+}
+
+.search-box{
+    flex:1;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    border:1px solid rgba(220,218,210,.9);
+    background:rgba(255,255,255,.82);
+    border-radius:18px;
+    padding:15px 18px 15px 44px;
+    outline:none;
+    color:var(--text);
+    font-size:15px;
+    font-family:inherit;
+    box-shadow:0 8px 25px rgba(82,93,87,.05);
+    transition:.2s ease;
+}
+
+.search-box input:focus{
+    border-color:#a9c0b5;
+    box-shadow:
+        0 0 0 4px rgba(157,182,170,.14),
+        0 10px 28px rgba(82,93,87,.07);
+}
+
+.search-icon{
+    position:absolute;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#9aa49f;
+    font-size:17px;
+}
+
+/* =========================
+   CATEGORY
+========================= */
+
+.category-bar{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-bottom:24px;
+}
+
+.category-btn{
+    border:1px solid #e4e2da;
+    background:rgba(255,255,255,.70);
+    color:#75827d;
+    padding:9px 14px;
+    border-radius:999px;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:650;
+    cursor:pointer;
+    transition:
+        transform .18s ease,
+        background .18s ease,
+        color .18s ease,
+        box-shadow .18s ease;
+}
+
+.category-btn:hover{
+    transform:translateY(-2px);
+    background:#fff;
+}
+
+.category-btn.active{
+    background:#91ad9f;
+    color:white;
+    border-color:#91ad9f;
+    box-shadow:0 8px 20px rgba(111,143,130,.20);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    margin-top:30px;
+}
+
+.section-title{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:14px;
+}
+
+.section-title h2{
+    margin:0;
+    font-size:20px;
+    letter-spacing:-.025em;
+}
+
+.section-title span{
+    color:#9aa39f;
+    font-size:13px;
+}
+
+/* =========================
+   VOCABULARY GRID
+========================= */
+
+.vocab-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+    gap:15px;
+}
+
+.vocab-card{
+    appearance:none;
+    border:1px solid rgba(229,226,217,.9);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.94),
+            rgba(250,247,241,.91)
+        );
+    color:var(--text);
+    border-radius:23px;
+    padding:21px 20px;
+    min-height:128px;
+    text-align:left;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    font-family:inherit;
+    box-shadow:
+        0 9px 25px rgba(83,93,87,.055);
+    transition:
+        transform .22s cubic-bezier(.2,.8,.2,1),
+        box-shadow .22s ease,
+        border-color .22s ease;
+}
+
+.vocab-card::before{
+    content:"";
+    position:absolute;
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    right:-24px;
+    bottom:-30px;
+    background:rgba(164,190,177,.13);
+    transition:.25s ease;
+}
+
+.vocab-card:hover{
+    transform:translateY(-5px) scale(1.01);
+    border-color:#cddbd4;
+    box-shadow:
+        0 18px 38px rgba(83,93,87,.11);
+}
+
+.vocab-card:hover::before{
+    transform:scale(1.5);
+    background:rgba(164,190,177,.20);
+}
+
+.vocab-card:active{
+    transform:scale(.97);
+}
+
+.vocab-icon{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:13px;
+    background:#edf3ef;
+    color:#769487;
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.vocab-th{
+    font-size:18px;
+    font-weight:750;
+    letter-spacing:-.025em;
+}
+
+.vocab-en{
+    margin-top:5px;
+    color:#99a29e;
+    font-size:13px;
+}
+
+.vocab-arrow{
+    position:absolute;
+    right:17px;
+    top:18px;
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f1eee8;
+    color:#89968f;
+    font-size:14px;
+    transition:.2s ease;
+}
+
+.vocab-card:hover .vocab-arrow{
+    background:#dce9e2;
+    color:#6f8f82;
+    transform:translateX(2px);
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:45px 20px;
+    border-radius:24px;
+    background:rgba(255,255,255,.65);
+    border:1px solid #e8e5de;
+    color:#929b97;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+    background:rgba(46,57,52,.20);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+}
+
+.modal.show{
+    display:flex;
+    animation:fadeIn .25s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+.modal-window{
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+    border-radius:31px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.96),
+            rgba(248,245,239,.96)
+        );
+    border:1px solid rgba(255,255,255,.95);
+    box-shadow:
+        0 35px 90px rgba(36,47,42,.20),
+        0 5px 20px rgba(36,47,42,.08);
+    transform:scale(.92) translateY(14px);
+    opacity:0;
+    animation:macOpen .38s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes macOpen{
+    to{
+        transform:scale(1) translateY(0);
+        opacity:1;
+    }
+}
+
+/* macOS-like top bar */
+
+.mac-bar{
+    height:48px;
+    display:flex;
+    align-items:center;
+    padding:0 18px;
+    border-bottom:1px solid rgba(225,223,216,.8);
+    background:rgba(250,248,243,.72);
+}
+
+.mac-dots{
+    display:flex;
+    gap:7px;
+}
+
+.mac-dot{
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:#d7d4cd;
+}
+
+.mac-dot:first-child{
+    background:#e7b5ac;
+}
+
+.mac-dot:nth-child(2){
+    background:#e4d19a;
+}
+
+.mac-dot:nth-child(3){
+    background:#b6d0bd;
+}
+
+.mac-title{
+    flex:1;
+    text-align:center;
+    margin-right:42px;
+    color:#8c9691;
+    font-size:12px;
+    font-weight:650;
+}
+
+.modal-content{
+    padding:30px;
+}
+
+.modal-category{
+    display:inline-flex;
+    padding:7px 11px;
+    border-radius:999px;
+    background:#edf3ef;
+    color:#719083;
+    font-size:12px;
+    font-weight:700;
+}
+
+.modal h2{
+    margin:15px 0 5px;
+    font-size:35px;
+    letter-spacing:-.045em;
+}
+
+.modal-english{
+    color:#929b97;
+    font-size:15px;
+}
+
+.sign-area{
+    margin-top:25px;
+    min-height:250px;
+    border-radius:24px;
+    border:1px dashed #d6ddd8;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(220,233,226,.45),
+            rgba(248,246,241,.75)
+        );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+    color:#8a9791;
+}
+
+.sign-placeholder-icon{
+    width:64px;
+    height:64px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:21px;
+    background:#e7f0eb;
+    color:#78958a;
+    font-size:28px;
+}
+
+.sign-placeholder-title{
+    margin-top:14px;
+    color:#65756e;
+    font-weight:750;
+    font-size:16px;
+}
+
+.sign-placeholder-text{
+    margin-top:6px;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.modal-tip{
+    margin-top:17px;
+    padding:15px 17px;
+    border-radius:17px;
+    background:#f3efe8;
+    color:#7c8782;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.close-btn{
+    width:100%;
+    margin-top:18px;
+    border:0;
+    border-radius:17px;
+    padding:14px;
+    background:#8ea99c;
+    color:white;
+    font-family:inherit;
+    font-size:14px;
+    font-weight:750;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.close-btn:hover{
+    background:#78978a;
+    transform:translateY(-1px);
+}
+
+.close-btn:active{
+    transform:scale(.98);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin-top:35px;
+    text-align:center;
+    color:#9aa29e;
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    .vocab-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+}
+
+@media(max-width:560px){
+
+    body{
+        padding:18px 13px 45px;
+    }
+
+    .hero{
+        padding:30px 22px 27px;
+        border-radius:27px;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .tools{
+        margin-top:17px;
+    }
+
+    .vocab-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .vocab-card{
+        min-height:108px;
+        padding:18px;
+        border-radius:20px;
+    }
+
+    .modal{
+        padding:12px;
+    }
+
+    .modal-window{
+        border-radius:27px;
+    }
+
+    .modal-content{
+        padding:23px 19px 20px;
+    }
+
+    .modal h2{
+        font-size:30px;
+    }
+
+    .sign-area{
+        min-height:220px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+    <a href="javascript:history.back()" class="back">
+        ← กลับ
+    </a>
+
+    <section class="hero">
+
+        <p class="eyebrow">
+            MOR KHAO JAI · HEALTH VOCABULARY
+        </p>
+
+        <h1>
+            คลังภาษามือสุขภาพ
+        </h1>
+
+        <p>
+            รวมคำศัพท์ที่เกี่ยวข้องกับอาการ ร่างกาย การตรวจ
+            การรักษา และการสื่อสารในโรงพยาบาล
+        </p>
+
+    </section>
+
+
+    <div class="tools">
+
+        <div class="search-box">
+
+            <span class="search-icon">⌕</span>
+
+            <input
+                type="search"
+                id="search"
+                placeholder="ค้นหาคำศัพท์ เช่น ปวด ไข้ หัวใจ..."
+                autocomplete="off"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="category-bar">
+
+        <button
+            class="category-btn active"
+            data-category="all"
+        >
+            ทั้งหมด
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="symptom"
+        >
+            อาการ
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="body"
+        >
+            ร่างกาย
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="hospital"
+        >
+            โรงพยาบาล
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="test"
+        >
+            การตรวจ
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="treatment"
+        >
+            การรักษา
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="communication"
+        >
+            การสื่อสาร
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="hearing"
+        >
+            การได้ยิน
+        </button>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                คำศัพท์
+            </h2>
+
+            <span id="count">
+                0 คำ
+            </span>
+
+        </div>
+
+
+        <div
+            class="vocab-grid"
+            id="vocabGrid"
+        ></div>
+
+
+        <div
+            class="empty"
+            id="empty"
+        >
+            ไม่พบคำศัพท์ที่ค้นหา
+        </div>
+
+    </section>
+
+
+    <p class="footer">
+        ต้นแบบเพื่อการเรียนรู้และพัฒนาต่อ<br>
+        วิดีโอภาษามือควรผ่านการตรวจสอบจากผู้ใช้ภาษามือจริงก่อนนำไปใช้งาน
+    </p>
+
+</main>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal-window"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+    >
+
+        <div class="mac-bar">
+
+            <div class="mac-dots">
+
+                <span class="mac-dot"></span>
+                <span class="mac-dot"></span>
+                <span class="mac-dot"></span>
+
+            </div>
+
+            <div
+                class="mac-title"
+                id="macTitle"
+            >
+                คำศัพท์สุขภาพ
+            </div>
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <span
+                class="modal-category"
+                id="modalCategory"
+            >
+                อาการ
+            </span>
+
+            <h2 id="modalTitle">
+                ปวด
+            </h2>
+
+            <div
+                class="modal-english"
+                id="modalEnglish"
+            >
+                Pain
+            </div>
+
+
+            <div class="sign-area">
+
+                <div>
+
+                    <div class="sign-placeholder-icon">
+                        ♡
+                    </div>
+
+                    <div class="sign-placeholder-title">
+                        พื้นที่สำหรับวิดีโอภาษามือ
+                    </div>
+
+                    <div class="sign-placeholder-text">
+                        สามารถใส่วิดีโอภาษามือของคำนี้ได้ที่นี่
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-tip">
+
+                คำศัพท์นี้ใช้สำหรับการเรียนรู้และการสื่อสาร
+                ไม่ใช่การวินิจฉัยหรือประเมินอาการทางการแพทย์
+
+            </div>
+
+
+            <button
+                class="close-btn"
+                id="closeModal"
+                type="button"
+            >
+                ปิด
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   HEALTH VOCABULARY
+   ===================================================== */
+
+const vocabulary = [
+
+    /* =========================
+       อาการ
+    ========================= */
+
+    {
+        th:"ปวด",
+        en:"Pain",
+        category:"symptom",
+        icon:"♡"
+    },
+
+    {
+        th:"ปวดหัว",
+        en:"Headache",
+        category:"symptom",
+        icon:"◌"
+    },
+
+    {
+        th:"ปวดท้อง",
+        en:"Stomachache",
+        category:"symptom",
+        icon:"◌"
+    },
+
+    {
+        th:"เจ็บหน้าอก",
+        en:"Chest pain",
+        category:"symptom",
+        icon:"♡"
+    },
+
+    {
+        th:"เจ็บคอ",
+        en:"Sore throat",
+        category:"symptom",
+        icon:"◌"
+    },
+
+    {
+        th:"ไอ",
+        en:"Cough",
+        category:"symptom",
+        icon:"⌁"
+    },
+
+    {
+        th:"มีไข้",
+        en:"Fever",
+        category:"symptom",
+        icon:"°"
+    },
+
+    {
+        th:"เวียนหัว",
+        en:"Dizziness",
+        category:"symptom",
+        icon:"◎"
+    },
+
+    {
+        th:"คลื่นไส้",
+        en:"Nausea",
+        category:"symptom",
+        icon:"⌁"
+    },
+
+    {
+        th:"อาเจียน",
+        en:"Vomiting",
+        category:"symptom",
+        icon:"⌁"
+    },
+
+    {
+        th:"ท้องเสีย",
+        en:"Diarrhea",
+        category:"symptom",
+        icon:"⌁"
+    },
+
+    {
+        th:"อ่อนเพลีย",
+        en:"Fatigue",
+        category:"symptom",
+        icon:"○"
+    },
+
+    {
+        th:"หายใจลำบาก",
+        en:"Difficulty breathing",
+        category:"symptom",
+        icon:"⌁"
+    },
+
+    {
+        th:"บวม",
+        en:"Swelling",
+        category:"symptom",
+        icon:"○"
+    },
+
+    {
+        th:"แผล",
+        en:"Wound",
+        category:"symptom",
+        icon:"＋"
+    },
+
+    {
+        th:"เลือดออก",
+        en:"Bleeding",
+        category:"symptom",
+        icon:"＋"
+    },
+
+
+    /* =========================
+       ร่างกาย
+    ========================= */
+
+    {
+        th:"ศีรษะ",
+        en:"Head",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"ตา",
+        en:"Eye",
+        category:"body",
+        icon:"◉"
+    },
+
+    {
+        th:"หู",
+        en:"Ear",
+        category:"body",
+        icon:"◌"
+    },
+
+    {
+        th:"จมูก",
+        en:"Nose",
+        category:"body",
+        icon:"⌁"
+    },
+
+    {
+        th:"ปาก",
+        en:"Mouth",
+        category:"body",
+        icon:"◡"
+    },
+
+    {
+        th:"คอ",
+        en:"Neck / Throat",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"ผิวหนัง",
+        en:"Skin",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"สมอง",
+        en:"Brain",
+        category:"body",
+        icon:"◌"
+    },
+
+    {
+        th:"หัวใจ",
+        en:"Heart",
+        category:"body",
+        icon:"♡"
+    },
+
+    {
+        th:"ปอด",
+        en:"Lungs",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"กระเพาะอาหาร",
+        en:"Stomach",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"ลำไส้",
+        en:"Intestine",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"ตับ",
+        en:"Liver",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"ไต",
+        en:"Kidney",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"เลือด",
+        en:"Blood",
+        category:"body",
+        icon:"＋"
+    },
+
+    {
+        th:"หลอดเลือด",
+        en:"Blood vessel",
+        category:"body",
+        icon:"⌁"
+    },
+
+    {
+        th:"หน้าอก",
+        en:"Chest",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"ท้อง",
+        en:"Abdomen",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"หลัง",
+        en:"Back",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"แขน",
+        en:"Arm",
+        category:"body",
+        icon:"○"
+    },
+
+    {
+        th:"ขา",
+        en:"Leg",
+        category:"body",
+        icon:"○"
+    },
+
+
+    /* =========================
+       โรงพยาบาล
+    ========================= */
+
+    {
+        th:"โรงพยาบาล",
+        en:"Hospital",
+        category:"hospital",
+        icon:"＋"
+    },
+
+    {
+        th:"หมอ",
+        en:"Doctor",
+        category:"hospital",
+        icon:"＋"
+    },
+
+    {
+        th:"พยาบาล",
+        en:"Nurse",
+        category:"hospital",
+        icon:"＋"
+    },
+
+    {
+        th:"ผู้ป่วย",
+        en:"Patient",
+        category:"hospital",
+        icon:"○"
+    },
+
+    {
+        th:"ห้องตรวจ",
+        en:"Examination room",
+        category:"hospital",
+        icon:"＋"
+    },
+
+    {
+        th:"ห้องฉุกเฉิน",
+        en:"Emergency room",
+        category:"hospital",
+        icon:"!"
+    },
+
+    {
+        th:"ห้องผ่าตัด",
+        en:"Operating room",
+        category:"hospital",
+        icon:"＋"
+    },
+
+    {
+        th:"ร้านขายยา",
+        en:"Pharmacy",
+        category:"hospital",
+        icon:"＋"
+    },
+
+    {
+        th:"นัดหมาย",
+        en:"Appointment",
+        category:"hospital",
+        icon:"□"
+    },
+
+    {
+        th:"แผนก",
+        en:"Department",
+        category:"hospital",
+        icon:"＋"
+    },
+
+
+    /* =========================
+       การตรวจ
+    ========================= */
+
+    {
+        th:"ตรวจร่างกาย",
+        en:"Physical examination",
+        category:"test",
+        icon:"＋"
+    },
+
+    {
+        th:"ตรวจเลือด",
+        en:"Blood test",
+        category:"test",
+        icon:"＋"
+    },
+
+    {
+        th:"วัดความดัน",
+        en:"Blood pressure measurement",
+        category:"test",
+        icon:"＋"
+    },
+
+    {
+        th:"เอกซเรย์",
+        en:"X-ray",
+        category:"test",
+        icon:"＋"
+    },
+
+    {
+        th:"อัลตราซาวด์",
+        en:"Ultrasound",
+        category:"test",
+        icon:"◎"
+    },
+
+    {
+        th:"ตรวจปัสสาวะ",
+        en:"Urine test",
+        category:"test",
+        icon:"＋"
+    },
+
+
+    /* =========================
+       การรักษา
+    ========================= */
+
+    {
+        th:"ยา",
+        en:"Medicine",
+        category:"treatment",
+        icon:"＋"
+    },
+
+    {
+        th:"ฉีดยา",
+        en:"Injection",
+        category:"treatment",
+        icon:"＋"
+    },
+
+    {
+        th:"ผ่าตัด",
+        en:"Surgery",
+        category:"treatment",
+        icon:"＋"
+    },
+
+    {
+        th:"นอนโรงพยาบาล",
+        en:"Hospitalization",
+        category:"treatment",
+        icon:"□"
+    },
+
+    {
+        th:"รักษา",
+        en:"Treatment",
+        category:"treatment",
+        icon:"＋"
+    },
+
+    {
+        th:"อาการดีขึ้น",
+        en:"Symptoms are better",
+        category:"treatment",
+        icon:"↑"
+    },
+
+    {
+        th:"อาการแย่ลง",
+        en:"Symptoms are worse",
+        category:"treatment",
+        icon:"↓"
+    },
+
+    {
+        th:"ยังมีอาการ",
+        en:"Still have symptoms",
+        category:"treatment",
+        icon:"○"
+    },
+
+
+    /* =========================
+       การสื่อสาร
+    ========================= */
+
+    {
+        th:"สื่อสาร",
+        en:"Communicate",
+        category:"communication",
+        icon:"⌁"
+    },
+
+    {
+        th:"ภาษามือ",
+        en:"Sign language",
+        category:"communication",
+        icon:"✦"
+    },
+
+    {
+        th:"เขียน",
+        en:"Writing",
+        category:"communication",
+        icon:"✎"
+    },
+
+    {
+        th:"พิมพ์",
+        en:"Typing",
+        category:"communication",
+        icon:"⌨"
+    },
+
+    {
+        th:"มองหน้า",
+        en:"Face the patient",
+        category:"communication",
+        icon:"◉"
+    },
+
+    {
+        th:"พูดให้ชัดเจน",
+        en:"Speak clearly",
+        category:"communication",
+        icon:"⌁"
+    },
+
+    {
+        th:"พูดซ้ำ",
+        en:"Repeat",
+        category:"communication",
+        icon:"↻"
+    },
+
+    {
+        th:"เข้าใจ",
+        en:"Understand",
+        category:"communication",
+        icon:"✓"
+    },
+
+    {
+        th:"ต้องการความช่วยเหลือด้านการสื่อสาร",
+        en:"Need communication support",
+        category:"communication",
+        icon:"♡"
+    },
+
+    {
+        th:"ปวดหู",
+        en:"Earache",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"หูอื้อ",
+        en:"Blocked / muffled ear",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"เสียงดังในหู",
+        en:"Ringing in the ear",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"ได้ยินไม่ชัด",
+        en:"Hard of hearing",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"เครื่องช่วยฟัง",
+        en:"Hearing aid",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"ประสาทหูเทียม",
+        en:"Cochlear implant",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"ตรวจการได้ยิน",
+        en:"Hearing test",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"ล่ามภาษามือ",
+        en:"Sign language interpreter",
+        category:"communication",
+        icon:"✦"
+    },
+    {
+        th:"ฉันไม่เข้าใจ",
+        en:"I don't understand",
+        category:"communication",
+        icon:"?"
+    },
+    {
+        th:"ช่วยเขียนให้ดูหน่อย",
+        en:"Please write it down",
+        category:"communication",
+        icon:"✎"
+    },
+    {
+        th:"ช่วยพูดช้าลงหน่อย",
+        en:"Please speak more slowly",
+        category:"communication",
+        icon:"⌁"
+    }
+
+
+];
+
+
+/* =====================================================
+   CATEGORY LABEL
+   ===================================================== */
+
+const categoryNames = {
+
+    all:"คำศัพท์สุขภาพ",
+
+    symptom:"อาการ",
+
+    body:"ร่างกาย",
+
+    hospital:"โรงพยาบาล",
+
+    test:"การตรวจ",
+
+    treatment:"การรักษา",
+
+    communication:"การสื่อสาร",
+
+    hearing:"การได้ยิน"
+
+};
+
+
+/* =====================================================
+   ELEMENTS
+   ===================================================== */
+
+const grid =
+    document.getElementById("vocabGrid");
+
+const search =
+    document.getElementById("search");
+
+const count =
+    document.getElementById("count");
+
+const empty =
+    document.getElementById("empty");
+
+const modal =
+    document.getElementById("modal");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalEnglish =
+    document.getElementById("modalEnglish");
+
+const modalCategory =
+    document.getElementById("modalCategory");
+
+const macTitle =
+    document.getElementById("macTitle");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+let currentCategory = "all";
+
+
+/* =====================================================
+   RENDER
+   ===================================================== */
+
+function render(){
+
+    const keyword =
+        search.value
+            .trim()
+            .toLowerCase();
+
+    const filtered =
+        vocabulary.filter(item => {
+
+            const matchCategory =
+                currentCategory === "all"
+                ||
+                item.category === currentCategory;
+
+            const matchSearch =
+                !keyword
+                ||
+                item.th.toLowerCase().includes(keyword)
+                ||
+                item.en.toLowerCase().includes(keyword);
+
+            return matchCategory && matchSearch;
+
+        });
+
+
+    grid.innerHTML = "";
+
+
+    filtered.forEach(item => {
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+
+        button.className = "vocab-card";
+
+        button.innerHTML = `
+
+            <span class="vocab-arrow">
+                ›
+            </span>
+
+            <div class="vocab-icon">
+                ${item.icon}
+            </div>
+
+            <div class="vocab-th">
+                ${item.th}
+            </div>
+
+            <div class="vocab-en">
+                ${item.en}
+            </div>
+
+        `;
+
+
+        button.addEventListener(
+            "click",
+            () => openModal(item)
+        );
+
+
+        grid.appendChild(button);
+
+    });
+
+
+    count.textContent =
+        `${filtered.length} คำ`;
+
+    empty.style.display =
+        filtered.length
+        ? "none"
+        : "block";
+
+}
+
+
+/* =====================================================
+   OPEN MODAL
+   ===================================================== */
+
+function openModal(item){
+
+    modalTitle.textContent =
+        item.th;
+
+    modalEnglish.textContent =
+        item.en;
+
+    modalCategory.textContent =
+        categoryNames[item.category];
+
+    macTitle.textContent =
+        item.th;
+
+    modal.classList.add("show");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+   ===================================================== */
+
+function close(){
+
+    modal.classList.remove("show");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+closeModal.addEventListener(
+    "click",
+    close
+);
+
+
+modal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target === modal
+        ){
+
+            close();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape"
+        ){
+
+            close();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CATEGORY BUTTONS
+   ===================================================== */
+
+document
+    .querySelectorAll(".category-btn")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .querySelectorAll(".category-btn")
+                    .forEach(item => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                currentCategory =
+                    button.dataset.category;
+
+                render();
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+search.addEventListener(
+    "input",
+    render
+);
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+render();
+
+</script>
+
+<script src="language.js"></script>
+<script src="mkj-navigation.js"></script>
+</body>
+</html>

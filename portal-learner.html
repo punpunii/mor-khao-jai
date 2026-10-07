@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สำหรับผู้เรียนรู้ · หมอเข้าใจ</title><link rel="stylesheet" href="style.css">
+<style>
+    body {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(127,189,170,0.13), transparent 28%),
+        radial-gradient(circle at 90% 30%, rgba(224,214,190,0.16), transparent 30%),
+        #F5F8F7 !important;
+      color: #173F46;
+    }
+
+    .role-page {
+      width: min(1080px, calc(100% - 40px)) !important;
+      max-width: 1080px !important;
+      margin: 0 auto !important;
+      padding: 28px 0 80px !important;
+    }
+
+    .role-page .back {
+      display: inline-flex !important;
+      align-items: center !important;
+      margin-bottom: 24px !important;
+      padding: 9px 14px !important;
+      border-radius: 999px !important;
+      text-decoration: none !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      background: rgba(255,255,255,0.8) !important;
+      border: 1px solid rgba(127,189,170,0.18) !important;
+      box-shadow: 0 5px 18px rgba(57,76,69,0.06) !important;
+      transition: all 0.22s ease !important;
+    }
+
+    .role-page .back:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 8px 22px rgba(57,76,69,0.10) !important;
+    }
+
+    .role-page .hero.small {
+      position: relative !important;
+      overflow: hidden !important;
+      margin: 0 0 30px !important;
+      padding: 48px 48px 44px !important;
+      border-radius: 34px !important;
+      background:
+        linear-gradient(
+          135deg,
+          #E8F6F3 0%,
+          #F0F4FC 100%
+        ) !important;
+      border: 1px solid rgba(127,189,170,0.20) !important;
+      box-shadow:
+        0 18px 45px rgba(57,76,69,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    }
+
+    .role-page .hero.small::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -85px;
+      top: -100px;
+      border-radius: 50%;
+      background: rgba(127,189,170,0.16);
+      pointer-events: none;
+    }
+
+    .role-page .hero.small::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: 125px;
+      bottom: -75px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      pointer-events: none;
+    }
+
+    .role-page .hero.small > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .role-page .hero.small .eyebrow {
+      margin: 0 0 12px !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.15em !important;
+      color: #218C83 !important;
+    }
+
+    .role-page .hero.small h1 {
+      margin: 0 0 14px !important;
+      font-size: clamp(32px, 5vw, 48px) !important;
+      line-height: 1.2 !important;
+      letter-spacing: -0.025em !important;
+      color: #173F46 !important;
+    }
+
+    .role-page .hero.small > p:last-child {
+      margin: 0 !important;
+      max-width: 700px !important;
+      font-size: 16px !important;
+      line-height: 1.8 !important;
+      color: #516B72 !important;
+    }
+
+    .topic-list {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      margin: 0 !important;
+    }
+
+    .topic-list a {
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 20px !important;
+      min-height: 145px !important;
+      padding: 28px 28px 28px 30px !important;
+      border-radius: 28px !important;
+      text-decoration: none !important;
+      background: rgba(255,255,255,0.92) !important;
+      border: 1px solid rgba(127,189,170,0.16) !important;
+      box-shadow:
+        0 8px 25px rgba(57,76,69,0.055),
+        inset 0 1px 0 rgba(255,255,255,0.9) !important;
+      overflow: hidden !important;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease !important;
+    }
+
+    .topic-list a::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 4px;
+      border-radius: 0 8px 8px 0;
+      background: #63C0A4;
+      opacity: 0;
+      transform: scaleY(0.5);
+      transition: all 0.25s ease;
+    }
+
+    .topic-list a::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      right: -55px;
+      bottom: -60px;
+      border-radius: 50%;
+      background: rgba(127,189,170,0.07);
+      transition: transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .topic-list a:hover {
+      transform: translateY(-5px) !important;
+      border-color: rgba(127,189,170,0.32) !important;
+      box-shadow:
+        0 18px 38px rgba(57,76,69,0.11),
+        inset 0 1px 0 rgba(255,255,255,0.95) !important;
+    }
+
+    .topic-list a:hover::before {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+
+    .topic-list a:hover::after {
+      transform: scale(1.5);
+    }
+
+    .topic-list a:active {
+      transform: translateY(-1px) scale(0.99) !important;
+    }
+
+    .topic-content {
+      position: relative !important;
+      z-index: 2 !important;
+      min-width: 0 !important;
+      padding-left: 2px !important;
+    }
+
+    .topic-list b {
+      display: block !important;
+      margin: 0 0 9px !important;
+      font-size: 19px !important;
+      line-height: 1.45 !important;
+      font-weight: 700 !important;
+      color: #147B75 !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    .topic-list small {
+      display: block !important;
+      font-size: 14px !important;
+      line-height: 1.7 !important;
+      color: #63777C !important;
+    }
+
+    .topic-arrow {
+      position: relative !important;
+      z-index: 2 !important;
+      flex: 0 0 46px !important;
+      width: 46px !important;
+      height: 46px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border-radius: 50% !important;
+      background: #E6F6F3 !important;
+      color: #1B9B90 !important;
+      font-size: 21px !important;
+      font-weight: 500 !important;
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease !important;
+    }
+
+    .topic-list a:hover .topic-arrow {
+      transform: translateX(5px) !important;
+      background: #63C0A4 !important;
+      color: white !important;
+      box-shadow: 0 7px 16px rgba(127,189,170,0.25) !important;
+    }
+
+    @media (max-width: 760px) {
+      .role-page {
+        width: min(100% - 28px, 600px) !important;
+        padding-top: 20px !important;
+        padding-bottom: 50px !important;
+      }
+
+      .role-page .hero.small {
+        padding: 34px 24px 32px !important;
+        border-radius: 27px !important;
+        margin-bottom: 20px !important;
+      }
+
+      .role-page .hero.small h1 {
+        font-size: 31px !important;
+      }
+
+      .role-page .hero.small > p:last-child {
+        font-size: 14px !important;
+        line-height: 1.75 !important;
+      }
+
+      .topic-list {
+        grid-template-columns: 1fr !important;
+        gap: 13px !important;
+      }
+
+      .topic-list a {
+        min-height: 105px !important;
+        padding: 22px 19px 22px 22px !important;
+        border-radius: 23px !important;
+      }
+
+      .topic-list a::before {
+        top: 18px;
+        bottom: 18px;
+      }
+
+      .topic-list b {
+        font-size: 17px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .topic-list small {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+      }
+
+      .topic-arrow {
+        flex-basis: 40px !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 18px !important;
+      }
+    }
+  </style>
+</head><body>
+<div class="page-shell narrow role-page">
+<a class="back" href="index.html">← กลับหน้าหลัก</a>
+<section class="hero small">
+<p class="eyebrow">FOR LEARNERS</p>
+<h1>สำหรับผู้เรียนรู้</h1>
+<p>เรียนรู้ภาษามือสุขภาพจากคำศัพท์ที่สนใจ แล้วทบทวนความเข้าใจผ่านเกม</p>
+</section>
+<div class="topic-list">
+<a href="vocabulary.html"><div class="topic-content"><b>🤟 คลังคำศัพท์สุขภาพ</b><small>ค้นหาและเรียนรู้คำศัพท์เกี่ยวกับร่างกาย อาการ และคำศัพท์สุขภาพ</small></div><span class="topic-arrow">→</span></a>
+<a href="game.html"><div class="topic-content"><b>🎮 ฝึกผ่านเกม</b><small>ทบทวนคำศัพท์และลองฝึกจำในรูปแบบกิจกรรม</small></div><span class="topic-arrow">→</span></a>
+</div></div>
+<script src="language.js"></script><script src="mkj-navigation.js"></script>
+</body></html>

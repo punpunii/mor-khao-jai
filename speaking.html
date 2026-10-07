@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ฝึกพูดและออกเสียง · หมอเข้าใจ</title><link rel="stylesheet" href="style.css">
+<style>
+.speaking-page{max-width:900px;margin:auto}.speak-intro{background:linear-gradient(135deg,#f4fbf7,#fff8f1);border-radius:28px;padding:28px;margin:18px 0 22px;border:1px solid #e4eee8}.speak-intro h1{margin:4px 0 8px}.speak-intro p{color:#65746e;line-height:1.7}.speak-note{font-size:.9rem;color:#71807a;margin-top:12px}.speak-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.speak-card{background:#fff;border:1px solid #E6EFED;border-radius:24px;padding:18px;box-shadow:0 8px 24px rgba(60,80,70,.06)}.mouth-stage{height:150px;border-radius:20px;background:#f8f5f2;display:flex;align-items:center;justify-content:center;margin-bottom:14px;overflow:hidden}.mouth{width:92px;height:48px;border-radius:50% 50% 48% 48%;background:#d98786;position:relative;box-shadow:inset 0 -8px 0 #a9575b;animation:mouthTalk 1.2s infinite ease-in-out}.mouth:before{content:"";position:absolute;width:48px;height:10px;background:#fff;border-radius:0 0 12px 12px;left:22px;top:8px}.mouth:after{content:"";position:absolute;width:28px;height:5px;background:#f2b1ad;border-radius:50%;left:32px;bottom:8px}.mouth.round{border-radius:50%;width:62px;height:62px}.mouth.wide{width:112px;height:38px}.mouth.narrow{width:52px;height:30px;border-radius:30% 30% 45% 45%}
+@keyframes mouthTalk{0%,100%{transform:scaleY(.8)}50%{transform:scaleY(1.15)}}
+.speak-card h2{font-size:1.15rem;margin:0 0 5px}.speak-card p{margin:0;color:#6d7975;font-size:.92rem;line-height:1.55}.speak-action{margin-top:14px;width:100%;border:0;border-radius:14px;padding:11px;background:#247FA4;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(36,127,164,.16)}.speak-action:active{transform:scale(.98)}.progress-wrap{margin:18px 0 22px}.progress-label{display:flex;justify-content:space-between;font-size:.88rem;color:#738079;margin-bottom:7px}.progress{height:8px;background:#edf0ee;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:#8eb9a6;border-radius:99px;transition:.3s}.speak-tip{margin-top:20px;padding:18px 20px;background:#fff;border-radius:22px;border:1px solid #E6EFED;color:#65716d;line-height:1.65}.speak-tip strong{color:#3f6255}@media(max-width:600px){.speak-intro{padding:22px}.mouth-stage{height:125px}}
+</style>
+</head>
+<body>
+<div class="page-shell speaking-page">
+<a class="back" href="patient2.html">← กลับหน้าผู้ป่วย</a>
+<section class="speak-intro">
+<p class="eyebrow">SPEAKING PRACTICE</p>
+<h1>🗣️ ฝึกพูดและออกเสียง</h1>
+<p>ฝึกคำศัพท์สุขภาพทีละคำ โดยดูรูปแบบปาก แล้วลองออกเสียงตามจังหวะของตัวเอง</p>
+<p class="speak-note">เหมาะสำหรับผู้ที่ต้องการฝึกพูดหรือออกเสียง และแต่ละคนอาจมีความต้องการแตกต่างกัน</p>
+</section>
+<div class="progress-wrap"><div class="progress-label"><span>ความคืบหน้า</span><span id="count">0 / 8</span></div><div class="progress"><span id="bar"></span></div></div>
+<div class="speak-grid" id="cards"></div>
+<div class="speak-tip"><strong>💡 วิธีฝึก</strong><br>มองรูปปาก → อ่านคำ → ลองพูดตามช้า ๆ → พักเมื่อเหนื่อย ไม่จำเป็นต้องออกเสียงเหมือนกันทุกคน</div>
+</div>
+<script>
+const words=[
+ ['ปวด','pain','wide'],['ไข้','fever','round'],['ไอ','cough','narrow'],['ยา','medicine','round'],
+ ['หมอ','doctor','wide'],['พยาบาล','nurse','narrow'],['หายใจ','breathe','round'],['เวียนหัว','dizzy','wide']
+];
+const done=new Set(JSON.parse(localStorage.getItem('mkj-speaking-done')||'[]'));
+const cards=document.getElementById('cards');
+words.forEach((w,i)=>{const el=document.createElement('article');el.className='speak-card';el.innerHTML=`<div class="mouth-stage"><div class="mouth ${w[2]}"></div></div><h2>${w[0]}</h2><p>${w[1]}</p><button class="speak-action" data-i="${i}">${done.has(i)?'ฝึกแล้ว ✓':'ลองพูดตาม'}</button>`;cards.appendChild(el)});
+function update(){const n=done.size;document.getElementById('count').textContent=`${n} / ${words.length}`;document.getElementById('bar').style.width=(n/words.length*100)+'%'}
+cards.addEventListener('click',e=>{if(!e.target.matches('button'))return;const i=+e.target.dataset.i;done.add(i);localStorage.setItem('mkj-speaking-done',JSON.stringify([...done]));e.target.textContent='ฝึกแล้ว ✓';update();});update();
+</script>
+<script src="language.js"></script>
+<script src="mkj-navigation.js"></script>
+</body></html>

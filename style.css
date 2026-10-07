@@ -1,0 +1,1739 @@
+/* =========================================================
+   MOR KHAO JAI — FINAL UI SYSTEM
+   Modern Health × Friendly Premium × Easy to Use
+   Teal + Blue + Mint + Warm Ivory
+   Fully Responsive
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap');
+
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+:root {
+
+  /* ---------- Main palette ---------- */
+
+  --mkj-primary: #149E98;
+  --mkj-primary-hover: #0F7E7A;
+  --mkj-primary-dark: #126A6B;
+
+  --mkj-blue: #5D7FCB;
+  --mkj-blue-hover: #4B68A8;
+  --mkj-blue-soft: #EAF0FF;
+
+  --mkj-mint: #63C0A4;
+  --mkj-mint-dark: #3D947B;
+  --mkj-mint-soft: #E2F7F0;
+
+  /* ---------- Background ---------- */
+
+  --mkj-bg: #F4F9F8;
+  --mkj-bg-warm: #F7F8F4;
+  --mkj-bg-blue: #F0F4FC;
+  --mkj-bg-mint: #EAF8F5;
+  --mkj-white: #FFFFFF;
+
+  /* ---------- Text ---------- */
+
+  --mkj-text: #173F46;
+  --mkj-text-2: #31565D;
+  --mkj-muted: #5D737A;
+  --mkj-muted-light: #7C9095;
+
+  /* ---------- Borders ---------- */
+
+  --mkj-border: #B8DCD7;
+  --mkj-border-soft: #DCECEA;
+
+  /* ---------- Status ---------- */
+
+  --mkj-danger: #C6535B;
+
+  /* ---------- Radius ---------- */
+
+  --mkj-radius-sm: 12px;
+  --mkj-radius-md: 18px;
+  --mkj-radius-lg: 22px;
+  --mkj-radius-xl: 26px;
+  --mkj-radius-pill: 999px;
+
+  /* ---------- Shadows ---------- */
+
+  --mkj-shadow:
+    0 8px 26px rgba(30, 92, 99, 0.09);
+
+  --mkj-shadow-hover:
+    0 16px 34px rgba(30, 92, 99, 0.16);
+
+  --mkj-shadow-focus:
+    0 0 0 4px rgba(22, 140, 149, 0.16);
+
+  /* ---------- Motion ---------- */
+
+  --mkj-ease: cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html {
+  font-size: 16px !important;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 7% 3%,
+      rgba(77, 127, 193, 0.11),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 94% 18%,
+      rgba(105, 185, 158, 0.13),
+      transparent 26%
+    ),
+    linear-gradient(
+      180deg,
+      #FAFCFB 0%,
+      #F4F9F8 52%,
+      #EEF5F3 100%
+    ) !important;
+
+  color: var(--mkj-text) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(17px, 1.1vw, 19px) !important;
+
+  line-height: 1.8 !important;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   UNIVERSAL BOX SIZING
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+p,
+li,
+label,
+input,
+textarea,
+select,
+button,
+small {
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+}
+
+p,
+li {
+  color: var(--mkj-muted) !important;
+
+  font-size:
+    clamp(17px, 1.05vw, 19px) !important;
+
+  line-height: 1.85 !important;
+}
+
+small {
+  display: block;
+
+  color: var(--mkj-muted-light) !important;
+
+  font-size:
+    clamp(15px, .95vw, 17px) !important;
+
+  font-weight: 500 !important;
+  line-height: 1.75 !important;
+}
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--mkj-text) !important;
+
+  font-family:
+    "Noto Serif Thai",
+    "Sarabun",
+    serif !important;
+
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  letter-spacing: -.012em !important;
+
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size:
+    clamp(34px, 4.2vw, 56px) !important;
+}
+
+h2 {
+  font-size:
+    clamp(27px, 3vw, 40px) !important;
+}
+
+h3 {
+  font-size:
+    clamp(22px, 2.4vw, 32px) !important;
+}
+
+h4 {
+  font-size:
+    clamp(20px, 1.7vw, 26px) !important;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow {
+  color: var(--mkj-primary-dark) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(14px, 1vw, 16px) !important;
+
+  font-weight: 700 !important;
+  letter-spacing: .07em !important;
+  line-height: 1.6 !important;
+}
+
+
+/* =========================================================
+   MUTED
+   ========================================================= */
+
+.muted {
+  color: var(--mkj-muted) !important;
+
+  font-size:
+    clamp(16px, 1vw, 18px) !important;
+
+  line-height: 1.8 !important;
+}
+
+
+/* =========================================================
+   LANGUAGE SWITCHER
+   ========================================================= */
+
+.mkj-lang,
+.lang {
+  position: fixed !important;
+
+  top: 16px !important;
+  right: 18px !important;
+
+  z-index: 9999 !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 3px !important;
+  padding: 4px !important;
+
+  background:
+    rgba(255,255,255,.96) !important;
+
+  border:
+    1px solid var(--mkj-border-soft) !important;
+
+  border-radius:
+    var(--mkj-radius-pill) !important;
+
+  box-shadow:
+    0 7px 22px rgba(30,92,99,.12) !important;
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+}
+
+.mkj-lang button,
+.lang button,
+.lang-btn {
+  width: auto !important;
+  min-width: 36px !important;
+  min-height: 32px !important;
+
+  margin: 0 !important;
+  padding: 6px 10px !important;
+
+  border: 0 !important;
+
+  border-radius:
+    var(--mkj-radius-pill) !important;
+
+  background:
+    transparent !important;
+
+  color:
+    var(--mkj-muted) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+
+  cursor: pointer !important;
+  box-shadow: none !important;
+
+  transition:
+    background .2s var(--mkj-ease),
+    color .2s var(--mkj-ease),
+    transform .2s var(--mkj-ease) !important;
+}
+
+.mkj-lang button:hover,
+.lang button:hover,
+.lang-btn:hover {
+  background:
+    var(--mkj-mint-soft) !important;
+
+  color:
+    var(--mkj-primary-dark) !important;
+
+  transform:
+    translateY(-1px);
+}
+
+.mkj-lang button.active,
+.lang button.active,
+.lang-btn.active {
+  background:
+    linear-gradient(
+      135deg,
+      var(--mkj-primary),
+      var(--mkj-blue)
+    ) !important;
+
+  color:
+    #FFFFFF !important;
+
+  box-shadow:
+    0 4px 14px rgba(22,140,149,.25) !important;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  color:
+    var(--mkj-text) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #FFFFFF 0%,
+      #F0F7F7 52%,
+      #E8F2F7 100%
+    ) !important;
+
+  border:
+    1px solid #D5E6E5 !important;
+
+  border-radius:
+    var(--mkj-radius-xl) !important;
+
+  box-shadow:
+    0 14px 34px rgba(30,92,99,.10) !important;
+}
+
+
+/* Decorative blue shape */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 230px;
+  height: 230px;
+
+  right: -90px;
+  top: -105px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(77,127,193,.24),
+      rgba(77,127,193,0) 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* Decorative mint shape */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  left: -80px;
+  bottom: -95px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(105,185,158,.22),
+      rgba(105,185,158,0) 70%
+    );
+
+  pointer-events: none;
+}
+
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  color:
+    var(--mkj-text) !important;
+}
+
+.hero p {
+  color:
+    var(--mkj-muted) !important;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card,
+.report-card,
+.communication-card,
+.card-preview,
+.tool-card,
+.word-card,
+.form-card,
+.topic,
+.topic-list > a,
+.role-card,
+.video-box,
+.meaning,
+.practice,
+.summary-box,
+.rank-board {
+  position: relative;
+
+  overflow: hidden;
+
+  border:
+    1px solid var(--mkj-border-soft) !important;
+
+  border-radius:
+    var(--mkj-radius-lg) !important;
+
+  background:
+    #FFFFFF !important;
+
+  box-shadow:
+    var(--mkj-shadow) !important;
+
+  transition:
+    transform .22s var(--mkj-ease),
+    box-shadow .22s var(--mkj-ease),
+    border-color .22s var(--mkj-ease),
+    background .22s var(--mkj-ease) !important;
+}
+
+
+/* =========================================================
+   CARD COLOR WASH
+   ========================================================= */
+
+.card::after,
+.report-card::after,
+.communication-card::after,
+.card-preview::after,
+.tool-card::after,
+.word-card::after,
+.form-card::after,
+.topic::after,
+.topic-list > a::after,
+.role-card::after,
+.video-box::after,
+.meaning::after,
+.practice::after,
+.summary-box::after,
+.rank-board::after {
+  content: "";
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  right: -75px;
+  bottom: -75px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(105,185,158,.14),
+      transparent 70%
+    );
+
+  pointer-events: none;
+
+  transition:
+    transform .3s var(--mkj-ease);
+}
+
+
+/* =========================================================
+   CARD TOP ACCENT
+   ========================================================= */
+
+.card::before,
+.report-card::before,
+.communication-card::before,
+.card-preview::before,
+.tool-card::before,
+.word-card::before,
+.form-card::before,
+.topic::before,
+.topic-list > a::before,
+.role-card::before,
+.video-box::before,
+.meaning::before,
+.practice::before,
+.summary-box::before,
+.rank-board::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--mkj-primary),
+      var(--mkj-blue),
+      var(--mkj-mint)
+    );
+
+  opacity: .9;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.card:hover,
+.report-card:hover,
+.communication-card:hover,
+.card-preview:hover,
+.tool-card:hover,
+.word-card:hover,
+.topic-list > a:hover,
+.role-card:hover {
+  transform:
+    translateY(-5px)
+    scale(1.008);
+
+  border-color:
+    #B5D4D3 !important;
+
+  box-shadow:
+    var(--mkj-shadow-hover) !important;
+}
+
+.card:hover::after,
+.report-card:hover::after,
+.communication-card:hover::after,
+.card-preview:hover::after,
+.tool-card:hover::after,
+.word-card:hover::after,
+.topic-list > a:hover::after,
+.role-card:hover::after {
+  transform:
+    scale(1.35);
+}
+
+
+/* =========================================================
+   CARD HEADINGS
+   ========================================================= */
+
+.card h2,
+.report-card h2,
+.communication-card h2,
+.small-title,
+.role-card h3,
+.topic b,
+.topic-list b,
+.word-card h3,
+.word-card b {
+  color:
+    var(--mkj-primary-dark) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.card p,
+.report-card p,
+.communication-card p,
+.topic-list small,
+.role-card p,
+.word-card p,
+.word-card small {
+  color:
+    var(--mkj-muted) !important;
+}
+
+
+/* =========================================================
+   PRIMARY CTA
+   ========================================================= */
+
+.primary,
+.form-button {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 46px;
+
+  padding:
+    10px 20px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--mkj-primary),
+      #3D91A3
+    ) !important;
+
+  color:
+    #FFFFFF !important;
+
+  border:
+    1px solid var(--mkj-primary) !important;
+
+  border-radius:
+    var(--mkj-radius-md) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(17px, 1.05vw, 19px) !important;
+
+  font-weight:
+    700 !important;
+
+  box-shadow:
+    0 8px 18px rgba(22,140,149,.23) !important;
+
+  cursor:
+    pointer !important;
+
+  transition:
+    transform .2s var(--mkj-ease),
+    box-shadow .2s var(--mkj-ease),
+    background .2s var(--mkj-ease) !important;
+}
+
+
+/* CTA shine */
+
+.primary::before,
+.form-button::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 25%,
+      rgba(255,255,255,.22) 50%,
+      transparent 75%
+    );
+
+  transform:
+    translateX(-120%);
+
+  transition:
+    transform .55s var(--mkj-ease);
+
+  pointer-events: none;
+}
+
+.primary:hover::before,
+.form-button:hover::before {
+  transform:
+    translateX(120%);
+}
+
+.primary:hover,
+.form-button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      var(--mkj-primary-hover),
+      var(--mkj-blue-hover)
+    ) !important;
+
+  color:
+    #FFFFFF !important;
+
+  transform:
+    translateY(-3px)
+    scale(1.015) !important;
+
+  box-shadow:
+    0 13px 27px rgba(22,140,149,.28) !important;
+}
+
+.primary:active,
+.form-button:active {
+  transform:
+    scale(.98) !important;
+}
+
+
+/* =========================================================
+   BACK
+   ========================================================= */
+
+.back {
+  color:
+    var(--mkj-primary-dark) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(16px, 1vw, 18px) !important;
+
+  font-weight:
+    700 !important;
+
+  text-decoration:
+    none !important;
+
+  transition:
+    color .18s ease,
+    transform .18s ease !important;
+}
+
+.back:hover {
+  color:
+    var(--mkj-primary-hover) !important;
+
+  transform:
+    translateX(-3px) !important;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color:
+    var(--mkj-primary-dark);
+}
+
+a:hover {
+  color:
+    var(--mkj-primary-hover);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form-card {
+  max-width:
+    720px;
+
+  margin-left:
+    auto;
+
+  margin-right:
+    auto;
+}
+
+.form-card h1 {
+  font-family:
+    "Noto Serif Thai",
+    "Sarabun",
+    serif !important;
+
+  font-size:
+    clamp(32px, 5vw, 46px) !important;
+
+  line-height:
+    1.45 !important;
+}
+
+.form-card label {
+  color:
+    var(--mkj-text-2) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(16px, 1vw, 18px) !important;
+
+  font-weight:
+    700 !important;
+}
+
+.form-card input,
+.form-card textarea,
+.form-card select {
+  width:
+    100%;
+
+  background:
+    #FFFFFF !important;
+
+  border:
+    1px solid var(--mkj-border) !important;
+
+  border-radius:
+    var(--mkj-radius-md) !important;
+
+  color:
+    var(--mkj-text-2) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(17px, 1.05vw, 19px) !important;
+
+  line-height:
+    1.6 !important;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease !important;
+}
+
+.form-card input::placeholder,
+.form-card textarea::placeholder {
+  color:
+    #82989A !important;
+}
+
+.form-card input:focus,
+.form-card textarea:focus,
+.form-card select:focus {
+  border-color:
+    var(--mkj-primary) !important;
+
+  box-shadow:
+    var(--mkj-shadow-focus) !important;
+
+  outline:
+    none !important;
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   AGE BUTTONS
+   ========================================================= */
+
+.age-grid button {
+  background:
+    #FFFFFF !important;
+
+  border:
+    1px solid var(--mkj-border) !important;
+
+  border-radius:
+    var(--mkj-radius-md) !important;
+
+  color:
+    var(--mkj-text-2) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(16px, 1vw, 18px) !important;
+
+  font-weight:
+    600 !important;
+
+  cursor:
+    pointer !important;
+
+  transition:
+    background .2s var(--mkj-ease),
+    border-color .2s var(--mkj-ease),
+    transform .2s var(--mkj-ease),
+    color .2s var(--mkj-ease),
+    box-shadow .2s var(--mkj-ease) !important;
+}
+
+.age-grid button:hover,
+.age-grid button.selected {
+  background:
+    linear-gradient(
+      135deg,
+      var(--mkj-blue-soft),
+      var(--mkj-mint-soft)
+    ) !important;
+
+  border-color:
+    var(--mkj-primary) !important;
+
+  color:
+    var(--mkj-primary-dark) !important;
+
+  transform:
+    translateY(-2px)
+    scale(1.01) !important;
+
+  box-shadow:
+    0 7px 16px rgba(22,140,149,.14) !important;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.error {
+  color:
+    var(--mkj-danger) !important;
+
+  font-size:
+    clamp(15px, .95vw, 17px) !important;
+
+  font-weight:
+    600 !important;
+}
+
+
+/* =========================================================
+   ROLE CARDS
+   ========================================================= */
+
+.role-card h3 {
+  color:
+    var(--mkj-primary-dark) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(22px, 1.55vw, 26px) !important;
+}
+
+.role-card p {
+  color:
+    var(--mkj-muted) !important;
+
+  font-size:
+    clamp(16px, 1vw, 18px) !important;
+
+  line-height:
+    1.8 !important;
+}
+
+
+/* =========================================================
+   VOCABULARY
+   ========================================================= */
+
+.word-card {
+  color:
+    var(--mkj-text-2) !important;
+
+  cursor:
+    pointer;
+
+  user-select:
+    none;
+
+  transition:
+    transform .22s var(--mkj-ease),
+    box-shadow .22s var(--mkj-ease),
+    border-color .22s var(--mkj-ease) !important;
+}
+
+.word-card:hover {
+  transform:
+    translateY(-5px)
+    scale(1.01);
+
+  box-shadow:
+    var(--mkj-shadow-hover) !important;
+}
+
+.word-card h3,
+.word-card b {
+  color:
+    var(--mkj-primary-dark) !important;
+}
+
+.word-card p,
+.word-card small {
+  color:
+    var(--mkj-muted) !important;
+}
+
+
+/* =========================================================
+   TOPIC LIST
+   ========================================================= */
+
+.topic-list b {
+  color:
+    var(--mkj-primary-dark) !important;
+
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  font-size:
+    clamp(19px, 1.45vw, 24px) !important;
+
+  font-weight:
+    700 !important;
+
+  line-height:
+    1.55 !important;
+}
+
+.topic-list small {
+  color:
+    var(--mkj-muted) !important;
+
+  font-size:
+    clamp(16px, 1.05vw, 19px) !important;
+
+  font-weight:
+    500 !important;
+
+  line-height:
+    1.8 !important;
+}
+
+
+/* =========================================================
+   SUMMARY / CONTENT BOXES
+   ========================================================= */
+
+.summary-box,
+.meaning,
+.practice {
+  color:
+    var(--mkj-text-2) !important;
+}
+
+.summary-box p,
+.meaning p,
+.practice p {
+  color:
+    var(--mkj-muted) !important;
+
+  font-size:
+    clamp(16px, 1.05vw, 19px) !important;
+
+  line-height:
+    1.85 !important;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search,
+.search-box,
+.search-bar,
+input[type="search"] {
+  transition:
+    border-color .22s ease,
+    box-shadow .22s ease,
+    transform .22s var(--mkj-ease),
+    background .22s ease !important;
+}
+
+.search:focus,
+.search-box:focus,
+.search-bar:focus,
+input[type="search"]:focus {
+  border-color:
+    var(--mkj-primary) !important;
+
+  background:
+    #FFFFFF !important;
+
+  box-shadow:
+    0 0 0 4px rgba(22,140,149,.14),
+    0 8px 20px rgba(30,92,99,.08) !important;
+
+  outline:
+    none !important;
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   BUTTON BASE
+   ========================================================= */
+
+button {
+  font-family:
+    "Sarabun",
+    sans-serif !important;
+
+  cursor:
+    pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline:
+    3px solid rgba(22,140,149,.38) !important;
+
+  outline-offset:
+    3px !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE TYPOGRAPHY
+   ========================================================= */
+
+.card h2,
+.report-card h2,
+.communication-card h2,
+.small-title,
+.role-card h3,
+.topic b,
+.topic-list b,
+.word-card h3,
+.word-card b {
+  font-size:
+    clamp(20px, 1.45vw, 25px) !important;
+}
+
+.card p,
+.report-card p,
+.communication-card p,
+.topic-list small,
+.role-card p,
+.word-card p,
+.word-card small {
+  font-size:
+    clamp(16px, 1.05vw, 19px) !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  body {
+    font-size:
+      17px !important;
+  }
+
+  p,
+  li {
+    font-size:
+      17px !important;
+
+    line-height:
+      1.8 !important;
+  }
+
+  h1 {
+    font-size:
+      clamp(32px, 6vw, 46px) !important;
+  }
+
+  h2 {
+    font-size:
+      clamp(26px, 4.5vw, 36px) !important;
+  }
+
+  h3 {
+    font-size:
+      clamp(21px, 3.5vw, 29px) !important;
+  }
+
+  .card,
+  .report-card,
+  .communication-card,
+  .card-preview,
+  .tool-card,
+  .word-card,
+  .form-card,
+  .topic,
+  .topic-list > a,
+  .role-card,
+  .video-box,
+  .meaning,
+  .practice,
+  .summary-box,
+  .rank-board {
+    border-radius:
+      21px !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  html {
+    font-size:
+      16px !important;
+  }
+
+  body {
+    font-size:
+      17px !important;
+
+    line-height:
+      1.75 !important;
+
+    background:
+      linear-gradient(
+        180deg,
+        #FAFCFB 0%,
+        #F0F6F4 100%
+      ) !important;
+  }
+
+
+  /* ---------- Language ---------- */
+
+  .mkj-lang,
+  .lang {
+    top:
+      9px !important;
+
+    right:
+      9px !important;
+
+    padding:
+      3px !important;
+  }
+
+  .mkj-lang button,
+  .lang button,
+  .lang-btn {
+    min-width:
+      31px !important;
+
+    min-height:
+      30px !important;
+
+    padding:
+      5px 8px !important;
+
+    font-size:
+      12px !important;
+  }
+
+
+  /* ---------- Main width ---------- */
+
+  .page-shell {
+    width:
+      min(100% - 22px, 980px) !important;
+
+    max-width:
+      100% !important;
+
+    margin-left:
+      auto !important;
+
+    margin-right:
+      auto !important;
+  }
+
+
+  /* ---------- Typography ---------- */
+
+  p,
+  li {
+    font-size:
+      17px !important;
+
+    line-height:
+      1.8 !important;
+  }
+
+  small {
+    font-size:
+      16px !important;
+
+    line-height:
+      1.75 !important;
+  }
+
+  h1 {
+    font-size:
+      clamp(30px, 9vw, 40px) !important;
+
+    line-height:
+      1.4 !important;
+  }
+
+  h2 {
+    font-size:
+      clamp(25px, 7vw, 33px) !important;
+  }
+
+  h3 {
+    font-size:
+      clamp(21px, 6vw, 28px) !important;
+  }
+
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    border-radius:
+      21px !important;
+  }
+
+  .hero::before {
+    width:
+      150px;
+
+    height:
+      150px;
+
+    right:
+      -75px;
+
+    top:
+      -75px;
+  }
+
+  .hero::after {
+    width:
+      110px;
+
+    height:
+      110px;
+
+    left:
+      -55px;
+
+    bottom:
+      -60px;
+  }
+
+
+  /* ---------- Cards ---------- */
+
+  .card,
+  .report-card,
+  .communication-card,
+  .card-preview,
+  .tool-card,
+  .word-card,
+  .form-card,
+  .topic,
+  .topic-list > a,
+  .role-card,
+  .video-box,
+  .meaning,
+  .practice,
+  .summary-box,
+  .rank-board {
+    border-radius:
+      19px !important;
+
+    box-shadow:
+      0 7px 20px rgba(30,92,99,.085) !important;
+  }
+
+
+  /* ---------- Forms ---------- */
+
+  .form-card {
+    padding:
+      23px 18px !important;
+  }
+
+  .form-card h1 {
+    font-size:
+      30px !important;
+  }
+
+  .form-card label {
+    font-size:
+      16px !important;
+  }
+
+  .form-card input,
+  .form-card textarea,
+  .form-card select,
+  button {
+    font-size:
+      17px !important;
+  }
+
+
+  /* ---------- CTA ---------- */
+
+  .primary,
+  .form-button {
+    min-height:
+      48px !important;
+
+    padding:
+      11px 18px !important;
+
+    border-radius:
+      16px !important;
+  }
+
+
+  /* ---------- Topic ---------- */
+
+  .topic-list b {
+    font-size:
+      19px !important;
+  }
+
+  .topic-list small {
+    font-size:
+      16px !important;
+  }
+
+
+  /* ---------- Role ---------- */
+
+  .role-card h3 {
+    font-size:
+      22px !important;
+  }
+
+  .role-card p {
+    font-size:
+      16px !important;
+  }
+
+
+  /* ---------- Cards text ---------- */
+
+  .card p,
+  .report-card p,
+  .communication-card p,
+  .word-card p,
+  .word-card small {
+    font-size:
+      16px !important;
+  }
+
+
+  /* ---------- Touch ---------- */
+
+  .card,
+  .word-card,
+  .role-card,
+  .topic-list > a,
+  button,
+  a {
+    -webkit-tap-highlight-color:
+      transparent;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  body {
+    font-size:
+      16px !important;
+  }
+
+  p,
+  li {
+    font-size:
+      16px !important;
+  }
+
+  h1 {
+    font-size:
+      29px !important;
+  }
+
+  h2 {
+    font-size:
+      24px !important;
+  }
+
+  h3 {
+    font-size:
+      20px !important;
+  }
+
+  .page-shell {
+    width:
+      calc(100% - 18px) !important;
+  }
+
+  .form-card {
+    padding:
+      20px 15px !important;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior:
+      auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation:
+      none !important;
+
+    transition:
+      none !important;
+  }
+}
+
+
+/* =========================================================
+   HOVER-CAPABLE DEVICES
+   ป้องกัน hover effect แปลก ๆ บนมือถือ
+   ========================================================= */
+
+@media (hover: none) {
+
+  .card:hover,
+  .report-card:hover,
+  .communication-card:hover,
+  .card-preview:hover,
+  .tool-card:hover,
+  .word-card:hover,
+  .topic-list > a:hover,
+  .role-card:hover {
+    transform:
+      none;
+  }
+
+  .primary:hover,
+  .form-button:hover {
+    transform:
+      none !important;
+  }
+
+  .primary:hover::before,
+  .form-button:hover::before {
+    transform:
+      translateX(-120%);
+  }
+}
+
+/* ===== MKJ FIXES — วางต่อท้ายสุดของ style.css ===== */
+
+/* ตัวอักษรอ่านง่ายขึ้น (ผู้ใช้ที่อ่านภาษาไทยเป็นภาษาที่สองต้องการข้อความชัด) */
+body { font-size: 17px; line-height: 1.7; }
+
+.brand-en, .eyebrow, .splash-subtitle, .language { font-size: 12px !important; }
+.hero-description, .role-card p, .topic-content small { font-size: 15px !important; color: #5a564e !important; }
+.muted { color: #5a564e; }
+
+/* หัวข้อหน้าแรกไม่บังคับบรรทัดเดียว (เดิมเล็กมากบนมือถือ) */
+.hero h1 { white-space: normal !important; font-size: clamp(28px, 6vw, 52px) !important; line-height: 1.2 !important; }
+
+/* ปุ่มกดง่ายบนมือถือ */
+button, .role-card, .topic-list a, .quick-card, .choice label,
+.communication-option label, .option label { min-height: 48px; }
+.language { padding: 12px 16px !important; }
+
+/* เห็นว่ากำลังเลือกอะไรอยู่เวลาใช้คีย์บอร์ด/อุปกรณ์ช่วย */
+:focus-visible { outline: 3px solid #2f6f5e; outline-offset: 3px; border-radius: 6px; }
+
+/* ลดการเคลื่อนไหวสำหรับคนที่ตั้งค่าไว้ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* ===== แบนเนอร์ฉุกเฉิน + โหมดแสดงเต็มจอ ===== */
+.mkj-alert { position: sticky; top: 0; z-index: 50; margin: 0 0 16px; padding: 16px 18px;
+  background: #B3261E; color: #fff; border-radius: 16px; font-size: 17px; line-height: 1.5;
+  box-shadow: 0 8px 24px rgba(179,38,30,.35); }
+.mkj-alert[hidden] { display: none; }
+.mkj-alert strong { display: block; font-size: 19px; margin-bottom: 4px; }
+.mkj-alert button { margin-top: 10px; padding: 12px 18px; border: 0; border-radius: 12px;
+  background: #fff; color: #B3261E; font-weight: 700; font-size: 16px; cursor: pointer; }
+
+.mkj-overlay { position: fixed; inset: 0; z-index: 10000; background: #fff; color: #222;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px; text-align: center; overflow: auto; }
+.mkj-overlay .mkj-big { font-size: clamp(28px, 7vw, 56px); font-weight: 700; line-height: 1.35; }
+.mkj-overlay .mkj-sub { margin-top: 16px; font-size: clamp(20px, 4.5vw, 34px); line-height: 1.5; }
+.mkj-overlay .mkj-close { margin-top: 28px; padding: 14px 28px; font-size: 18px; border: 2px solid #222;
+  background: #fff; border-radius: 14px; cursor: pointer; }
+.mkj-overlay.mkj-danger { background: #B3261E; color: #fff; }
+.mkj-overlay.mkj-danger .mkj-close { border-color: #fff; background: transparent; color: #fff; }
+
+
+/* =========================================================
+   MOR KHAO JAI — FRIENDLY COLOR POLISH
+   Color/visual layer only: keeps existing layout and functions.
+   ========================================================= */
+:root{
+  --mkj-accent:#149E98;
+  --mkj-accent-2:#63C0A4;
+  --mkj-accent-blue:#5D7FCB;
+  --mkj-accent-soft:#EAF8F5;
+  --mkj-accent-blue-soft:#F0F4FC;
+  --mkj-ink:#173F46;
+}
+body{background:radial-gradient(circle at 4% 2%,rgba(93,127,203,.10),transparent 24%),radial-gradient(circle at 96% 8%,rgba(99,192,164,.14),transparent 26%),linear-gradient(180deg,#FCFEFD 0%,#F5FAF8 55%,#EFF6F4 100%) !important}
+.hero,.hero.small{background:linear-gradient(135deg,#FFFFFF 0%,#EAF8F5 52%,#F0F4FC 100%) !important;border-color:#CFE6E3 !important}
+.card,.comm-card,.topic-list a,.learn-step,.guide-card,.info-card,.selection-card,.preview-card,.history-card,.medical-document{box-shadow:0 9px 26px rgba(25,92,99,.08) !important}
+.card:hover,.comm-card:hover,.topic-list a:hover,.learn-step:hover,.guide-card:hover{box-shadow:0 16px 34px rgba(25,92,99,.14) !important}
+button,.primary,.primary-btn,.generate-btn,.action-btn.primary-action{background-image:linear-gradient(135deg,#149E98,#5D7FCB) !important}
+button:hover,.primary:hover,.primary-btn:hover,.generate-btn:hover{filter:saturate(1.08) brightness(1.02)}
+.role-card:nth-child(1) .role-icon,.quick-card:nth-child(1) .quick-icon{background:#E2F7F0 !important;color:#147B75 !important}
+.role-card:nth-child(2) .role-icon,.quick-card:nth-child(2) .quick-icon{background:#EAF0FF !important;color:#4B68A8 !important}
+.role-card:nth-child(3) .role-icon,.quick-card:nth-child(3) .quick-icon{background:#FFF3E1 !important;color:#A36A2D !important}
+.role-card,.quick-card{border-color:#D7E8E5 !important;background:rgba(255,255,255,.96) !important}
+input:focus,textarea:focus,select:focus{border-color:#149E98 !important;box-shadow:0 0 0 4px rgba(20,158,152,.13) !important}
+.choice input:checked + label,.communication-option input:checked + label,.option input:checked + label{background:#E2F7F0 !important;border-color:#63C0A4 !important;color:#176C64 !important}
+.section-number,.option-icon,.communication-icon{background:#E2F7F0 !important;color:#147B75 !important}
+.mkj-lang button.active,.lang button.active,.lang-btn.active{background:linear-gradient(135deg,#149E98,#5D7FCB) !important}
+.mkj-alert{background:linear-gradient(135deg,#FFF4F4,#FFF8F8) !important;border-color:#E7A7AA !important;color:#8F292D !important;box-shadow:0 12px 28px rgba(198,83,91,.14) !important}
+
+.home-meta{margin-top:8px;font-size:12px;display:flex;justify-content:center;align-items:center;gap:7px;color:#7A8B8E}.home-meta a{color:#5D7D83;text-decoration:none}.home-meta a:hover{text-decoration:underline}.language{color:#fff !important}

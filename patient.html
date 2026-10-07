@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สำหรับผู้ป่วย · หมอเข้าใจ</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .role-page {
+      padding-bottom: 80px;
+    }
+
+    .role-page .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 24px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .role-page .back:hover {
+      transform: translateX(-3px);
+      opacity: 0.8;
+    }
+
+    /* HERO */
+
+    .role-page .hero.small {
+      position: relative;
+      overflow: hidden;
+      padding: 46px 40px;
+      border-radius: 32px;
+      margin-bottom: 34px;
+    }
+
+    .role-page .hero.small::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      right: -60px;
+      top: -70px;
+      background: rgba(255,255,255,0.28);
+      pointer-events: none;
+    }
+
+    .role-page .hero.small::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      right: 70px;
+      bottom: -65px;
+      background: rgba(255,255,255,0.18);
+      pointer-events: none;
+    }
+
+    .role-page .hero.small > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .role-page .hero.small .eyebrow {
+      margin-bottom: 12px;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .role-page .hero.small h1 {
+      font-size: clamp(30px, 5vw, 43px);
+      line-height: 1.25;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .role-page .hero.small > p:last-child {
+      max-width: 650px;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* TOPIC CARDS */
+
+    .topic-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 0;
+    }
+
+    .topic-list a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 100px;
+      padding: 25px 27px;
+      border-radius: 27px;
+      text-decoration: none;
+      overflow: hidden;
+
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+    }
+
+    .topic-list a::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 16px;
+      bottom: 16px;
+      width: 4px;
+      border-radius: 0 8px 8px 0;
+      opacity: 0;
+      transform: scaleY(0.5);
+      transition:
+        opacity 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .topic-list a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 32px rgba(65, 86, 78, 0.13);
+    }
+
+    .topic-list a:hover::before {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+
+    .topic-list a:active {
+      transform: scale(0.985);
+    }
+
+    .topic-content {
+      min-width: 0;
+      padding-left: 2px;
+    }
+
+    .topic-list b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 19px;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+    }
+
+    .topic-list small {
+      display: block;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ARROW */
+
+    .topic-arrow {
+      flex: 0 0 46px;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 21px;
+
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    .topic-list a:hover .topic-arrow {
+      transform: translateX(5px);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .role-page {
+        padding-bottom: 55px;
+      }
+
+      .role-page .back {
+        margin-bottom: 18px;
+      }
+
+      .role-page .hero.small {
+        padding: 32px 23px;
+        border-radius: 26px;
+        margin-bottom: 24px;
+      }
+
+      .role-page .hero.small::before {
+        width: 130px;
+        height: 130px;
+        right: -50px;
+        top: -50px;
+      }
+
+      .role-page .hero.small h1 {
+        font-size: 30px;
+        line-height: 1.3;
+      }
+
+      .role-page .hero.small > p:last-child {
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .topic-list {
+        gap: 14px;
+      }
+
+      .topic-list a {
+        min-height: 86px;
+        padding: 20px;
+        border-radius: 22px;
+        gap: 14px;
+      }
+
+      .topic-list b {
+        font-size: 17px;
+        line-height: 1.45;
+        margin-bottom: 6px;
+      }
+
+      .topic-list small {
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .topic-arrow {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-shell narrow role-page">
+
+    <a class="back" href="index.html">← กลับหน้าหลัก</a>
+
+    <section class="hero small">
+      <p class="eyebrow">FOR PATIENTS</p>
+      <h1 id="hello">ยินดีต้อนรับสู่ “หมอเข้าใจ”</h1>
+      <p>เครื่องมือเตรียมตัวก่อนพบแพทย์และช่วยสื่อสารความต้องการของคุณ</p>
+    </section>
+
+    <div class="topic-list">
+
+      <a href="symptomform.html">
+        <div class="topic-content">
+          <b>บอกอาการก่อนพบแพทย์</b>
+          <small>กรอกอาการและสิ่งที่ต้องการบอกแพทย์</small>
+        </div>
+        <span class="topic-arrow">→</span>
+      </a>
+<a href="vocabulary.html">
+        <div class="topic-content">
+          <b>คลังภาษามือสุขภาพ</b>
+          <small>รวมภาษามือและคำศัพท์สุขภาพสำหรับทุกกลุ่ม</small>
+        </div>
+        <span class="topic-arrow">→</span>
+      </a>
+
+      <a href="speaking.html">
+        <div class="topic-content">
+          <b>ฝึกพูดและออกเสียง</b>
+          <small>ฝึกคำศัพท์สุขภาพด้วยการดูรูปปากแล้วพูดตาม</small>
+        </div>
+        <span class="topic-arrow">→</span>
+      </a>
+
+      <a href="game.html">
+        <div class="topic-content">
+          <b>เกมภาษามือ</b>
+          <small>เรียนรู้ผ่านเกม 5 ข้อ</small>
+        </div>
+        <span class="topic-arrow">→</span>
+      </a>
+</div>
+
+  </div>
+
+  <script>
+    try {
+      const p = JSON.parse(localStorage.getItem('mkj-profile'));
+
+      if (p?.name) {
+        document.getElementById('hello').textContent =
+          'ยินดีต้อนรับสู่ “หมอเข้าใจ”';
+      }
+    } catch (e) {}
+  </script>
+
+  <script src="language.js"></script>
+
+<script src="mkj-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>รายงานปัญหา · หมอเข้าใจ</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================
+           MOR KHAO JAI — REPORT PAGE
+        ===================================== */
+
+        body{
+            background:#f7f5ef;
+        }
+
+        .report-page{
+            max-width:780px;
+            margin:0 auto;
+            padding:30px 18px 70px;
+        }
+
+        /* ---------- TOP ---------- */
+
+        .report-top{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:22px;
+        }
+
+        .report-back{
+            text-decoration:none;
+            color:#55766b;
+            font-size:16px;
+            font-weight:850;
+            transition:.2s ease;
+        }
+
+        .report-back:hover{
+            transform:translateX(-4px);
+        }
+
+        .report-badge{
+            padding:9px 14px;
+            border-radius:999px;
+            background:#e5f1eb;
+            color:#5c8174;
+            font-size:13px;
+            font-weight:900;
+        }
+
+
+        /* ---------- HERO ---------- */
+
+        .report-hero{
+            position:relative;
+            overflow:hidden;
+            background:#fff;
+            border-radius:32px;
+            padding:38px 30px 35px;
+            text-align:center;
+            border:1px solid #e9eeeb;
+            box-shadow:0 15px 40px rgba(70,90,80,.07);
+            margin-bottom:18px;
+        }
+
+        .report-hero::before{
+            content:"";
+            position:absolute;
+            width:180px;
+            height:180px;
+            border-radius:50%;
+            background:#e3f1ea;
+            left:-90px;
+            top:-80px;
+        }
+
+        .report-hero::after{
+            content:"";
+            position:absolute;
+            width:150px;
+            height:150px;
+            border-radius:50%;
+            background:#f8eddc;
+            right:-70px;
+            bottom:-75px;
+        }
+
+        .report-icon{
+            position:relative;
+            z-index:2;
+
+            width:76px;
+            height:76px;
+
+            margin:0 auto 16px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:25px;
+
+            background:#e8f3ee;
+
+            font-size:38px;
+
+            box-shadow:
+                0 12px 28px rgba(80,120,105,.12);
+
+            animation:reportFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes reportFloat{
+
+            0%,100%{
+                transform:translateY(0) rotate(-2deg);
+            }
+
+            50%{
+                transform:translateY(-7px) rotate(2deg);
+            }
+
+        }
+
+        .report-hero h1{
+            position:relative;
+            z-index:2;
+
+            margin:0 0 9px;
+
+            color:#4f675e;
+
+            font-size:clamp(28px,6vw,40px);
+
+            line-height:1.3;
+        }
+
+        .report-hero p{
+            position:relative;
+            z-index:2;
+
+            margin:0;
+
+            color:#7d8883;
+
+            font-size:16px;
+
+            line-height:1.75;
+        }
+
+
+        /* ---------- FORM CARD ---------- */
+
+        .report-form{
+            background:#fff;
+
+            border:1px solid #e7eeea;
+
+            border-radius:30px;
+
+            padding:28px;
+
+            box-shadow:
+                0 14px 35px rgba(70,90,80,.06);
+        }
+
+
+        /* ---------- SECTION ---------- */
+
+        .form-section{
+            margin-bottom:28px;
+        }
+
+        .form-section:last-child{
+            margin-bottom:0;
+        }
+
+        .section-title{
+            display:flex;
+            align-items:center;
+            gap:10px;
+
+            margin-bottom:13px;
+        }
+
+        .section-number{
+            width:30px;
+            height:30px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:10px;
+
+            background:#e7f2ed;
+
+            color:#5d8275;
+
+            font-size:14px;
+            font-weight:950;
+        }
+
+        .section-title h2{
+            margin:0;
+
+            color:#50665e;
+
+            font-size:19px;
+
+            line-height:1.4;
+        }
+
+        .section-help{
+            margin:0 0 14px 40px;
+
+            color:#89938e;
+
+            font-size:14px;
+
+            line-height:1.6;
+        }
+
+
+        /* ---------- CATEGORY ---------- */
+
+        .category-grid{
+            display:grid;
+
+            grid-template-columns:
+                repeat(2,minmax(0,1fr));
+
+            gap:12px;
+        }
+
+        .category-option{
+            position:relative;
+
+            cursor:pointer;
+        }
+
+        .category-option input{
+            position:absolute;
+            opacity:0;
+            pointer-events:none;
+        }
+
+        .category-box{
+            min-height:76px;
+
+            display:flex;
+            align-items:center;
+
+            gap:12px;
+
+            padding:15px;
+
+            background:#F3F9F8;
+
+            border:1.5px solid #e6ece9;
+
+            border-radius:20px;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                background .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .category-box:hover{
+            transform:translateY(-4px) scale(1.01);
+
+            background:#fff;
+
+            border-color:#b9d9cc;
+
+            box-shadow:
+                0 12px 25px rgba(70,100,85,.09);
+        }
+
+        .category-option input:checked + .category-box{
+            background:#edf7f2;
+
+            border-color:#86b9a7;
+
+            box-shadow:
+                0 10px 25px rgba(80,120,105,.1);
+
+            transform:translateY(-2px);
+        }
+
+        .category-icon{
+            width:43px;
+            height:43px;
+
+            flex-shrink:0;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:15px;
+
+            background:#fff;
+
+            font-size:22px;
+
+            box-shadow:
+                0 5px 14px rgba(70,90,80,.06);
+        }
+
+        .category-text strong{
+            display:block;
+
+            color:#52665e;
+
+            font-size:16px;
+
+            line-height:1.4;
+        }
+
+        .category-text span{
+            display:block;
+
+            margin-top:3px;
+
+            color:#929b96;
+
+            font-size:12px;
+
+            line-height:1.4;
+        }
+
+
+        /* ---------- INPUT ---------- */
+
+        .field{
+            margin-bottom:16px;
+        }
+
+        .field:last-child{
+            margin-bottom:0;
+        }
+
+        .field label{
+            display:block;
+
+            margin-bottom:8px;
+
+            color:#52655d;
+
+            font-size:15px;
+
+            font-weight:850;
+        }
+
+        .optional{
+            color:#9ba49f;
+
+            font-size:12px;
+
+            font-weight:700;
+        }
+
+        .report-form input[type="text"],
+        .report-form select,
+        .report-form textarea{
+
+            width:100%;
+
+            box-sizing:border-box;
+
+            border:1.5px solid #e3eae6;
+
+            background:#fafcfb;
+
+            border-radius:17px;
+
+            padding:14px 15px;
+
+            color:#4f6059;
+
+            font-family:inherit;
+
+            font-size:15px;
+
+            outline:none;
+
+            transition:
+                border-color .2s ease,
+                background .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .report-form input[type="text"],
+        .report-form select{
+            min-height:50px;
+        }
+
+        .report-form textarea{
+            min-height:150px;
+
+            resize:vertical;
+
+            line-height:1.7;
+        }
+
+        .report-form input:focus,
+        .report-form select:focus,
+        .report-form textarea:focus{
+
+            background:#fff;
+
+            border-color:#91bcae;
+
+            box-shadow:
+                0 0 0 4px rgba(145,188,174,.12);
+        }
+
+        .char-count{
+            text-align:right;
+
+            margin-top:5px;
+
+            color:#a0aaa5;
+
+            font-size:12px;
+        }
+
+
+        /* ---------- IMPORTANCE ---------- */
+
+        .importance-grid{
+            display:grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap:10px;
+        }
+
+        .importance-option{
+            position:relative;
+
+            cursor:pointer;
+        }
+
+        .importance-option input{
+            position:absolute;
+            opacity:0;
+        }
+
+        .importance-box{
+
+            text-align:center;
+
+            padding:14px 8px;
+
+            border-radius:17px;
+
+            background:#F3F9F8;
+
+            border:1.5px solid #e6ece9;
+
+            transition:.2s ease;
+        }
+
+        .importance-box:hover{
+            transform:translateY(-3px);
+        }
+
+        .importance-option input:checked + .importance-box{
+            background:#edf7f2;
+
+            border-color:#86b9a7;
+
+            transform:translateY(-2px);
+
+            box-shadow:
+                0 9px 20px rgba(70,100,85,.08);
+        }
+
+        .importance-box b{
+            display:block;
+
+            color:#536960;
+
+            font-size:15px;
+        }
+
+        .importance-box span{
+            display:block;
+
+            margin-top:3px;
+
+            color:#929b96;
+
+            font-size:11px;
+        }
+
+
+        /* ---------- PRIVACY ---------- */
+
+        .privacy-note{
+
+            display:flex;
+
+            gap:12px;
+
+            align-items:flex-start;
+
+            padding:15px;
+
+            background:#f8f6ef;
+
+            border:1px solid #eee8d9;
+
+            border-radius:18px;
+
+            margin-top:18px;
+        }
+
+        .privacy-note-icon{
+            font-size:21px;
+        }
+
+        .privacy-note p{
+            margin:0;
+
+            color:#817d70;
+
+            font-size:13px;
+
+            line-height:1.7;
+        }
+
+
+        /* ---------- BUTTON ---------- */
+
+        .submit-button{
+
+            width:100%;
+
+            min-height:58px;
+
+            border:0;
+
+            border-radius:19px;
+
+            background:#7fbdaA;
+
+            color:#fff;
+
+            font-family:inherit;
+
+            font-size:18px;
+
+            font-weight:950;
+
+            cursor:pointer;
+
+            box-shadow:
+                0 12px 25px rgba(95,145,125,.2);
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease,
+                opacity .2s ease;
+        }
+
+        .submit-button:hover{
+
+            transform:
+                translateY(-4px)
+                scale(1.01);
+
+            box-shadow:
+                0 18px 32px rgba(95,145,125,.25);
+        }
+
+        .submit-button:active{
+            transform:scale(.98);
+        }
+
+        .submit-button:disabled{
+            opacity:.6;
+            cursor:wait;
+        }
+
+
+        /* ---------- SUCCESS ---------- */
+
+        .success-box{
+            display:none;
+
+            text-align:center;
+
+            padding:25px 10px 8px;
+        }
+
+        .success-box.show{
+            display:block;
+
+            animation:successIn .45s ease;
+        }
+
+        @keyframes successIn{
+
+            from{
+                opacity:0;
+                transform:translateY(12px) scale(.97);
+            }
+
+            to{
+                opacity:1;
+                transform:none;
+            }
+
+        }
+
+        .success-icon{
+
+            width:82px;
+            height:82px;
+
+            margin:0 auto 16px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:28px;
+
+            background:#e7f4ed;
+
+            font-size:40px;
+        }
+
+        .success-box h2{
+
+            margin:0 0 9px;
+
+            color:#527064;
+
+            font-size:26px;
+        }
+
+        .success-box p{
+
+            margin:0 auto;
+
+            max-width:480px;
+
+            color:#7e8984;
+
+            font-size:15px;
+
+            line-height:1.8;
+        }
+
+        .another-button{
+
+            margin-top:20px;
+
+            border:0;
+
+            background:#eaf3ef;
+
+            color:#55786b;
+
+            padding:13px 20px;
+
+            border-radius:15px;
+
+            font-family:inherit;
+
+            font-size:15px;
+
+            font-weight:900;
+
+            cursor:pointer;
+
+            transition:.2s ease;
+        }
+
+        .another-button:hover{
+            transform:translateY(-3px);
+        }
+
+
+        /* ---------- ERROR ---------- */
+
+        .form-error{
+
+            display:none;
+
+            margin-bottom:17px;
+
+            padding:13px 15px;
+
+            border-radius:15px;
+
+            background:#fff1f0;
+
+            border:1px solid #f1d5d2;
+
+            color:#9a625d;
+
+            font-size:14px;
+
+            line-height:1.6;
+        }
+
+        .form-error.show{
+            display:block;
+        }
+
+
+        /* ---------- HIDDEN IFRAME ---------- */
+
+        #submitFrame{
+            display:none;
+        }
+
+
+        /* ---------- MOBILE ---------- */
+
+        @media(max-width:650px){
+
+            .report-page{
+                padding:20px 13px 55px;
+            }
+
+            .report-hero{
+                padding:30px 19px 28px;
+                border-radius:27px;
+            }
+
+            .report-form{
+                padding:20px 17px;
+                border-radius:26px;
+            }
+
+            .category-grid{
+                grid-template-columns:1fr;
+            }
+
+            .importance-grid{
+                grid-template-columns:1fr;
+            }
+
+            .section-help{
+                margin-left:0;
+            }
+
+            .report-hero h1{
+                font-size:29px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="report-page">
+
+
+    <!-- TOP -->
+
+    <div class="report-top">
+
+        <a href="index.html" class="report-back">
+            ← กลับหน้าหลัก
+        </a>
+
+        <span class="report-badge">
+            FEEDBACK
+        </span>
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <section class="report-hero">
+
+        <div class="report-icon">
+            💬
+        </div>
+
+        <h1>
+            มีอะไรอยากบอกเราไหม?
+        </h1>
+
+        <p>
+            พบปัญหา มีข้อเสนอแนะ หรืออยากให้เราเพิ่มอะไร<br>
+            บอกเราได้เลยครับ ข้อมูลของคุณจะช่วยให้หมอเข้าใจพัฒนาต่อได้
+        </p>
+
+    </section>
+
+
+    <!-- FORM -->
+
+    <section class="report-form">
+
+
+        <!-- ERROR -->
+
+        <div id="formError" class="form-error">
+            กรุณากรอกข้อมูลให้ครบก่อนส่งรายงานครับ
+        </div>
+
+
+        <form
+            id="reportForm"
+            action="https://script.google.com/macros/s/AKfycbw1Mu677lrpTzjyFKn5Q6YvsJOp4g_yGyp6kRYd1lskGXLzsQs9JjkNPprPbv9BXAQoaw/exec"
+            method="POST"
+            target="submitFrame"
+        >
+
+
+            <!-- 1 CATEGORY -->
+
+            <div class="form-section">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        1
+                    </div>
+
+                    <h2>
+                        ต้องการรายงานเรื่องอะไร?
+                    </h2>
+
+                </div>
+
+                <p class="section-help">
+                    เลือกหัวข้อที่ใกล้เคียงกับสิ่งที่คุณต้องการบอกเราที่สุด
+                </p>
+
+
+                <div class="category-grid">
+
+
+                    <label class="category-option">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="ปัญหาการใช้งาน"
+                            required
+                        >
+
+                        <div class="category-box">
+
+                            <div class="category-icon">
+                                🐛
+                            </div>
+
+                            <div class="category-text">
+
+                                <strong>
+                                    ปัญหาการใช้งาน
+                                </strong>
+
+                                <span>
+                                    กดไม่ได้ / หน้าเว็บมีปัญหา
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="category-option">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="ข้อเสนอแนะ"
+                        >
+
+                        <div class="category-box">
+
+                            <div class="category-icon">
+                                💡
+                            </div>
+
+                            <div class="category-text">
+
+                                <strong>
+                                    ข้อเสนอแนะ
+                                </strong>
+
+                                <span>
+                                    อยากให้เพิ่มหรือปรับอะไร
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="category-option">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="เนื้อหาภาษามือ"
+                        >
+
+                        <div class="category-box">
+
+                            <div class="category-icon">
+                                🤟
+                            </div>
+
+                            <div class="category-text">
+
+                                <strong>
+                                    เนื้อหาภาษามือ
+                                </strong>
+
+                                <span>
+                                    คำศัพท์ / วิดีโอ / เนื้อหา
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="category-option">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="การสื่อสาร"
+                        >
+
+                        <div class="category-box">
+
+                            <div class="category-icon">
+                                🗣️
+                            </div>
+
+                            <div class="category-text">
+
+                                <strong>
+                                    การสื่อสาร
+                                </strong>
+
+                                <span>
+                                    วิธีใช้งานหรือการสื่อสาร
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="category-option">
+
+                        <input
+                            type="radio"
+                            name="category"
+                            value="อื่น ๆ"
+                        >
+
+                        <div class="category-box">
+
+                            <div class="category-icon">
+                                ✨
+                            </div>
+
+                            <div class="category-text">
+
+                                <strong>
+                                    อื่น ๆ
+                                </strong>
+
+                                <span>
+                                    เรื่องอื่นที่อยากบอกเรา
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- 2 DETAIL -->
+
+            <div class="form-section">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        2
+                    </div>
+
+                    <h2>
+                        เล่าให้เราฟังหน่อย
+                    </h2>
+
+                </div>
+
+                <p class="section-help">
+                    อธิบายสิ่งที่พบหรือสิ่งที่อยากให้เราปรับปรุงได้ตามสบาย
+                </p>
+
+
+                <div class="field">
+
+                    <label for="message">
+                        รายละเอียด
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        maxlength="1000"
+                        required
+                        placeholder="เช่น ปุ่มเกมกดแล้วไม่ไปหน้าถัดไป หรืออยากให้เพิ่มคำศัพท์เกี่ยวกับ..."
+                    ></textarea>
+
+                    <div class="char-count">
+                        <span id="charCount">0</span> / 1000
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3 IMPORTANCE -->
+
+            <div class="form-section">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        3
+                    </div>
+
+                    <h2>
+                        เรื่องนี้สำคัญแค่ไหน?
+                    </h2>
+
+                </div>
+
+                <p class="section-help">
+                    ช่วยให้เรารู้ว่าควรให้ความสำคัญกับเรื่องนี้ประมาณไหน
+                </p>
+
+
+                <div class="importance-grid">
+
+
+                    <label class="importance-option">
+
+                        <input
+                            type="radio"
+                            name="importance"
+                            value="ทั่วไป"
+                            checked
+                        >
+
+                        <div class="importance-box">
+
+                            <b>
+                                🌱 ทั่วไป
+                            </b>
+
+                            <span>
+                                อยากเสนอไว้
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="importance-option">
+
+                        <input
+                            type="radio"
+                            name="importance"
+                            value="สำคัญ"
+                        >
+
+                        <div class="importance-box">
+
+                            <b>
+                                💡 สำคัญ
+                            </b>
+
+                            <span>
+                                อยากให้ดู
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <label class="importance-option">
+
+                        <input
+                            type="radio"
+                            name="importance"
+                            value="เร่งด่วน"
+                        >
+
+                        <div class="importance-box">
+
+                            <b>
+                                🔔 เร่งด่วน
+                            </b>
+
+                            <span>
+                                มีผลต่อการใช้งาน
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- 4 NAME -->
+
+            <div class="form-section">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        4
+                    </div>
+
+                    <h2>
+                        อยากให้เรารู้ว่าใครส่งไหม?
+                    </h2>
+
+                </div>
+
+                <p class="section-help">
+                    ไม่จำเป็นต้องใส่ชื่อก็ได้ครับ
+                </p>
+
+
+                <div class="field">
+
+                    <label for="name">
+
+                        ชื่อที่ต้องการให้เรียก
+
+                        <span class="optional">
+                            (ไม่บังคับ)
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        maxlength="50"
+                        placeholder="เช่น มิน / ไม่ระบุ"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="privacy-note">
+
+                    <div class="privacy-note-icon">
+                        🔒
+                    </div>
+
+                    <p>
+                        ไม่จำเป็นต้องใส่ชื่อหรือข้อมูลส่วนตัว
+                        หากไม่สะดวกค่ะ เราต้องการความคิดเห็นของคุณ
+                        เพื่อนำไปใช้ปรับปรุงต้นแบบหมอเข้าใจ
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-button"
+                id="submitButton"
+            >
+                ส่งรายงานให้หมอเข้าใจ
+            </button>
+
+
+        </form>
+
+
+        <!-- SUCCESS -->
+
+        <div
+            id="successBox"
+            class="success-box"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                ขอบคุณที่บอกเราครับ
+            </h2>
+
+            <p>
+                รายงานของคุณถูกส่งให้ทีมหมอเข้าใจแล้ว
+                <br>
+                เราจะนำความคิดเห็นไปใช้ประกอบการปรับปรุงต้นแบบต่อไป
+            </p>
+
+            <button
+                type="button"
+                class="another-button"
+                id="anotherButton"
+            >
+                ส่งความคิดเห็นอีกครั้ง
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+<!--
+    Hidden iframe
+    ใช้รับผลจาก Google Apps Script
+    โดยไม่ต้องเปิดหน้าใหม่
+-->
+
+<iframe
+    name="submitFrame"
+    id="submitFrame"
+></iframe>
+
+
+<script>
+
+const form =
+    document.getElementById("reportForm");
+
+const message =
+    document.getElementById("message");
+
+const charCount =
+    document.getElementById("charCount");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+const successBox =
+    document.getElementById("successBox");
+
+const formError =
+    document.getElementById("formError");
+
+const anotherButton =
+    document.getElementById("anotherButton");
+
+
+/* ---------- CHARACTER COUNT ---------- */
+
+message.addEventListener("input", () => {
+
+    charCount.textContent =
+        message.value.length;
+
+});
+
+
+/* ---------- SUBMIT ---------- */
+
+form.addEventListener("submit", (event) => {
+  formError.classList.remove("show");
+  formError.textContent = "กรุณากรอกข้อมูลให้ครบก่อนส่งรายงานครับ";
+  const category = form.querySelector('input[name="category"]:checked');
+  const detail = message.value.trim();
+  if (!category || !detail) {
+    event.preventDefault();
+    formError.classList.add("show");
+    window.scrollTo({ top: form.offsetTop - 20, behavior: "smooth" });
+    return;
+  }
+  if (!navigator.onLine) {
+    event.preventDefault();
+    formError.textContent = "ไม่มีอินเทอร์เน็ต ลองใหม่อีกครั้งครับ";
+    formError.classList.add("show");
+    return;
+  }
+  submitButton.disabled = true;
+  submitButton.textContent = "กำลังส่งรายงาน...";
+  const frame = document.getElementById("submitFrame");
+  let finished = false;
+  const finish = (ok) => {
+    if (finished) return;
+    finished = true;
+    clearTimeout(timer);
+    submitButton.disabled = false;
+    submitButton.textContent = "ส่งรายงานให้หมอเข้าใจ";
+    if (ok) {
+      form.style.display = "none";
+      successBox.classList.add("show");
+    } else {
+      formError.textContent = "ส่งไม่สำเร็จ ลองใหม่อีกครั้งครับ";
+      formError.classList.add("show");
+    }
+  };
+  frame.addEventListener("load", () => finish(true), { once: true });
+  const timer = setTimeout(() => finish(false), 15000);
+});
+
+
+/* ---------- SEND AGAIN ---------- */
+
+anotherButton.addEventListener("click", () => {
+
+    form.reset();
+
+    charCount.textContent =
+        "0";
+
+    form.style.display =
+        "block";
+
+    successBox.classList.remove(
+        "show"
+    );
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+</script>
+
+
+<script src="language.js"></script>
+
+<script src="mkj-navigation.js"></script>
+</body>
+
+</html>

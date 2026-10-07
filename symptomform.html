@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ใบซักประวัติก่อนพบแพทย์ · หมอเข้าใจ</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #F5F8F7;
+    color: #24484D;
+    font-family: inherit;
+}
+
+.history-page {
+    width: min(900px, calc(100% - 30px));
+    margin: auto;
+    padding: 30px 0 70px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #147B75;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    color: #63C0A4;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    margin-bottom: 9px;
+}
+
+.page-header h1 {
+    margin: 0 0 10px;
+    color: #173F46;
+    font-size: clamp(30px, 5vw, 43px);
+    line-height: 1.2;
+}
+
+.page-header p {
+    margin: 0;
+    color: #687C81;
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.notice {
+    background: #EAF7F5;
+    border: 1px solid #D4EBE7;
+    border-radius: 20px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+    color: #61766e;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.history-card {
+    background: rgba(255,255,255,.95);
+    border: 1px solid rgba(127,189,170,.18);
+    border-radius: 27px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 35px rgba(70,100,90,.08);
+}
+
+.section-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.section-number {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 13px;
+    background: #DFF4EF;
+    color: #147B75;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.section-head h2 {
+    margin: 0;
+    color: #24545A;
+    font-size: 23px;
+    line-height: 1.4;
+}
+
+.section-head p {
+    margin: 4px 0 0;
+    color: #87948f;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.field {
+    margin-bottom: 22px;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+.field label {
+    display: block;
+    color: #24545A;
+    font-size: 17px;
+    font-weight: 750;
+    margin-bottom: 9px;
+}
+
+.optional {
+    color: #9ba7a2;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    border: 1.5px solid #CFE4E2;
+    border-radius: 16px;
+    background: #FFFFFF;
+    color: #24484D;
+    font-family: inherit;
+    font-size: 17px;
+    padding: 14px 16px;
+    outline: none;
+    transition: .2s ease;
+}
+
+input {
+    min-height: 53px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    background: #fff;
+    border-color: #63C0A4;
+    box-shadow: 0 0 0 4px rgba(127,189,170,.12);
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+}
+
+.choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 11px;
+}
+
+.choice {
+    position: relative;
+}
+
+.choice input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.choice label {
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border: 1.5px solid #CFE4E2;
+    border-radius: 15px;
+    background: #FFFFFF;
+    color: #52645e;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.choice label:hover {
+    transform: translateY(-1px);
+    border-color: #7FCFC3;
+}
+
+.choice input:checked + label {
+    background: #e5f3ee;
+    border-color: #63C0A4;
+    color: #3f6f60;
+}
+
+/* COMMUNICATION */
+
+.communication-intro {
+    background: #f8fbfa;
+    border-radius: 18px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    color: #60767A;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.communication-list {
+    display: grid;
+    gap: 11px;
+}
+
+.communication-option {
+    position: relative;
+}
+
+.communication-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.communication-option label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 75px;
+    padding: 15px 17px;
+    border: 1.5px solid #CFE4E2;
+    border-radius: 18px;
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.communication-option label:hover {
+    transform: translateY(-1px);
+    border-color: #7FCFC3;
+}
+
+.communication-option input:checked + label {
+    background: #E0F6F1;
+    border-color: #63C0A4;
+}
+
+.communication-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    border-radius: 14px;
+    background: #DFF4EF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.communication-text {
+    flex: 1;
+}
+
+.communication-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: #24545A;
+}
+
+.communication-desc {
+    margin-top: 3px;
+    color: #6F8185;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.check {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border: 2px solid #B8D5D1;
+    border-radius: 50%;
+}
+
+.communication-option input:checked + label .check {
+    background: #63C0A4;
+    border-color: #63C0A4;
+    position: relative;
+}
+
+.communication-option input:checked + label .check::after {
+    content: "✓";
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    position: absolute;
+    left: 4px;
+    top: 0px;
+}
+
+/* BUTTON */
+
+.primary-btn {
+    width: 100%;
+    min-height: 59px;
+    border: 0;
+    border-radius: 18px;
+    background: #63C0A4;
+    color: white;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(127,189,170,.25);
+    transition: .2s ease;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* RESULT */
+
+.result-section {
+    display: none;
+}
+
+.result-section.show {
+    display: block;
+    animation: resultIn .35s ease;
+}
+
+.result-header {
+    margin-bottom: 17px;
+}
+
+.result-header h2 {
+    margin: 0 0 5px;
+    color: #24545A;
+    font-size: 25px;
+}
+
+.result-header p {
+    margin: 0;
+    color: #708187;
+    font-size: 14px;
+}
+
+.medical-document {
+    background: white;
+    border: 1px solid #D5E7E4;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(70,100,90,.09);
+}
+
+.document-top {
+    padding: 25px 27px;
+    background: #E8F6F3;
+    border-bottom: 1px solid #D5EAE6;
+}
+
+.document-brand {
+    color: #147B75;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    margin-bottom: 7px;
+}
+
+.document-top h3 {
+    margin: 0;
+    color: #173F46;
+    font-size: 25px;
+}
+
+.document-top p {
+    margin: 6px 0 0;
+    color: #687C81;
+    font-size: 14px;
+}
+
+.document-body {
+    padding: 25px 27px;
+}
+
+.document-row {
+    padding: 15px 0;
+    border-bottom: 1px solid #edf1ef;
+}
+
+.document-row:first-child {
+    padding-top: 0;
+}
+
+.document-row:last-child {
+    border-bottom: 0;
+}
+
+.document-label {
+    color: #84938d;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.document-value {
+    color: #344b43;
+    font-size: 16px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.empty-value {
+    color: #a0aaa6;
+}
+
+/* COPY */
+
+.copy-area {
+    margin-top: 20px;
+    background: #F3F9F8;
+    border: 1px solid #e0e9e5;
+    border-radius: 21px;
+    padding: 20px;
+}
+
+.copy-area h3 {
+    margin: 0 0 5px;
+    color: #3b564d;
+    font-size: 19px;
+}
+
+.copy-area p {
+    margin: 0 0 14px;
+    color: #74868B;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+#copyText {
+    min-height: 230px;
+    background: white;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+/* ACTIONS */
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 11px;
+    margin-top: 14px;
+}
+
+.action-btn {
+    min-height: 53px;
+    border-radius: 16px;
+    border: 1.5px solid #CFE1E0;
+    background: #247FA4;
+    color: #ffffff;
+    border-color: #247FA4;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.action-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: #7FCFC3;
+    background: #2E90B8;
+    color: #fff;
+}
+
+.action-btn.primary-action {
+    background: #63C0A4;
+    color: white;
+    border-color: #63C0A4;
+}
+
+.action-btn:disabled {
+    background: #D9DDDE;
+    border-color: #C8CDCE;
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+.action-message {
+    min-height: 24px;
+    text-align: center;
+    margin: 12px 0 0;
+    color: #147B75;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.hospital-note {
+    margin-top: 13px;
+    padding: 14px 16px;
+    border-radius: 15px;
+    background: #EEF2F1;
+    color: #6D7D81;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@keyframes resultIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PRINT */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    body {
+        background: white;
+    }
+
+    .history-page {
+        width: 100%;
+        padding: 0;
+    }
+
+    .back-btn,
+    .page-header,
+    .notice,
+    .history-card,
+    .copy-area,
+    .result-header {
+        display: none !important;
+    }
+
+    .result-section {
+        display: block !important;
+        animation: none;
+    }
+
+    .medical-document {
+        border: 1px solid #bbb;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .document-top {
+        padding: 12px 16px;
+    }
+
+    .document-top h3 {
+        font-size: 19px;
+    }
+
+    .document-top p {
+        font-size: 10px;
+    }
+
+    .document-brand {
+        font-size: 9px;
+        margin-bottom: 3px;
+    }
+
+    .document-body {
+        padding: 10px 16px;
+    }
+
+    .document-row {
+        padding: 7px 0;
+    }
+
+    .document-label {
+        font-size: 9px;
+        margin-bottom: 2px;
+    }
+
+    .document-value {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .history-page {
+        width: calc(100% - 24px);
+        padding-top: 22px;
+    }
+
+    .history-card {
+        padding: 21px 17px;
+        border-radius: 22px;
+    }
+
+    .page-header h1 {
+        font-size: 30px;
+    }
+
+    .page-header p {
+        font-size: 16px;
+    }
+
+    .two-column,
+    .choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-head h2 {
+        font-size: 20px;
+    }
+
+    input,
+    textarea {
+        font-size: 16px;
+    }
+
+    .document-top,
+    .document-body {
+        padding: 21px 18px;
+    }
+
+    .actions {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="history-page">
+
+    <a href="index.html" class="back-btn">
+        ← กลับหน้าหลัก
+    </a>
+
+    <header class="page-header">
+
+        <div class="eyebrow">
+            PATIENT HISTORY
+        </div>
+
+        <h1>
+            ใบซักประวัติก่อนพบแพทย์
+        </h1>
+
+        <p>
+            กรอกข้อมูลพื้นฐาน อาการ ประวัติสุขภาพ
+            และวิธีการสื่อสารที่สะดวกสำหรับคุณ
+        </p>
+
+    </header>
+
+
+    <div class="notice">
+
+        <strong>ข้อมูลสำหรับคนไข้</strong><br>
+
+        แบบฟอร์มนี้เป็นต้นแบบสำหรับช่วยเตรียมข้อมูล
+        ก่อนพบแพทย์ ไม่ใช่เวชระเบียนและไม่ใช้เพื่อวินิจฉัยโรค
+
+    </div>
+
+
+    <!-- 01 BASIC -->
+
+    <section class="history-card">
+
+        <div class="section-head">
+
+            <div class="section-number">
+                01
+            </div>
+
+            <div>
+
+                <h2>
+                    ข้อมูลพื้นฐาน
+                </h2>
+
+                <p>
+                    ข้อมูลเบื้องต้นสำหรับประกอบการซักประวัติ
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="two-column">
+
+            <div class="field">
+
+                <label for="patientName">
+                    ชื่อที่ต้องการให้เรียก
+                </label>
+
+                <input
+                    id="patientName"
+                    type="text"
+                    placeholder="เช่น มิน"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="patientAge">
+                    อายุ
+                </label>
+
+                <input
+                    id="patientAge"
+                    type="number"
+                    min="0"
+                    max="120"
+                    placeholder="เช่น 18"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                เพศ
+                <span class="optional">
+                    (ไม่ระบุก็ได้)
+                </span>
+            </label>
+
+            <div class="choice-grid">
+
+                <div class="choice">
+                    <input
+                        type="radio"
+                        name="gender"
+                        id="genderMale"
+                        value="ชาย"
+                    >
+                    <label for="genderMale">
+                        ชาย
+                    </label>
+                </div>
+
+                <div class="choice">
+                    <input
+                        type="radio"
+                        name="gender"
+                        id="genderFemale"
+                        value="หญิง"
+                    >
+                    <label for="genderFemale">
+                        หญิง
+                    </label>
+                </div>
+
+                <div class="choice">
+                    <input
+                        type="radio"
+                        name="gender"
+                        id="genderOther"
+                        value="อื่น ๆ"
+                    >
+                    <label for="genderOther">
+                        อื่น ๆ
+                    </label>
+                </div>
+
+                <div class="choice">
+                    <input
+                        type="radio"
+                        name="gender"
+                        id="genderNone"
+                        value="ไม่ระบุ"
+                    >
+                    <label for="genderNone">
+                        ไม่ระบุ
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 02 REASON -->
+
+    <section class="history-card">
+
+        <div class="section-head">
+
+            <div class="section-number">
+                02
+            </div>
+
+            <div>
+
+                <h2>
+                    เหตุผลที่มาพบแพทย์
+                </h2>
+
+                <p>
+                    บอกสิ่งที่ต้องการให้แพทย์ช่วยดูหรือประเมิน
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="reason">
+                วันนี้มาพบแพทย์เรื่องอะไร?
+            </label>
+
+            <textarea
+                id="reason"
+                placeholder="เช่น ปวดหัวมา 3 วัน อยากให้แพทย์ช่วยตรวจ"
+            ></textarea>
+
+        </div>
+
+    </section>
+
+
+    <!-- 03 SYMPTOMS -->
+
+    <section class="history-card">
+
+        <div class="section-head">
+
+            <div class="section-number">
+                03
+            </div>
+
+            <div>
+
+                <h2>
+                    อาการปัจจุบัน
+                </h2>
+
+                <p>
+                    เลือกอาการที่ตรงกับคุณและเพิ่มรายละเอียดได้
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                มีอาการอะไรบ้าง?
+            </label>
+
+            <div class="choice-grid">
+
+                <div class="choice">
+                    <input type="checkbox" id="sHeadache" value="ปวดศีรษะ">
+                    <label for="sHeadache">ปวดศีรษะ</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sFever" value="มีไข้">
+                    <label for="sFever">มีไข้</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sCough" value="ไอ">
+                    <label for="sCough">ไอ</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sSore" value="เจ็บคอ">
+                    <label for="sSore">เจ็บคอ</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sStomach" value="ปวดท้อง">
+                    <label for="sStomach">ปวดท้อง</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sChest" value="เจ็บหน้าอก">
+                    <label for="sChest">เจ็บหน้าอก</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sDizzy" value="เวียนศีรษะ">
+                    <label for="sDizzy">เวียนศีรษะ</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sNausea" value="คลื่นไส้">
+                    <label for="sNausea">คลื่นไส้</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sVomiting" value="อาเจียน">
+                    <label for="sVomiting">อาเจียน</label>
+                </div>
+
+                <div class="choice">
+                    <input type="checkbox" id="sBreathing" value="หายใจลำบาก">
+                    <label for="sBreathing">หายใจลำบาก</label>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="otherSymptoms">
+                อาการอื่น ๆ
+                <span class="optional">(ถ้ามี)</span>
+            </label>
+
+            <input
+                id="otherSymptoms"
+                type="text"
+                placeholder="พิมพ์อาการอื่น ๆ"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="symptomDetails">
+                รายละเอียดอาการ
+            </label>
+
+            <textarea
+                id="symptomDetails"
+                placeholder="เช่น ปวดตรงไหน ปวดแบบไหน อะไรทำให้อาการดีขึ้นหรือแย่ลง"
+            ></textarea>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                เริ่มมีอาการเมื่อไหร่?
+            </label>
+
+            <div class="choice-grid">
+
+                <div class="choice">
+                    <input
+                        type="radio"
+                        name="duration"
+                        id="durationToday"
+                        value="วันนี้"
+                    >
+                    <label for="durationToday">
+                        วันนี้
+                    </label>
+                </div>
+
+                <div class="choice">
+                    <input
+                        type="radio"
+                        name="duration"
+                        id="durationFewDays"
+                        value="1–3 วันที่แล้ว"
+                    >
+                    <label for="durationFewDays">
+                        1–3 วันที่แล้ว
+                    </label>
+                </div>
+
+                <div class="choice">
+                    <input
+                        type="radio"
+                        name="duration"
+                        id="durationWeek"
+                        value="ประมาณ 1 สัปดาห์"
+                    >
+                    <label for="durationWeek">
+                        ประมาณ 1 สัปดาห์
+                    </label>
+                </div>
+
+                <div class="choice">
+                    <input
+                        type="radio"
+                        name="duration"
+                        id="durationLong"
+                        value="มากกว่า 1 สัปดาห์"
+                    >
+                    <label for="durationLong">
+                        มากกว่า 1 สัปดาห์
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 04 HEALTH HISTORY -->
+
+    <section class="history-card">
+
+        <div class="section-head">
+
+            <div class="section-number">
+                04
+            </div>
+
+            <div>
+
+                <h2>
+                    ประวัติสุขภาพ
+                </h2>
+
+                <p>
+                    ข้อมูลสำคัญที่แพทย์ควรทราบ
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="drugAllergy">
+                แพ้ยาอะไรไหม?
+            </label>
+
+            <input
+                id="drugAllergy"
+                type="text"
+                placeholder="เช่น ไม่เคยแพ้ยา / แพ้ยาชื่อ..."
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="disease">
+                มีโรคประจำตัวไหม?
+            </label>
+
+            <input
+                id="disease"
+                type="text"
+                placeholder="เช่น เบาหวาน / ความดัน / ไม่มี"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="medicine">
+                กำลังใช้ยาหรืออาหารเสริมอะไรอยู่ไหม?
+            </label>
+
+            <textarea
+                id="medicine"
+                placeholder="ระบุชื่อยา หรือพิมพ์ว่าไม่มี"
+            ></textarea>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="pastHistory">
+                มีประวัติการรักษาหรือผ่าตัดที่สำคัญไหม?
+            </label>
+
+            <textarea
+                id="pastHistory"
+                placeholder="เช่น เคยผ่าตัด... / เคยรักษา... / ไม่มี"
+            ></textarea>
+
+        </div>
+
+    </section>
+
+
+    <!-- 05 COMMUNICATION -->
+
+    <section class="history-card">
+
+        <div class="section-head">
+
+            <div class="section-number">
+                05
+            </div>
+
+            <div>
+
+                <h2>
+                    วิธีการสื่อสารที่สะดวก
+                </h2>
+
+                <p>
+                    ส่วนนี้จะถูกรวมไว้ในใบสรุปเดียวกับประวัติ
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="communication-intro">
+
+            เลือกได้มากกว่าหนึ่งข้อ
+            เพื่อให้บุคลากรทราบว่าควรสื่อสารกับคุณอย่างไร
+
+        </div>
+
+
+        <div class="communication-list">
+
+
+            <div class="communication-option">
+
+                <input
+                    type="checkbox"
+                    id="commFace"
+                    value="พูดคุยโดยหันหน้าเข้าหากัน"
+                >
+
+                <label for="commFace">
+
+                    <div class="communication-icon">
+                        👀
+                    </div>
+
+                    <div class="communication-text">
+
+                        <div class="communication-title">
+                            หันหน้าเข้าหากัน
+                        </div>
+
+                        <div class="communication-desc">
+                            ช่วยให้มองหน้าและอ่านปากได้สะดวกขึ้น
+                        </div>
+
+                    </div>
+
+                    <div class="check"></div>
+
+                </label>
+
+            </div>
+
+
+            <div class="communication-option">
+
+                <input
+                    type="checkbox"
+                    id="commWriting"
+                    value="เขียนข้อความ"
+                >
+
+                <label for="commWriting">
+
+                    <div class="communication-icon">
+                        ✏️
+                    </div>
+
+                    <div class="communication-text">
+
+                        <div class="communication-title">
+                            เขียนข้อความ
+                        </div>
+
+                        <div class="communication-desc">
+                            ใช้การเขียนเพื่อช่วยในการสื่อสาร
+                        </div>
+
+                    </div>
+
+                    <div class="check"></div>
+
+                </label>
+
+            </div>
+
+
+            <div class="communication-option">
+
+                <input
+                    type="checkbox"
+                    id="commTyping"
+                    value="พิมพ์ข้อความ"
+                >
+
+                <label for="commTyping">
+
+                    <div class="communication-icon">
+                        ⌨️
+                    </div>
+
+                    <div class="communication-text">
+
+                        <div class="communication-title">
+                            พิมพ์ข้อความ
+                        </div>
+
+                        <div class="communication-desc">
+                            ใช้โทรศัพท์หรืออุปกรณ์ช่วยพิมพ์
+                        </div>
+
+                    </div>
+
+                    <div class="check"></div>
+
+                </label>
+
+            </div>
+
+
+            <div class="communication-option">
+
+                <input
+                    type="checkbox"
+                    id="commSign"
+                    value="ภาษามือ"
+                >
+
+                <label for="commSign">
+
+                    <div class="communication-icon">
+                        🤟
+                    </div>
+
+                    <div class="communication-text">
+
+                        <div class="communication-title">
+                            ภาษามือ
+                        </div>
+
+                        <div class="communication-desc">
+                            ใช้ภาษามือในการสื่อสาร
+                        </div>
+
+                    </div>
+
+                    <div class="check"></div>
+
+                </label>
+
+            </div>
+
+
+            <div class="communication-option">
+
+                <input
+                    type="checkbox"
+                    id="commClear"
+                    value="พูดชัดเจนและไม่เร็วเกินไป"
+                >
+
+                <label for="commClear">
+
+                    <div class="communication-icon">
+                        💬
+                    </div>
+
+                    <div class="communication-text">
+
+                        <div class="communication-title">
+                            พูดชัดเจนและไม่เร็วเกินไป
+                        </div>
+
+                        <div class="communication-desc">
+                            ช่วยให้ฟังและทำความเข้าใจได้ง่ายขึ้น
+                        </div>
+
+                    </div>
+
+                    <div class="check"></div>
+
+                </label>
+
+            </div>
+
+        </div>
+
+    
+        <div class="field">
+            <label>อุปกรณ์ช่วยการได้ยินที่ใช้อยู่</label>
+            <div class="choice-grid">
+                <div class="choice"><input type="radio" name="device" id="dvNone" value="ไม่ใช้"><label for="dvNone">ไม่ใช้</label></div>
+                <div class="choice"><input type="radio" name="device" id="dvAid" value="เครื่องช่วยฟัง"><label for="dvAid">เครื่องช่วยฟัง</label></div>
+                <div class="choice"><input type="radio" name="device" id="dvCi" value="ประสาทหูเทียม"><label for="dvCi">ประสาทหูเทียม</label></div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+
+    <!-- 06 ADDITIONAL -->
+
+    <section class="history-card">
+
+        <div class="section-head">
+
+            <div class="section-number">
+                06
+            </div>
+
+            <div>
+
+                <h2>
+                    ข้อมูลเพิ่มเติม
+                </h2>
+
+                <p>
+                    สิ่งที่อยากให้แพทย์หรือเจ้าหน้าที่ทราบ
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="additional">
+                มีอะไรที่อยากบอกเพิ่มเติมไหม?
+            </label>
+
+            <textarea
+                id="additional"
+                placeholder="พิมพ์ข้อมูลที่อยากให้แพทย์ทราบ"
+            ></textarea>
+
+        </div>
+
+    </section>
+
+
+    <!-- CREATE -->
+
+    <section class="history-card">
+
+        <button
+            type="button"
+            class="primary-btn"
+            id="createHistory"
+        >
+            สร้างใบสรุปประวัติ
+        </button>
+
+    </section>
+
+
+    <!-- RESULT -->
+
+    <section
+        class="result-section"
+        id="resultSection"
+    >
+
+        <div class="result-header">
+
+            <h2>
+                ใบสรุปประวัติของฉัน
+            </h2>
+
+            <p>
+                ข้อมูลประวัติและความต้องการด้านการสื่อสารถูกรวมไว้ในใบเดียว
+            </p>
+
+        </div>
+
+
+        <div class="medical-document">
+
+            <div class="document-top">
+
+                <div class="document-brand">
+                    MOR KHAO JAI · หมอเข้าใจ
+                </div>
+
+                <h3>
+                    ข้อมูลสำหรับการพบแพทย์
+                </h3>
+
+                <p id="createdDate">
+                    สร้างข้อมูลแล้ว
+                </p>
+
+            </div>
+
+
+            <div class="document-body">
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        วิธีการสื่อสารที่สะดวก
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultCommunication"
+                    ></div>
+
+                </div>
+
+                <div class="document-row">
+                    <div class="document-label">
+                        อุปกรณ์ช่วยฟัง
+                    </div>
+                    <div class="document-value" id="resultDevice"></div>
+                </div>
+
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        ข้อมูลพื้นฐาน
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultBasic"
+                    ></div>
+
+                </div>
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        เหตุผลที่มาพบแพทย์
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultReason"
+                    ></div>
+
+                </div>
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        อาการ
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultSymptoms"
+                    ></div>
+
+                </div>
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        รายละเอียดอาการ
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultDetails"
+                    ></div>
+
+                </div>
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        ระยะเวลาที่มีอาการ
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultDuration"
+                    ></div>
+
+                </div>
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        ประวัติแพ้ยา
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultAllergy"
+                    ></div>
+
+                </div>
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        โรคประจำตัว
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultDisease"
+                    ></div>
+
+                </div>
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        ยาหรืออาหารเสริมที่ใช้
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultMedicine"
+                    ></div>
+
+                </div>
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        ประวัติการรักษาหรือผ่าตัด
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultPastHistory"
+                    ></div>
+
+                </div>
+
+
+                
+
+
+                <div class="document-row">
+
+                    <div class="document-label">
+                        ข้อมูลเพิ่มเติม
+                    </div>
+
+                    <div
+                        class="document-value"
+                        id="resultAdditional"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- COPY -->
+
+        <div class="copy-area">
+
+            <h3>
+                ข้อความสำหรับนำไปใช้
+            </h3>
+
+            <p>
+                สามารถแก้ไขข้อความในช่องนี้ได้ก่อนคัดลอกหรือพิมพ์
+            </p>
+
+
+            <textarea
+                id="copyText"
+                spellcheck="false"
+            ></textarea>
+
+
+            <div class="actions">
+
+                <button
+                    type="button"
+                    class="action-btn primary-action"
+                    id="copyBtn"
+                >
+                    คัดลอกข้อความ
+                </button>
+
+
+                <button
+                    type="button"
+                    class="action-btn"
+                    id="editBtn"
+                >
+                    แก้ไขข้อความ
+                </button>
+
+
+                <button
+                    type="button"
+                    class="action-btn"
+                    id="printBtn"
+                >
+                    🖨️ ปริ้นใบสรุป
+                </button>
+
+
+                <button
+                    type="button"
+                    class="action-btn"
+                    id="clearBtn"
+                >
+                    ล้างข้อมูล
+                </button>
+
+
+                <button
+                    type="button"
+                    class="action-btn"
+                    disabled
+                >
+                    ส่งข้อมูลไปยังโรงพยาบาล
+                </button>
+
+            </div>
+
+
+            <div
+                class="action-message"
+                id="actionMessage"
+            ></div>
+
+
+            <div class="hospital-note">
+
+                ปุ่ม “ส่งข้อมูลไปยังโรงพยาบาล”
+                ยังไม่เปิดใช้งาน เนื่องจากต้องมีการเชื่อมต่อกับระบบของโรงพยาบาล
+                และกำหนดเรื่องการอนุญาตและความปลอดภัยของข้อมูลก่อน
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+/* =========================
+   GET VALUE
+========================= */
+
+function getValue(id) {
+
+    const element =
+        document.getElementById(id);
+
+    return element
+        ? element.value.trim()
+        : "";
+
+}
+
+
+function displayValue(value) {
+
+    return value || "ไม่ได้ระบุ";
+
+}
+
+
+function setResult(id, value) {
+
+    const element =
+        document.getElementById(id);
+
+    element.textContent =
+        displayValue(value);
+
+}
+
+
+/* =========================
+   CREATE SUMMARY
+========================= */
+
+document
+.getElementById("createHistory")
+.addEventListener("click", function () {
+
+
+    const name =
+        getValue("patientName");
+
+    const age =
+        getValue("patientAge");
+
+    const gender =
+        document.querySelector(
+            'input[name="gender"]:checked'
+        );
+
+
+    const reason =
+        getValue("reason");
+
+
+    const symptoms =
+        [
+            ...document.querySelectorAll(
+                'input[type="checkbox"]:not(.communication-option input):checked'
+            )
+        ];
+
+
+    const symptomValues = [];
+
+
+    document
+        .querySelectorAll(
+            '.history-card input[type="checkbox"]:checked'
+        )
+        .forEach(function(input) {
+
+            if (
+                !input.closest(
+                    ".communication-option"
+                )
+            ) {
+                symptomValues.push(
+                    input.value
+                );
+            }
+
+        });
+
+
+    const otherSymptoms =
+        getValue("otherSymptoms");
+
+
+    if (otherSymptoms) {
+        symptomValues.push(
+            otherSymptoms
+        );
+    }
+
+
+    const symptomText =
+        symptomValues.length
+            ? symptomValues.join(" , ")
+            : "";
+
+
+    const details =
+        getValue("symptomDetails");
+
+
+    const duration =
+        document.querySelector(
+            'input[name="duration"]:checked'
+        );
+
+
+    const allergy =
+        getValue("drugAllergy");
+
+
+    const disease =
+        getValue("disease");
+
+
+    const medicine =
+        getValue("medicine");
+
+
+    const pastHistory =
+        getValue("pastHistory");
+
+
+    const communication =
+        [
+            ...document.querySelectorAll(
+                ".communication-option input:checked"
+            )
+        ].map(function(input) {
+            return input.value;
+        });
+
+
+    const communicationText =
+        communication.length
+            ? communication.join(" , ")
+            : "";
+
+
+    const additional =
+        getValue("additional");
+
+
+    /* BASIC */
+
+    let basic = "";
+
+    if (name) {
+        basic += "ชื่อ: " + name;
+    }
+
+    if (age) {
+        basic +=
+            (basic ? "\n" : "") +
+            "อายุ: " + age + " ปี";
+    }
+
+    if (gender) {
+        basic +=
+            (basic ? "\n" : "") +
+            "เพศ: " + gender.value;
+    }
+
+
+    /* RESULT */
+
+    setResult(
+        "resultBasic",
+        basic
+    );
+
+    setResult(
+        "resultReason",
+        reason
+    );
+
+    setResult(
+        "resultSymptoms",
+        symptomText
+    );
+
+    setResult(
+        "resultDetails",
+        details
+    );
+
+    setResult(
+        "resultDuration",
+        duration
+            ? duration.value
+            : ""
+    );
+
+    setResult(
+        "resultAllergy",
+        allergy
+    );
+
+    setResult(
+        "resultDisease",
+        disease
+    );
+
+    setResult(
+        "resultMedicine",
+        medicine
+    );
+
+    setResult(
+        "resultPastHistory",
+        pastHistory
+    );
+
+    setResult(
+        "resultCommunication",
+        communicationText
+    );
+
+    setResult(
+        "resultAdditional",
+        additional
+    );
+
+
+    /* DATE */
+
+    const now =
+        new Date();
+
+    document.getElementById(
+        "createdDate"
+    ).textContent =
+        "สร้างเมื่อ " +
+        now.toLocaleDateString(
+            "th-TH",
+            {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }
+        );
+
+
+    /* HEARING DEVICE */
+    const dv = document.querySelector('input[name="device"]:checked');
+    const deviceText = dv ? dv.value : "";
+    setResult("resultDevice", deviceText);
+
+
+    /* COPY TEXT */
+
+    const copyText =
+
+`ข้อมูลสำหรับการพบแพทย์
+MOR KHAO JAI · หมอเข้าใจ
+
+วิธีการสื่อสารที่สะดวก
+${displayValue(communicationText)}
+
+อุปกรณ์ช่วยฟัง
+${displayValue(deviceText)}
+
+ข้อมูลพื้นฐาน
+${displayValue(basic)}
+
+เหตุผลที่มาพบแพทย์
+${displayValue(reason)}
+
+อาการ
+${displayValue(symptomText)}
+
+รายละเอียดอาการ
+${displayValue(details)}
+
+ระยะเวลาที่มีอาการ
+${duration ? duration.value : "ไม่ได้ระบุ"}
+
+ประวัติแพ้ยา
+${displayValue(allergy)}
+
+โรคประจำตัว
+${displayValue(disease)}
+
+ยาหรืออาหารเสริมที่ใช้
+${displayValue(medicine)}
+
+ประวัติการรักษาหรือผ่าตัด
+${displayValue(pastHistory)}
+
+ข้อมูลเพิ่มเติม
+${displayValue(additional)}`;
+
+
+    document.getElementById(
+        "copyText"
+    ).value =
+        copyText;
+
+
+    /* SHOW RESULT */
+
+    const resultSection =
+        document.getElementById(
+            "resultSection"
+        );
+
+    resultSection.classList.add(
+        "show"
+    );
+
+
+    resultSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
+
+
+/* =========================
+   COPY
+========================= */
+
+document
+.getElementById("copyBtn")
+.addEventListener("click", async function () {
+
+    const textarea =
+        document.getElementById(
+            "copyText"
+        );
+
+    const text =
+        textarea.value;
+
+
+    if (!text.trim()) {
+
+        showMessage(
+            "ยังไม่มีข้อความให้คัดลอก"
+        );
+
+        return;
+    }
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+        showMessage(
+            "คัดลอกข้อความเรียบร้อยแล้ว ✓"
+        );
+
+    } catch (error) {
+
+        textarea.focus();
+        textarea.select();
+
+        document.execCommand(
+            "copy"
+        );
+
+        showMessage(
+            "คัดลอกข้อความเรียบร้อยแล้ว ✓"
+        );
+
+    }
+
+});
+
+
+/* =========================
+   EDIT
+========================= */
+
+document
+.getElementById("editBtn")
+.addEventListener("click", function () {
+
+    const textarea =
+        document.getElementById(
+            "copyText"
+        );
+
+
+    textarea.focus();
+
+
+    showMessage(
+        "แก้ไขข้อความในช่องด้านบนได้เลย"
+    );
+
+});
+
+
+/* =========================
+   PRINT
+========================= */
+
+document
+.getElementById("printBtn")
+.addEventListener("click", function () {
+
+    const result =
+        document.getElementById(
+            "resultSection"
+        );
+
+
+    if (!result.classList.contains("show")) {
+
+        showMessage(
+            "กรุณาสร้างใบสรุปประวัติก่อนปริ้น"
+        );
+
+        return;
+    }
+
+
+    window.print();
+
+});
+
+
+/* =========================
+   CLEAR
+========================= */
+
+document
+.getElementById("clearBtn")
+.addEventListener("click", function () {
+
+    const confirmed =
+        confirm(
+            "ต้องการล้างข้อมูลทั้งหมดใช่ไหม?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    document
+    .querySelectorAll(
+        "input, textarea"
+    )
+    .forEach(function(element) {
+
+        if (
+            element.type === "checkbox" ||
+            element.type === "radio"
+        ) {
+
+            element.checked = false;
+
+        } else {
+
+            element.value = "";
+
+        }
+
+    });
+
+
+    document
+    .getElementById(
+        "resultSection"
+    )
+    .classList.remove(
+        "show"
+    );
+
+
+    showMessage(
+        "ล้างข้อมูลเรียบร้อยแล้ว"
+    );
+
+});
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(message) {
+
+    const element =
+        document.getElementById(
+            "actionMessage"
+        );
+
+
+    element.textContent =
+        message;
+
+
+    clearTimeout(
+        window.mkjMessageTimer
+    );
+
+
+    window.mkjMessageTimer =
+        setTimeout(function() {
+
+            element.textContent =
+                "";
+
+        }, 3000);
+
+}
+
+</script>
+
+<script src="mkj-emergency.js"></script>
+<script src="language.js"></script>
+
+<script src="mkj-navigation.js"></script>
+</body>
+</html>
