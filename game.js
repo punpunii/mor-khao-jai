@@ -5,39 +5,89 @@
 
 /* =========================================
    1. QUESTIONS
-   เปลี่ยน video เป็นไฟล์เดียวกับที่ใช้ในคลังศัพท์
+   ใช้เฉพาะคำศัพท์ภาษามือชุดปัจจุบัน
 ========================================= */
 
 const questions = [
 
     {
-        meaning: "ปวด",
-        answers: ["ปวด", "ไข้", "ไอ", "เวียนศีรษะ"],
-        video: "videos/pain.mp4"
+        meaning: "เจาะเลือด",
+
+        answers: [
+            "เจาะเลือด",
+            "X-ray",
+            "คลอดลูก",
+            "กินยาหลังอาหาร"
+        ],
+
+        video: "videos/blood-draw.mp4",
+
+        explanation:
+            "คำว่า “เจาะเลือด” ใช้เมื่อต้องเก็บตัวอย่างเลือดจากผู้ป่วยเพื่อส่งตรวจ"
     },
 
     {
-        meaning: "ไข้",
-        answers: ["คลื่นไส้", "ไข้", "เจ็บหน้าอก", "บวม"],
-        video: "videos/fever.mp4"
+        meaning: "หมอ",
+
+        answers: [
+            "หมอ",
+            "พยาบาล",
+            "สูติแพทย์",
+            "ล่ามภาษามือ"
+        ],
+
+        video: "videos/doctor.mp4",
+
+        explanation:
+            "คำว่า “หมอ” หมายถึงแพทย์หรือบุคลากรทางการแพทย์ที่ทำหน้าที่ตรวจและดูแลผู้ป่วย"
     },
 
     {
-        meaning: "ไอ",
-        answers: ["ไอ", "เลือดออก", "หายใจลำบาก", "แผล"],
-        video: "videos/cough.mp4"
+        meaning: "คลอดลูก",
+
+        answers: [
+            "ตั้งครรภ์",
+            "คลอดลูก",
+            "ปวดท้อง",
+            "ศัลยแพทย์"
+        ],
+
+        video: "videos/childbirth.mp4",
+
+        explanation:
+            "“คลอดลูก” หมายถึงการให้กำเนิดทารก ส่วน “ตั้งครรภ์” หมายถึงช่วงที่มีทารกอยู่ในครรภ์"
     },
 
     {
-        meaning: "เวียนศีรษะ",
-        answers: ["ปวดท้อง", "เวียนศีรษะ", "เจ็บคอ", "อาเจียน"],
-        video: "videos/dizziness.mp4"
+        meaning: "เป็นใบ้",
+
+        answers: [
+            "หูตึง",
+            "หูหนวกตาบอด",
+            "เป็นใบ้",
+            "ล่ามภาษามือ"
+        ],
+
+        video: "videos/mute.mp4",
+
+        explanation:
+            "คำว่า “เป็นใบ้” เป็นคำศัพท์ที่อยู่ในชุดภาษามือของโครงงานนี้ ใช้แยกจากคำว่า “หูตึง” และ “หูหนวกตาบอด”"
     },
 
     {
-        meaning: "โรงพยาบาล",
-        answers: ["โรงพยาบาล", "ยา", "ผ่าตัด", "ตรวจเลือด"],
-        video: "videos/hospital.mp4"
+        meaning: "ล่ามภาษามือ",
+
+        answers: [
+            "พยาบาล",
+            "ล่ามภาษามือ",
+            "จิตแพทย์",
+            "เจ้าหน้าที่/บุคลากร"
+        ],
+
+        video: "videos/sign-language-interpreter.mp4",
+
+        explanation:
+            "“ล่ามภาษามือ” คือผู้ที่ช่วยถ่ายทอดความหมายระหว่างภาษามือกับภาษาพูดหรือการสื่อสารรูปแบบอื่น"
     }
 
 ];
@@ -90,11 +140,16 @@ try {
         JSON.parse(localStorage.getItem("mkj-profile"));
 
     if (profile && profile.name) {
-        document.getElementById("player").value = profile.name;
+
+        document.getElementById("player").value =
+            profile.name;
+
     }
 
 } catch (error) {
+
     console.log("No profile found");
+
 }
 
 
@@ -114,25 +169,28 @@ function startGame() {
 
     error.textContent = "";
 
+
     if (!player) {
 
         error.textContent =
-            "กรุณาใส่ชื่อก่อนเริ่มเกมครับ";
+            "กรุณาใส่ชื่อก่อนเริ่มเกมค่ะ";
 
         input.focus();
 
         return;
     }
+
 
     if (bad.some(regex => regex.test(player))) {
 
         error.textContent =
-            "กรุณาใช้ชื่อที่สุภาพครับ";
+            "กรุณาใช้ชื่อที่สุภาพค่ะ";
 
         input.focus();
 
         return;
     }
+
 
     currentQuestion = 0;
     correct = 0;
@@ -141,13 +199,16 @@ function startGame() {
     startTime = Date.now();
     locked = false;
 
+
     document
         .getElementById("intro")
         .classList.add("hidden");
 
+
     document
         .getElementById("quiz")
         .classList.remove("hidden");
+
 
     showQuestion();
 
@@ -162,11 +223,13 @@ function showQuestion() {
 
     locked = false;
 
+
     const q =
         questions[currentQuestion];
 
     const number =
         currentQuestion + 1;
+
 
     /* Question number */
 
@@ -195,6 +258,7 @@ function showQuestion() {
     const placeholder =
         document.getElementById("videoPlaceholder");
 
+
     video.pause();
 
     video.removeAttribute("src");
@@ -202,19 +266,12 @@ function showQuestion() {
     video.load();
 
 
-    /*
-      ถ้ามีวิดีโอจริง
-      ระบบจะแสดง video player
-
-      ถ้ายังไม่มีไฟล์
-      จะแสดง placeholder แทน
-    */
-
     if (q.video && q.video.trim() !== "") {
 
         video.src = q.video;
 
         video.style.display = "block";
+
         placeholder.style.display = "none";
 
         video.load();
@@ -222,6 +279,7 @@ function showQuestion() {
     } else {
 
         video.style.display = "none";
+
         placeholder.style.display = "block";
 
     }
@@ -233,6 +291,7 @@ function showQuestion() {
         document.getElementById("answers");
 
     answers.innerHTML = "";
+
 
     const shuffled =
         [...q.answers]
@@ -252,10 +311,12 @@ function showQuestion() {
         button.textContent =
             answerText;
 
+
         button.addEventListener(
             "click",
             () => answer(answerText, button)
         );
+
 
         answers.appendChild(button);
 
@@ -280,43 +341,57 @@ function showQuestion() {
 
 /* =========================================
    7. ANSWER
+   ตอบผิด = ยังอยู่ข้อเดิม
+   ตอบถูก = ไปข้อถัดไป
 ========================================= */
 
 function answer(selected, clickedButton) {
 
     if (locked) return;
 
-    locked = true;
 
     const q =
         questions[currentQuestion];
+
 
     const buttons =
         document.querySelectorAll(".answer-btn");
 
 
-    /* Correct */
+    /* =====================================
+       CORRECT
+    ===================================== */
 
     if (selected === q.meaning) {
+
+        locked = true;
 
         correct++;
 
         streak++;
 
+
         if (streak > bestStreak) {
+
             bestStreak = streak;
+
         }
+
 
         clickedButton.classList.add("correct");
 
-        document
-            .getElementById("feedback")
-            .textContent =
-            "✓ ถูกต้อง! เก่งมากครับ";
 
-        document
-            .getElementById("feedback")
-            .classList.add("good");
+        const feedback =
+            document.getElementById("feedback");
+
+
+        feedback.textContent =
+            `✓ ถูกต้องค่ะ ${q.explanation}`;
+
+
+        feedback.classList.remove("bad");
+
+        feedback.classList.add("good");
 
 
         /* Highlight correct */
@@ -324,7 +399,9 @@ function answer(selected, clickedButton) {
         buttons.forEach(button => {
 
             if (button.textContent === q.meaning) {
+
                 button.classList.add("correct");
+
             }
 
             button.disabled = true;
@@ -334,60 +411,76 @@ function answer(selected, clickedButton) {
 
         updateStreak(true);
 
+
+        /*
+           ตอบถูกแล้วค่อยไปข้อถัดไป
+        */
+
+        setTimeout(() => {
+
+            currentQuestion++;
+
+
+            if (currentQuestion < questions.length) {
+
+                showQuestion();
+
+            } else {
+
+                finishGame();
+
+            }
+
+        }, 1400);
+
     }
 
 
-    /* Wrong */
+    /* =====================================
+       WRONG
+       ห้ามไปข้อถัดไป
+       ให้กดคำตอบใหม่ได้
+    ===================================== */
 
     else {
 
         streak = 0;
 
+
         clickedButton.classList.add("wrong");
 
-        document
-            .getElementById("feedback")
-            .textContent =
-            `ยังไม่ใช่ครับ คำตอบคือ "${q.meaning}"`;
 
-        document
-            .getElementById("feedback")
-            .classList.add("bad");
+        const feedback =
+            document.getElementById("feedback");
 
 
-        buttons.forEach(button => {
+        feedback.textContent =
+            `ยังไม่ใช่ค่ะ คำตอบนี้ไม่ตรงกับความหมายของคำศัพท์ ลองเลือกใหม่อีกครั้งนะคะ`;
 
-            if (button.textContent === q.meaning) {
-                button.classList.add("correct");
-            }
 
-            button.disabled = true;
+        feedback.classList.remove("good");
 
-        });
+        feedback.classList.add("bad");
+
+
+        /*
+           ปุ่มที่ตอบผิดกดซ้ำไม่ได้
+           แต่ปุ่มอื่นยังสามารถกดได้
+        */
+
+        clickedButton.disabled = true;
 
 
         updateStreak(false);
 
+
+        /*
+           ไม่เปลี่ยน currentQuestion
+           ไม่เรียก showQuestion()
+           ผู้เล่นจึงยังอยู่ข้อเดิม
+        */
+
     }
-
-
-    /* ไปข้อถัดไป */
-
-    setTimeout(() => {
-
-        currentQuestion++;
-
-        if (currentQuestion < questions.length) {
-
-            showQuestion();
-
-        } else {
-
-            finishGame();
-
-        }
-
-    }, 1100);
 
 }
 
@@ -401,15 +494,20 @@ function updateStreak(animate = false) {
     const element =
         document.getElementById("streak");
 
+
     element.textContent =
         `🔥 Streak ${streak}`;
+
 
     if (animate) {
 
         element.classList.add("hot");
 
+
         setTimeout(() => {
+
             element.classList.remove("hot");
+
         }, 400);
 
     }
@@ -435,6 +533,7 @@ function finishGame() {
     /* Save score */
 
     let scores = [];
+
 
     try {
 
@@ -492,22 +591,35 @@ function finishGame() {
 
 
     let resultIcon = "🌱";
-    let resultTitle = "เริ่มต้นได้ดีมากครับ";
 
-    if (correct === 5) {
+    let resultTitle =
+        "เริ่มต้นได้ดีมากค่ะ";
+
+
+    if (correct === questions.length) {
 
         resultIcon = "🏆";
-        resultTitle = "สุดยอด! ถูกทุกข้อเลย";
 
-    } else if (correct >= 4) {
+        resultTitle =
+            "สุดยอด! ถูกทุกข้อเลย";
+
+    }
+
+    else if (correct >= 4) {
 
         resultIcon = "✨";
-        resultTitle = "เก่งมาก! ใกล้เต็มแล้ว";
 
-    } else if (correct >= 3) {
+        resultTitle =
+            "เก่งมาก! ใกล้เต็มแล้ว";
+
+    }
+
+    else if (correct >= 3) {
 
         resultIcon = "🌟";
-        resultTitle = "ทำได้ดีครับ";
+
+        resultTitle =
+            "ทำได้ดีค่ะ";
 
     }
 
@@ -556,6 +668,7 @@ function finishGame() {
 
             </div>
 
+
             <div class="result-stat">
 
                 <strong>
@@ -570,6 +683,7 @@ function finishGame() {
 
         </div>
 
+
         <div class="result-buttons">
 
             <a
@@ -578,6 +692,7 @@ function finishGame() {
             >
                 🏆 ดูตารางจัดอันดับ
             </a>
+
 
             <button
                 type="button"
@@ -604,15 +719,24 @@ function restartGame() {
         .getElementById("result")
         .classList.add("hidden");
 
+
     document
         .getElementById("quiz")
         .classList.remove("hidden");
 
+
     currentQuestion = 0;
+
     correct = 0;
+
     streak = 0;
+
     bestStreak = 0;
+
     startTime = Date.now();
+
+    locked = false;
+
 
     showQuestion();
 
@@ -628,15 +752,23 @@ function fmt(seconds) {
     const minutes =
         Math.floor(seconds / 60);
 
+
     const secs =
         seconds % 60;
 
+
     return (
+
         String(minutes).padStart(2, "0")
+
         +
+
         ":"
+
         +
+
         String(secs).padStart(2, "0")
+
     );
 
 }
@@ -649,16 +781,23 @@ function fmt(seconds) {
 function escapeHtml(text) {
 
     return text.replace(
+
         /[&<>"']/g,
+
         character => ({
 
             "&": "&amp;",
+
             "<": "&lt;",
+
             ">": "&gt;",
+
             '"': "&quot;",
+
             "'": "&#039;"
 
         })[character]
+
     );
 
 }
