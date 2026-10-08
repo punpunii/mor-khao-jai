@@ -7,17 +7,28 @@
 <title>คลังคำศัพท์สุขภาพ | หมอเข้าใจ</title>
 
 <style>
+
 :root{
     --cream:#FFFDF7;
     --cream-2:#F8F4E9;
+
     --sage:#7FBDAA;
     --sage-dark:#5D9C88;
     --sage-soft:#E8F4EF;
+
     --text:#45534D;
     --muted:#89958F;
+
     --white:#FFFFFF;
-    --shadow:0 10px 30px rgba(70,90,80,.08);
+
+    --shadow:
+        0 10px 30px rgba(70,90,80,.08);
 }
+
+
+/* =========================
+   RESET
+========================= */
 
 *{
     box-sizing:border-box;
@@ -27,154 +38,307 @@ body{
     margin:0;
     background:var(--cream);
     color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
-    "Noto Sans Thai",sans-serif;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans Thai",
+        sans-serif;
 }
+
+
+/* =========================
+   BACK
+========================= */
 
 .back{
     display:inline-block;
-    margin:24px 28px 0;
+
+    margin:
+        24px
+        28px
+        0;
+
     color:var(--sage-dark);
+
     text-decoration:none;
+
     font-weight:700;
 }
 
+
+/* =========================
+   CONTAINER
+========================= */
+
 .container{
-    width:min(1100px,calc(100% - 36px));
+    width:min(
+        1100px,
+        calc(100% - 36px)
+    );
+
     margin:auto;
 }
 
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
     text-align:center;
-    padding:55px 20px 30px;
+
+    padding:
+        55px
+        20px
+        30px;
 }
 
 .hero h1{
     margin:0;
-    font-size:clamp(30px,5vw,46px);
+
+    font-size:
+        clamp(
+            30px,
+            5vw,
+            46px
+        );
+
     color:#55766B;
 }
 
 .hero p{
-    margin:12px auto 0;
+    margin:
+        12px
+        auto
+        0;
+
     max-width:650px;
+
     color:var(--muted);
+
     line-height:1.7;
 }
 
+
+/* =========================
+   SEARCH
+========================= */
+
 .search-box{
-    margin:20px auto 26px;
+    margin:
+        20px
+        auto
+        26px;
+
     max-width:650px;
 }
 
 .search-box input{
     width:100%;
+
     border:none;
     outline:none;
+
     background:#fff;
+
     border-radius:18px;
-    padding:17px 20px;
+
+    padding:
+        17px
+        20px;
+
     font-size:16px;
+
     color:var(--text);
+
     box-shadow:var(--shadow);
 }
 
+.search-box input::placeholder{
+    color:#A7B0AC;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
 .categories{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:9px;
+
     justify-content:center;
+
     margin-bottom:30px;
 }
 
 .category-btn{
     border:none;
+
     background:#fff;
+
     color:#688078;
-    padding:10px 16px;
+
+    padding:
+        10px
+        16px;
+
     border-radius:999px;
+
     cursor:pointer;
+
     font-weight:700;
-    box-shadow:0 5px 18px rgba(70,90,80,.06);
-    transition:.2s;
+
+    box-shadow:
+        0 5px 18px rgba(70,90,80,.06);
+
+    transition:
+        .2s ease;
 }
 
 .category-btn:hover{
-    transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 .category-btn.active{
     background:var(--sage);
+
     color:#fff;
 }
 
+
+/* =========================
+   VOCAB GRID
+========================= */
+
 .vocab-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:16px;
+
     padding-bottom:50px;
 }
 
 .vocab-card{
     border:none;
+
     background:#fff;
+
     border-radius:22px;
-    padding:22px 18px;
+
+    padding:
+        22px
+        18px;
+
     min-height:145px;
+
     text-align:left;
+
     cursor:pointer;
+
     box-shadow:var(--shadow);
-    transition:.22s ease;
+
+    transition:
+        .22s ease;
 }
 
 .vocab-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 35px rgba(70,90,80,.13);
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(70,90,80,.13);
 }
 
 .vocab-icon{
     width:45px;
     height:45px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     border-radius:14px;
+
     background:var(--sage-soft);
+
     color:var(--sage-dark);
+
     font-size:23px;
+
     margin-bottom:15px;
 }
 
 .vocab-card h3{
-    margin:0 0 6px;
+    margin:
+        0
+        0
+        6px;
+
     font-size:17px;
+
     color:#4E625A;
 }
 
 .vocab-card p{
     margin:0;
+
     font-size:13px;
+
     color:var(--muted);
 }
 
 .empty{
     grid-column:1/-1;
+
     text-align:center;
-    padding:60px 20px;
+
+    padding:
+        60px
+        20px;
+
     color:var(--muted);
 }
 
-/* MODAL */
+
+/* =========================
+   MODAL
+========================= */
 
 .modal{
     position:fixed;
+
     inset:0;
-    background:rgba(49,64,58,.38);
-    backdrop-filter:blur(8px);
+
+    background:
+        rgba(
+            49,
+            64,
+            58,
+            .38
+        );
+
+    backdrop-filter:
+        blur(8px);
+
     display:none;
+
     align-items:center;
     justify-content:center;
+
     padding:20px;
+
     z-index:99999;
 }
 
@@ -183,53 +347,98 @@ body{
 }
 
 .modal-box{
-    width:min(760px,100%);
+    width:min(
+        760px,
+        100%
+    );
+
     max-height:92vh;
+
     overflow:auto;
+
     background:#fff;
+
     border-radius:26px;
-    box-shadow:0 25px 70px rgba(30,50,42,.2);
-    animation:modalIn .2s ease;
+
+    box-shadow:
+        0 25px 70px
+        rgba(30,50,42,.2);
+
+    animation:
+        modalIn .2s ease;
 }
 
 @keyframes modalIn{
+
     from{
         opacity:0;
-        transform:scale(.96) translateY(10px);
+
+        transform:
+            scale(.96)
+            translateY(10px);
     }
+
     to{
         opacity:1;
-        transform:scale(1) translateY(0);
+
+        transform:
+            scale(1)
+            translateY(0);
     }
+
 }
+
+
+/* =========================
+   MAC BAR
+========================= */
 
 .modal-bar{
     height:45px;
+
     display:flex;
+
     align-items:center;
-    padding:0 16px;
-    border-bottom:1px solid #eee;
+
+    padding:
+        0
+        16px;
+
+    border-bottom:
+        1px solid #eee;
 }
 
 .mac-dots{
     display:flex;
+
     gap:7px;
 }
 
 .mac-dots span{
     width:11px;
     height:11px;
+
     border-radius:50%;
+
     background:#ddd;
 }
 
 .modal-title{
     flex:1;
+
     text-align:center;
+
     font-size:13px;
+
     color:#8A9690;
+
     margin-right:45px;
 }
+
+
+/* =========================
+   MODAL CONTENT
+========================= */
 
 .modal-content{
     padding:28px;
@@ -237,128 +446,231 @@ body{
 
 .modal-content h2{
     margin:0;
+
     color:#55766B;
 }
 
 .english{
     color:var(--muted);
+
     margin-top:6px;
 }
 
 .category-label{
     display:inline-block;
+
     margin-top:12px;
-    padding:6px 11px;
-    background:var(--sage-soft);
-    color:var(--sage-dark);
+
+    padding:
+        6px
+        11px;
+
+    background:
+        var(--sage-soft);
+
+    color:
+        var(--sage-dark);
+
     border-radius:999px;
+
     font-size:12px;
+
     font-weight:700;
 }
 
-/* VIDEO */
+
+/* =========================
+   VIDEO
+========================= */
 
 .sign-area{
     margin-top:22px;
-    background:#F5F1E8;
+
+    background:
+        #F5F1E8;
+
     border-radius:20px;
+
     overflow:hidden;
 }
 
 .video-wrap{
     width:100%;
+
     aspect-ratio:16/9;
+
     position:relative;
+
     background:#EDE8DC;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
 }
 
+
+/*
+    ใช้ native controls ของ browser
+    เพื่อให้ Safari แสดงปุ่มแบบเดียวกับภาพ
+*/
+
 #signVideo{
     width:100%;
     height:100%;
+
     object-fit:contain;
-    background:#F3EFE5;
+
+    background:#222;
+
     display:none;
 }
+
+
+/* =========================
+   VIDEO PLACEHOLDER
+========================= */
 
 #videoPlaceholder{
     text-align:center;
+
     color:#929D97;
+
     padding:30px;
 }
 
+
+/* =========================
+   CUSTOM VIDEO BUTTONS
+   0.5x + LOOP
+========================= */
+
 .video-controls{
     display:none;
+
     gap:10px;
+
     flex-wrap:wrap;
+
     margin-top:12px;
 }
 
 .video-controls button{
     border:none;
-    background:#E8F4EF;
+
+    background:
+        #E8F4EF;
+
     color:#527C6D;
-    padding:10px 15px;
+
+    padding:
+        10px
+        15px;
+
     border-radius:999px;
+
     cursor:pointer;
+
     font-weight:700;
+
+    transition:.2s ease;
+}
+
+.video-controls button:hover{
+    transform:
+        translateY(-2px);
 }
 
 .video-controls button.active{
-    background:var(--sage);
+    background:
+        var(--sage);
+
     color:white;
 }
 
-.tip{
-    margin-top:18px;
-    padding:15px 17px;
-    background:#FFF8E9;
-    border-radius:15px;
-    color:#7F7561;
-    line-height:1.6;
-    font-size:14px;
-}
+
+/* =========================
+   CLOSE
+========================= */
 
 .close-btn{
     width:100%;
+
     margin-top:20px;
+
     border:none;
-    background:var(--sage);
+
+    background:
+        var(--sage);
+
     color:#fff;
+
     padding:13px;
+
     border-radius:15px;
+
     font-size:15px;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
+.close-btn:hover{
+    background:
+        var(--sage-dark);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
     text-align:center;
-    padding:10px 20px 40px;
+
+    padding:
+        10px
+        20px
+        40px;
+
     color:#9AA49F;
+
     font-size:13px;
+
     line-height:1.7;
 }
 
-/* MOBILE */
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:850px){
+
     .vocab-grid{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:
+            repeat(3,1fr);
     }
+
 }
 
+
 @media(max-width:650px){
+
     .vocab-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
+
         gap:12px;
     }
 
     .vocab-card{
         min-height:135px;
-        padding:17px 15px;
+
+        padding:
+            17px
+            15px;
     }
 
     .modal-content{
@@ -368,130 +680,251 @@ footer{
     .hero{
         padding-top:40px;
     }
+
 }
 
+
 @media(max-width:420px){
+
     .vocab-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .category-btn{
         font-size:13px;
-        padding:9px 12px;
+
+        padding:
+            9px
+            12px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<a href="javascript:history.back()" class="back">← กลับ</a>
+
+<!-- =========================
+     BACK
+========================= -->
+
+<a
+    href="javascript:history.back()"
+    class="back"
+>
+    ← กลับ
+</a>
+
 
 <div class="container">
 
-    <section class="hero">
-        <h1>คลังคำศัพท์สุขภาพ</h1>
-        <p>
-            เรียนรู้คำศัพท์และประโยคเกี่ยวกับสุขภาพผ่านภาษามือไทย 
-            เพื่อช่วยให้การสื่อสารในโรงพยาบาลชัดเจนขึ้น
-        </p>
 
-        <div class="search-box">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="ค้นหาคำศัพท์ เช่น ปวดหัว หมอ ยา..."
-            >
-        </div>
+<!-- =========================
+     HERO
+========================= -->
 
-        <div class="categories">
+<section class="hero">
 
-            <button class="category-btn active" data-category="all">
-                ทั้งหมด
-            </button>
+    <h1>
+        คลังคำศัพท์สุขภาพ
+    </h1>
 
-            <button class="category-btn" data-category="symptom">
-                อาการและความรู้สึก
-            </button>
+    <p>
+        เรียนรู้คำศัพท์และประโยคเกี่ยวกับสุขภาพ
+        ผ่านภาษามือไทย เพื่อช่วยให้การสื่อสาร
+        ในโรงพยาบาลชัดเจนขึ้น
+    </p>
 
-            <button class="category-btn" data-category="symptomQuestion">
-                คำถามเกี่ยวกับอาการ
-            </button>
 
-            <button class="category-btn" data-category="pregnancy">
-                การตั้งครรภ์และการคลอด
-            </button>
+    <div class="search-box">
 
-            <button class="category-btn" data-category="hearing">
-                การได้ยินและการสื่อสาร
-            </button>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="ค้นหาคำศัพท์ เช่น ปวดหัว หมอ ยา..."
+        >
 
-            <button class="category-btn" data-category="test">
-                การตรวจ
-            </button>
+    </div>
 
-            <button class="category-btn" data-category="medicine">
-                การใช้ยา
-            </button>
 
-            <button class="category-btn" data-category="appointment">
-                การนัดหมาย
-            </button>
+    <div class="categories">
 
-            <button class="category-btn" data-category="staff">
-                บุคลากรทางการแพทย์
-            </button>
+        <button
+            class="category-btn active"
+            data-category="all"
+        >
+            ทั้งหมด
+        </button>
 
-            <button class="category-btn" data-category="hospitalStaff">
-                บุคคลอื่นในโรงพยาบาล
-            </button>
+        <button
+            class="category-btn"
+            data-category="symptom"
+        >
+            อาการและความรู้สึก
+        </button>
 
-        </div>
-    </section>
+        <button
+            class="category-btn"
+            data-category="symptomQuestion"
+        >
+            คำถามเกี่ยวกับอาการ
+        </button>
 
-    <main id="vocabGrid" class="vocab-grid"></main>
+        <button
+            class="category-btn"
+            data-category="pregnancy"
+        >
+            การตั้งครรภ์และการคลอด
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="hearing"
+        >
+            การได้ยินและการสื่อสาร
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="test"
+        >
+            การตรวจ
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="medicine"
+        >
+            การใช้ยา
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="appointment"
+        >
+            การนัดหมาย
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="staff"
+        >
+            บุคลากรทางการแพทย์
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="hospitalStaff"
+        >
+            บุคคลอื่นในโรงพยาบาล
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VOCABULARY
+========================= -->
+
+<main
+    id="vocabGrid"
+    class="vocab-grid"
+></main>
+
 
 </div>
 
+
 <footer>
-    วิดีโอภาษามือควรผ่านการตรวจสอบจากผู้ใช้ภาษามือไทยจริง
+
+    วิดีโอภาษามือควรผ่านการตรวจสอบ
+    จากผู้ใช้ภาษามือไทยจริง
     เพื่อให้การนำเสนอมีความเหมาะสมและถูกต้อง
+
 </footer>
 
 
-<!-- MODAL -->
 
-<div class="modal" id="modal">
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="modal"
+>
 
     <div class="modal-box">
 
+
+        <!-- MAC BAR -->
+
         <div class="modal-bar">
+
             <div class="mac-dots">
+
                 <span></span>
                 <span></span>
                 <span></span>
+
             </div>
 
-            <div class="modal-title" id="modalMacTitle">
+            <div
+                class="modal-title"
+                id="modalMacTitle"
+            >
                 หมอเข้าใจ
             </div>
+
         </div>
+
+
 
         <div class="modal-content">
 
-            <h2 id="modalTitle">คำศัพท์</h2>
 
-            <div class="english" id="modalEnglish">
+            <h2 id="modalTitle">
+                คำศัพท์
+            </h2>
+
+
+            <div
+                class="english"
+                id="modalEnglish"
+            >
                 English
             </div>
 
-            <div class="category-label" id="modalCategory">
+
+            <div
+                class="category-label"
+                id="modalCategory"
+            >
                 หมวดหมู่
             </div>
+
+
+
+            <!-- =========================
+                 VIDEO
+            ========================= -->
 
             <div class="sign-area">
 
                 <div class="video-wrap">
+
+
+                    <!--
+                        สำคัญ:
+                        controls = ใช้ปุ่ม native ของ Safari
+                        ตามภาพที่ส่งมา
+                    -->
 
                     <video
                         id="signVideo"
@@ -500,16 +933,41 @@ footer{
                         preload="metadata"
                     ></video>
 
-                    <div id="videoPlaceholder">
-                        <div style="font-size:36px;margin-bottom:10px;">🎥</div>
-                        <div>ยังไม่มีวิดีโอสำหรับคำนี้</div>
+
+                    <div
+                        id="videoPlaceholder"
+                    >
+
+                        <div
+                            style="
+                                font-size:36px;
+                                margin-bottom:10px;
+                            "
+                        >
+                            🎥
+                        </div>
+
+                        <div>
+                            กำลังเตรียมวิดีโอ...
+                        </div>
+
                     </div>
+
 
                 </div>
 
             </div>
 
-            <div class="video-controls" id="videoControls">
+
+
+            <!-- =========================
+                 CUSTOM CONTROLS
+            ========================= -->
+
+            <div
+                class="video-controls"
+                id="videoControls"
+            >
 
                 <button
                     type="button"
@@ -517,6 +975,7 @@ footer{
                 >
                     🐢 เล่นช้า 0.5×
                 </button>
+
 
                 <button
                     type="button"
@@ -527,10 +986,7 @@ footer{
 
             </div>
 
-            <div class="tip">
-                คลิปแต่ละคำมีความยาวประมาณ 10–15 วินาที
-                สามารถเปิดดูซ้ำและปรับความเร็วเป็น 0.5× ได้
-            </div>
+
 
             <button
                 type="button"
@@ -540,6 +996,7 @@ footer{
                 ปิด
             </button>
 
+
         </div>
 
     </div>
@@ -547,9 +1004,16 @@ footer{
 </div>
 
 
+
 <script>
 
+
+/* =========================================================
+   VOCABULARY DATA
+========================================================= */
+
 const vocabulary = [
+
 
     {
         th:"ปวดท้อง",
@@ -557,126 +1021,147 @@ const vocabulary = [
         category:"symptom",
         icon:"◌"
     },
+
     {
         th:"ท้องเสีย",
         en:"Diarrhea",
         category:"symptom",
         icon:"⌁"
     },
+
     {
         th:"คลื่นไส้",
         en:"Nausea",
         category:"symptom",
         icon:"⌁"
     },
+
     {
         th:"อาเจียนไหม",
         en:"Are you vomiting?",
         category:"symptomQuestion",
         icon:"⌁"
     },
+
     {
         th:"กินข้าวได้ไหม",
         en:"Can you eat?",
         category:"symptomQuestion",
         icon:"○"
     },
+
     {
         th:"เจ็บ",
         en:"Pain / Hurt",
         category:"symptom",
         icon:"♡"
     },
+
     {
         th:"ปวด",
         en:"Pain",
         category:"symptom",
         icon:"♡"
     },
+
     {
         th:"เจ็บหน้าอกไหม",
         en:"Do you have chest pain?",
         category:"symptomQuestion",
         icon:"♡"
     },
+
     {
         th:"ปวดแขนไหม",
         en:"Does your arm hurt?",
         category:"symptomQuestion",
         icon:"○"
     },
+
     {
         th:"ปวดหัวไหม",
         en:"Do you have a headache?",
         category:"symptomQuestion",
         icon:"◌"
     },
+
     {
         th:"ไม่สบายนานรึยัง",
         en:"How long have you been unwell?",
         category:"symptomQuestion",
         icon:"○"
     },
+
     {
         th:"มีไข้สูงไหม",
         en:"Do you have a high fever?",
         category:"symptomQuestion",
         icon:"°"
     },
+
     {
         th:"มีน้ำมูกไหม",
         en:"Do you have a runny nose?",
         category:"symptomQuestion",
         icon:"⌁"
     },
+
     {
         th:"เจ็บคอไหม",
         en:"Do you have a sore throat?",
         category:"symptomQuestion",
         icon:"◌"
     },
+
     {
         th:"ป่วยเป็นอะไร",
         en:"What are you sick with?",
         category:"symptomQuestion",
         icon:"?"
     },
+
     {
         th:"ไม่สบาย",
         en:"Feel unwell",
         category:"symptom",
         icon:"○"
     },
+
     {
         th:"น้ำหนักลดไหม",
         en:"Have you lost weight?",
         category:"symptomQuestion",
         icon:"↓"
     },
+
     {
         th:"น้ำหนักเพิ่มไหม",
         en:"Have you gained weight?",
         category:"symptomQuestion",
         icon:"↑"
     },
+
     {
         th:"ที่ไม่สบายหายรึยัง",
         en:"Have you recovered?",
         category:"symptomQuestion",
         icon:"✓"
     },
+
     {
         th:"นิดหน่อย",
         en:"A little",
         category:"symptom",
         icon:"·"
     },
+
     {
         th:"มาก",
         en:"A lot / Severe",
         category:"symptom",
         icon:"＋"
     },
+
     {
         th:"ดีขึ้นไหม",
         en:"Are you feeling better?",
@@ -690,6 +1175,7 @@ const vocabulary = [
         category:"pregnancy",
         icon:"○"
     },
+
     {
         th:"คลอดลูก",
         en:"Childbirth",
@@ -703,18 +1189,21 @@ const vocabulary = [
         category:"hearing",
         icon:"◌"
     },
+
     {
         th:"หูหนวกตาบอด",
         en:"Deafblind",
         category:"hearing",
         icon:"◌"
     },
+
     {
         th:"เป็นใบ้",
         en:"Non-speaking",
         category:"hearing",
         icon:"◌"
     },
+
     {
         th:"ล่ามภาษามือ",
         en:"Sign language interpreter",
@@ -728,18 +1217,21 @@ const vocabulary = [
         category:"test",
         icon:"＋"
     },
+
     {
         th:"เลือด",
         en:"Blood",
         category:"test",
         icon:"＋"
     },
+
     {
         th:"X-ray",
         en:"X-ray",
         category:"test",
         icon:"＋"
     },
+
     {
         th:"CT-scan",
         en:"CT scan",
@@ -753,18 +1245,21 @@ const vocabulary = [
         category:"medicine",
         icon:"＋"
     },
+
     {
         th:"กินยาก่อนอาหาร",
         en:"Take medicine before meals",
         category:"medicine",
         icon:"＋"
     },
+
     {
         th:"เช้าเที่ยงเย็น",
         en:"Morning, noon, and evening",
         category:"medicine",
         icon:"☀"
     },
+
     {
         th:"ก่อนนอน",
         en:"Before bed",
@@ -785,66 +1280,77 @@ const vocabulary = [
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"สูติแพทย์",
         en:"Obstetrician",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"นักกายภาพบำบัด",
         en:"Physical therapist",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"พยาบาล",
         en:"Nurse",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"จิตแพทย์",
         en:"Psychiatrist",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"ทันตแพทย์",
         en:"Dentist",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"แพทย์หูคอจมูก",
         en:"ENT doctor / Otolaryngologist",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"จักษุแพทย์",
         en:"Ophthalmologist",
         category:"staff",
         icon:"◉"
     },
+
     {
         th:"อายุรแพทย์",
         en:"Internist",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"กุมารแพทย์",
         en:"Pediatrician",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"ศัลยแพทย์",
         en:"Surgeon",
         category:"staff",
         icon:"＋"
     },
+
     {
         th:"เจ้าหน้าที่/บุคลากร",
         en:"Staff / Healthcare personnel",
@@ -858,12 +1364,14 @@ const vocabulary = [
         category:"hospitalStaff",
         icon:"□"
     },
+
     {
         th:"ยาม",
         en:"Security guard",
         category:"hospitalStaff",
         icon:"＋"
     },
+
     {
         th:"ญาติผู้ป่วย",
         en:"Patient's family member",
@@ -873,95 +1381,197 @@ const vocabulary = [
 
 ];
 
+
+
+/* =========================================================
+   CATEGORY NAMES
+========================================================= */
+
 const categoryNames = {
-    symptom:"อาการและความรู้สึก",
-    symptomQuestion:"คำถามเกี่ยวกับอาการ",
-    pregnancy:"การตั้งครรภ์และการคลอด",
-    hearing:"การได้ยินและการสื่อสาร",
-    test:"การตรวจ",
-    medicine:"การใช้ยา",
-    appointment:"การนัดหมาย",
-    staff:"บุคลากรทางการแพทย์",
-    hospitalStaff:"บุคคลอื่นในโรงพยาบาล"
+
+    symptom:
+        "อาการและความรู้สึก",
+
+    symptomQuestion:
+        "คำถามเกี่ยวกับอาการ",
+
+    pregnancy:
+        "การตั้งครรภ์และการคลอด",
+
+    hearing:
+        "การได้ยินและการสื่อสาร",
+
+    test:
+        "การตรวจ",
+
+    medicine:
+        "การใช้ยา",
+
+    appointment:
+        "การนัดหมาย",
+
+    staff:
+        "บุคลากรทางการแพทย์",
+
+    hospitalStaff:
+        "บุคคลอื่นในโรงพยาบาล"
+
 };
 
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
 let currentCategory = "all";
+
 let searchText = "";
 
-const grid = document.getElementById("vocabGrid");
-const searchInput = document.getElementById("searchInput");
-
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modalTitle");
-const modalEnglish = document.getElementById("modalEnglish");
-const modalCategory = document.getElementById("modalCategory");
-const modalMacTitle = document.getElementById("modalMacTitle");
-
-const signVideo = document.getElementById("signVideo");
-const videoPlaceholder = document.getElementById("videoPlaceholder");
-const videoControls = document.getElementById("videoControls");
-
-const slowBtn = document.getElementById("slowBtn");
-const loopBtn = document.getElementById("loopBtn");
-
 let slowMode = true;
+
 let loopMode = false;
 
 
-/*
-==================================================
-สร้างชื่อไฟล์วิดีโออัตโนมัติ
-==================================================
 
-เช่น
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-ปวด
-→ videos/ปวด.mov
+const grid =
+    document.getElementById(
+        "vocabGrid"
+    );
 
-ปวดท้อง
-→ videos/ปวดท้อง.mov
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
 
-เจ้าหน้าที่/บุคลากร
-→ videos/เจ้าหน้าที่-บุคลากร.mov
+const modal =
+    document.getElementById(
+        "modal"
+    );
 
-*/
+const modalTitle =
+    document.getElementById(
+        "modalTitle"
+    );
+
+const modalEnglish =
+    document.getElementById(
+        "modalEnglish"
+    );
+
+const modalCategory =
+    document.getElementById(
+        "modalCategory"
+    );
+
+const modalMacTitle =
+    document.getElementById(
+        "modalMacTitle"
+    );
+
+const signVideo =
+    document.getElementById(
+        "signVideo"
+    );
+
+const videoPlaceholder =
+    document.getElementById(
+        "videoPlaceholder"
+    );
+
+const videoControls =
+    document.getElementById(
+        "videoControls"
+    );
+
+const slowBtn =
+    document.getElementById(
+        "slowBtn"
+    );
+
+const loopBtn =
+    document.getElementById(
+        "loopBtn"
+    );
+
+
+
+/* =========================================================
+   MP4 FILE PATH
+========================================================= */
 
 function getVideoFile(item){
 
-    let fileName = item.th
-        .replaceAll("/", "-")
-        .replaceAll("\\", "-")
-        .trim();
+    let fileName =
+        item.th
+            .replaceAll(
+                "/",
+                "-"
+            )
+            .replaceAll(
+                "\\",
+                "-"
+            )
+            .trim();
 
-    return "videos/" + encodeURIComponent(fileName) + ".mp4";
+    return (
+        "videos/" +
+        encodeURIComponent(
+            fileName
+        ) +
+        ".mp4"
+    );
+
 }
 
 
-/*
-==================================================
-RENDER
-==================================================
-*/
+
+/* =========================================================
+   RENDER
+========================================================= */
 
 function render(){
 
-    const filtered = vocabulary.filter(item => {
+    const filtered =
+        vocabulary.filter(
+            item => {
 
-        const categoryMatch =
-            currentCategory === "all" ||
-            item.category === currentCategory;
+                const categoryMatch =
+                    currentCategory === "all" ||
+                    item.category === currentCategory;
 
-        const searchMatch =
-            item.th.toLowerCase().includes(searchText) ||
-            item.en.toLowerCase().includes(searchText);
+                const searchMatch =
+                    item.th
+                        .toLowerCase()
+                        .includes(
+                            searchText
+                        ) ||
 
-        return categoryMatch && searchMatch;
+                    item.en
+                        .toLowerCase()
+                        .includes(
+                            searchText
+                        );
 
-    });
+                return (
+                    categoryMatch &&
+                    searchMatch
+                );
+
+            }
+        );
+
 
     grid.innerHTML = "";
 
-    if(filtered.length === 0){
+
+    if(
+        !filtered.length
+    ){
 
         grid.innerHTML = `
             <div class="empty">
@@ -972,290 +1582,464 @@ function render(){
         return;
     }
 
-    filtered.forEach(item => {
 
-        const card = document.createElement("button");
+    filtered.forEach(
+        item => {
 
-        card.className = "vocab-card";
+            const card =
+                document.createElement(
+                    "button"
+                );
 
-        card.innerHTML = `
-            <div class="vocab-icon">${item.icon}</div>
+            card.className =
+                "vocab-card";
 
-            <h3>${item.th}</h3>
 
-            <p>${item.en}</p>
-        `;
+            card.innerHTML = `
 
-        card.addEventListener("click", () => {
-            openModal(item);
-        });
+                <div class="vocab-icon">
+                    ${item.icon}
+                </div>
 
-        grid.appendChild(card);
+                <h3>
+                    ${item.th}
+                </h3>
 
-    });
+                <p>
+                    ${item.en}
+                </p>
+
+            `;
+
+
+            card.addEventListener(
+                "click",
+                () => openModal(item)
+            );
+
+
+            grid.appendChild(card);
+
+        }
+    );
 
 }
 
 
-/*
-==================================================
-OPEN MODAL
-==================================================
-*/
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
 
 function openModal(item){
 
-    modalTitle.textContent = item.th;
+    modalTitle.textContent =
+        item.th;
 
-    modalEnglish.textContent = item.en;
+    modalEnglish.textContent =
+        item.en;
 
-    modalMacTitle.textContent = item.th;
+    modalMacTitle.textContent =
+        item.th;
 
     modalCategory.textContent =
-        categoryNames[item.category] || "คำศัพท์สุขภาพ";
+        categoryNames[
+            item.category
+        ] ||
+        "คำศัพท์สุขภาพ";
 
-    modal.classList.add("show");
 
-    document.body.style.overflow = "hidden";
+    modal.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
 
     showVideo(item);
 
 }
 
 
-/*
-==================================================
-LOAD VIDEO
-==================================================
-*/
+
+/* =========================================================
+   SHOW VIDEO
+========================================================= */
 
 function showVideo(item){
 
-    const videoPath = getVideoFile(item);
+    const videoPath =
+        getVideoFile(item);
+
 
     signVideo.pause();
 
-    signVideo.removeAttribute("src");
+    signVideo.removeAttribute(
+        "src"
+    );
 
     signVideo.load();
 
-    signVideo.loop = loopMode;
 
-    signVideo.playbackRate = slowMode ? 0.5 : 1;
+    signVideo.loop =
+        loopMode;
 
-    videoPlaceholder.style.display = "none";
+    signVideo.playbackRate =
+        slowMode
+            ? 0.5
+            : 1;
 
-    videoControls.style.display = "flex";
 
-    signVideo.style.display = "block";
+    videoPlaceholder.style.display =
+        "none";
 
-    signVideo.src = videoPath;
+    videoControls.style.display =
+        "flex";
+
+    signVideo.style.display =
+        "block";
+
+
+    /*
+        สำคัญ:
+        ใช้ src ตรง ๆ เพื่อให้ Safari
+        ใช้ native video controls
+        แบบในภาพ
+    */
+
+    signVideo.src =
+        videoPath;
 
     signVideo.load();
 
-    signVideo.onloadeddata = () => {
 
-        signVideo.playbackRate =
-            slowMode ? 0.5 : 1;
+    signVideo.onloadeddata =
+        () => {
 
-        signVideo.loop = loopMode;
+            signVideo.playbackRate =
+                slowMode
+                    ? 0.5
+                    : 1;
 
-        signVideo.play().catch(() => {});
+            signVideo.loop =
+                loopMode;
 
-    };
 
-    signVideo.onerror = () => {
+            /*
+                เล่นอัตโนมัติ
+            */
 
-        signVideo.pause();
+            signVideo
+                .play()
+                .catch(
+                    () => {}
+                );
 
-        signVideo.style.display = "none";
+        };
 
-        videoControls.style.display = "none";
 
-        videoPlaceholder.style.display = "block";
+    signVideo.onerror =
+        () => {
 
-        videoPlaceholder.innerHTML = `
-            <div style="font-size:36px;margin-bottom:10px;">
-                🎥
-            </div>
+            signVideo.pause();
 
-            <div>
-                ยังไม่มีวิดีโอสำหรับคำว่า
-                <strong>${item.th}</strong>
-            </div>
+            signVideo.style.display =
+                "none";
 
-            <div style="
-                margin-top:8px;
-                font-size:12px;
-                color:#A0AAA5;
-            ">
-                ต้องใช้ไฟล์
-                <strong>${item.th.replaceAll("/","-")}.mov</strong>
-                ในโฟลเดอร์ videos
-            </div>
-        `;
+            videoControls.style.display =
+                "none";
 
-    };
+            videoPlaceholder.style.display =
+                "block";
+
+
+            videoPlaceholder.innerHTML = `
+
+                <div
+                    style="
+                        font-size:36px;
+                        margin-bottom:10px;
+                    "
+                >
+                    🎥
+                </div>
+
+                <div>
+                    ยังไม่มีวิดีโอสำหรับคำว่า
+                    <strong>
+                        ${item.th}
+                    </strong>
+                </div>
+
+                <div
+                    style="
+                        margin-top:8px;
+                        font-size:12px;
+                        color:#A0AAA5;
+                    "
+                >
+                    ต้องใช้ไฟล์
+                    <strong>
+                        ${item.th
+                            .replaceAll(
+                                "/",
+                                "-"
+                            )}.mp4
+                    </strong>
+
+                    ในโฟลเดอร์
+                    <strong>
+                        videos
+                    </strong>
+                </div>
+
+            `;
+
+        };
 
 }
 
 
-/*
-==================================================
-SLOW 0.5×
-==================================================
-*/
 
-slowBtn.addEventListener("click", () => {
+/* =========================================================
+   SLOW 0.5X
+========================================================= */
 
-    slowMode = !slowMode;
+slowBtn.addEventListener(
+    "click",
+    () => {
 
-    signVideo.playbackRate =
-        slowMode ? 0.5 : 1;
-
-    slowBtn.classList.toggle(
-        "active",
-        slowMode
-    );
-
-    slowBtn.textContent =
-        slowMode
-            ? "🐢 เล่นช้า 0.5×"
-            : "▶ เล่นปกติ 1×";
-
-});
+        slowMode =
+            !slowMode;
 
 
-/*
-==================================================
-LOOP
-==================================================
-*/
-
-loopBtn.addEventListener("click", () => {
-
-    loopMode = !loopMode;
-
-    signVideo.loop = loopMode;
-
-    loopBtn.classList.toggle(
-        "active",
-        loopMode
-    );
-
-    loopBtn.textContent =
-        loopMode
-            ? "🔁 เล่นซ้ำ: เปิด"
-            : "🔁 เล่นซ้ำ";
-
-});
+        signVideo.playbackRate =
+            slowMode
+                ? 0.5
+                : 1;
 
 
-/*
-==================================================
-CLOSE MODAL
-==================================================
-*/
+        slowBtn.classList.toggle(
+            "active",
+            slowMode
+        );
+
+
+        slowBtn.textContent =
+            slowMode
+                ? "🐢 เล่นช้า 0.5×"
+                : "▶ เล่นปกติ 1×";
+
+    }
+);
+
+
+
+/* =========================================================
+   LOOP
+========================================================= */
+
+loopBtn.addEventListener(
+    "click",
+    () => {
+
+        loopMode =
+            !loopMode;
+
+
+        signVideo.loop =
+            loopMode;
+
+
+        loopBtn.classList.toggle(
+            "active",
+            loopMode
+        );
+
+
+        loopBtn.textContent =
+            loopMode
+                ? "🔁 เล่นซ้ำ: เปิด"
+                : "🔁 เล่นซ้ำ";
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
 function closeModal(){
 
-    modal.classList.remove("show");
+    modal.classList.remove(
+        "show"
+    );
 
-    document.body.style.overflow = "";
+
+    document.body.style.overflow =
+        "";
+
 
     signVideo.pause();
 
-    signVideo.removeAttribute("src");
+    signVideo.removeAttribute(
+        "src"
+    );
 
     signVideo.load();
 
 }
 
 
-document
-    .getElementById("closeModal")
-    .addEventListener("click", closeModal);
-
-
-modal.addEventListener("click", event => {
-
-    if(event.target === modal){
-        closeModal();
-    }
-
-});
-
-
-document.addEventListener("keydown", event => {
-
-    if(event.key === "Escape"){
-        closeModal();
-    }
-
-});
-
-
-/*
-==================================================
-CATEGORY
-==================================================
-*/
 
 document
-    .querySelectorAll(".category-btn")
-    .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            document
-                .querySelectorAll(".category-btn")
-                .forEach(btn => {
-                    btn.classList.remove("active");
-                });
-
-            button.classList.add("active");
-
-            currentCategory =
-                button.dataset.category;
-
-            render();
-
-        });
-
-    });
+    .getElementById(
+        "closeModal"
+    )
+    .addEventListener(
+        "click",
+        closeModal
+    );
 
 
-/*
-==================================================
-SEARCH
-==================================================
-*/
 
-searchInput.addEventListener("input", event => {
+/* =========================================================
+   CLICK OUTSIDE MODAL
+========================================================= */
 
-    searchText =
-        event.target.value
-            .trim()
-            .toLowerCase();
+modal.addEventListener(
+    "click",
+    event => {
 
-    render();
+        if(
+            event.target === modal
+        ){
 
-});
+            closeModal();
+
+        }
+
+    }
+);
 
 
-/*
-==================================================
-START
-==================================================
-*/
 
-slowBtn.classList.add("active");
+/* =========================================================
+   ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".category-btn"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    document
+                        .querySelectorAll(
+                            ".category-btn"
+                        )
+                        .forEach(
+                            btn => {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    currentCategory =
+                        button.dataset.category;
+
+
+                    render();
+
+                }
+            );
+
+        }
+    );
+
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+searchInput.addEventListener(
+    "input",
+    event => {
+
+        searchText =
+            event.target.value
+                .trim()
+                .toLowerCase();
+
+
+        render();
+
+    }
+);
+
+
+
+/* =========================================================
+   DEFAULT
+========================================================= */
+
+slowBtn.classList.add(
+    "active"
+);
+
 
 render();
 
 </script>
 
+
+<!--
+    ถ้าโปรเจกต์เดิมใช้ mkj-navigation.js
+    ให้เก็บบรรทัดนี้ไว้
+-->
+
 <script src="mkj-navigation.js"></script>
+
 
 </body>
 </html>
