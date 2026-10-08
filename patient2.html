@@ -209,6 +209,89 @@
       transform: translateY(-1px) scale(0.99) !important;
     }
 
+    /* ---------- DISABLED SPEAKING CARD ---------- */
+
+    .topic-disabled {
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 20px !important;
+
+      min-height: 145px !important;
+      padding: 28px 28px 28px 30px !important;
+
+      border-radius: 28px !important;
+
+      background: #F1F4F2 !important;
+      border: 1px solid #DDE5E1 !important;
+
+      color: #8D9995 !important;
+
+      cursor: not-allowed !important;
+      opacity: 0.72 !important;
+
+      overflow: hidden !important;
+    }
+
+    .topic-disabled .topic-content {
+      position: relative !important;
+      z-index: 2 !important;
+      min-width: 0 !important;
+      padding-left: 2px !important;
+    }
+
+    .topic-disabled b {
+      display: block !important;
+      margin: 0 0 9px !important;
+      font-size: 19px !important;
+      line-height: 1.45 !important;
+      font-weight: 700 !important;
+      color: #7E8C87 !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    .topic-disabled small {
+      display: block !important;
+      font-size: 14px !important;
+      line-height: 1.7 !important;
+      color: #8D9995 !important;
+    }
+
+    .topic-disabled .topic-arrow {
+      position: relative !important;
+      z-index: 2 !important;
+
+      flex: 0 0 46px !important;
+      width: 46px !important;
+      height: 46px !important;
+
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+
+      border-radius: 50% !important;
+
+      background: #E1E7E4 !important;
+      color: #9BA6A2 !important;
+
+      font-size: 21px !important;
+      font-weight: 500 !important;
+    }
+
+    .coming-soon {
+      display: inline-block !important;
+      margin-left: 7px !important;
+      padding: 4px 9px !important;
+      border-radius: 999px !important;
+      background: #E1E7E4 !important;
+      color: #7E8B86 !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      vertical-align: middle !important;
+      letter-spacing: 0 !important;
+    }
+
     /* ---------- TEXT ---------- */
 
     .topic-content {
@@ -301,7 +384,8 @@
         gap: 13px !important;
       }
 
-      .topic-list a {
+      .topic-list a,
+      .topic-disabled {
         min-height: 105px !important;
         padding: 22px 19px 22px 22px !important;
         border-radius: 23px !important;
@@ -312,21 +396,30 @@
         bottom: 18px;
       }
 
-      .topic-list b {
+      .topic-list b,
+      .topic-disabled b {
         font-size: 17px !important;
         margin-bottom: 6px !important;
       }
 
-      .topic-list small {
+      .topic-list small,
+      .topic-disabled small {
         font-size: 13px !important;
         line-height: 1.6 !important;
       }
 
-      .topic-arrow {
+      .topic-arrow,
+      .topic-disabled .topic-arrow {
         flex-basis: 40px !important;
         width: 40px !important;
         height: 40px !important;
         font-size: 18px !important;
+      }
+
+      .coming-soon {
+        font-size: 10px !important;
+        padding: 3px 7px !important;
+        margin-left: 4px !important;
       }
     }
   </style>
@@ -353,7 +446,8 @@
         </div>
         <span class="topic-arrow">→</span>
       </a>
-<a href="vocabulary.html">
+
+      <a href="vocabulary.html">
         <div class="topic-content">
           <b>คลังภาษามือสุขภาพ</b>
           <small>รวมภาษามือและคำศัพท์สุขภาพสำหรับทุกกลุ่ม</small>
@@ -361,13 +455,18 @@
         <span class="topic-arrow">→</span>
       </a>
 
-      <a href="speaking.html">
+      <!-- ฝึกพูดและออกเสียง: ยังไม่เปิดใช้งาน -->
+      <div class="topic-disabled">
         <div class="topic-content">
-          <b>ฝึกพูดและออกเสียง</b>
+          <b>
+            ฝึกพูดและออกเสียง
+            <span class="coming-soon">เร็ว ๆ นี้</span>
+          </b>
           <small>ฝึกคำศัพท์สุขภาพด้วยการดูรูปปากแล้วพูดตาม</small>
         </div>
+
         <span class="topic-arrow">→</span>
-      </a>
+      </div>
 
       <a href="game.html">
         <div class="topic-content">
@@ -376,7 +475,8 @@
         </div>
         <span class="topic-arrow">→</span>
       </a>
-</div>
+
+    </div>
 
   </div>
 
@@ -392,7 +492,7 @@
   </script>
 
   <script src="language.js"></script>
+  <script src="mkj-navigation.js"></script>
 
-<script src="mkj-navigation.js"></script>
 </body>
 </html>
