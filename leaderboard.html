@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>กระดานจัดอันดับ · หมอเข้าใจ</title>
 
 <link rel="stylesheet" href="style.css">
 
 <style>
+
 /* =====================================
    MOR KHAO JAI — LEADERBOARD
 ===================================== */
@@ -23,7 +26,6 @@
 .leader-top{
     display:flex;
     align-items:center;
-    justify-content:space-between;
     margin-bottom:25px;
 }
 
@@ -34,23 +36,7 @@
     font-weight:800;
 }
 
-.play-small{
-    text-decoration:none;
-    background:#dcefe7;
-    color:#4f806f;
-    padding:11px 17px;
-    border-radius:999px;
-    font-size:15px;
-    font-weight:900;
-    transition:.2s ease;
-}
-
-.play-small:hover{
-    transform:translateY(-3px) scale(1.05);
-    box-shadow:0 10px 20px rgba(80,120,105,.13);
-}
-
-/* HEADER */
+/* HERO */
 
 .leader-hero{
     text-align:center;
@@ -97,17 +83,6 @@
     align-items:center;
     font-size:48px;
     box-shadow:0 15px 35px rgba(100,90,60,.12);
-    animation:trophyFloat 3s ease-in-out infinite;
-}
-
-@keyframes trophyFloat{
-    0%,100%{
-        transform:translateY(0) rotate(-3deg);
-    }
-
-    50%{
-        transform:translateY(-9px) rotate(3deg);
-    }
 }
 
 .leader-hero h1{
@@ -143,12 +118,6 @@
     padding:20px 10px;
     text-align:center;
     box-shadow:0 9px 25px rgba(70,90,80,.06);
-    transition:.2s ease;
-}
-
-.leader-stat:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 30px rgba(70,90,80,.1);
 }
 
 .leader-stat-icon{
@@ -194,7 +163,7 @@
     color:#8a958f;
 }
 
-/* TOP 3 */
+/* PODIUM */
 
 .podium{
     display:grid;
@@ -211,12 +180,6 @@
     padding:22px 10px 20px;
     background:#f7faf8;
     border:2px solid transparent;
-    transition:.25s ease;
-}
-
-.podium-card:hover{
-    transform:translateY(-9px) scale(1.025);
-    box-shadow:0 18px 35px rgba(70,100,85,.12);
 }
 
 .podium-card.first{
@@ -241,17 +204,6 @@
     left:50%;
     transform:translateX(-50%);
     font-size:30px;
-    animation:crownFloat 2s ease-in-out infinite;
-}
-
-@keyframes crownFloat{
-    0%,100%{
-        transform:translateX(-50%) translateY(0);
-    }
-
-    50%{
-        transform:translateX(-50%) translateY(-5px);
-    }
 }
 
 .rank-medal{
@@ -299,14 +251,6 @@
     background:#F3F9F8;
     border:1px solid #e9efec;
     border-radius:20px;
-    transition:.2s ease;
-}
-
-.rank-row:hover{
-    transform:translateX(6px) scale(1.015);
-    background:#fff;
-    border-color:#b9d9cc;
-    box-shadow:0 12px 28px rgba(70,100,85,.09);
 }
 
 .rank-number{
@@ -406,11 +350,6 @@
     font-size:18px !important;
     font-weight:900;
     border-radius:18px !important;
-    transition:.2s ease;
-}
-
-.bottom-actions a:hover{
-    transform:translateY(-4px);
 }
 
 /* MOBILE */
@@ -486,17 +425,17 @@
     .rank-score strong{
         font-size:20px;
     }
-
-    .rank-detail{
-        gap:5px;
-    }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="page-shell leader-page">
+
+    <!-- TOP -->
 
     <div class="leader-top">
 
@@ -610,7 +549,7 @@
         <div id="rankList" class="rank-list"></div>
 
 
-        <div id="emptyBoard" class="empty-board hidden">
+        <div id="emptyBoard" class="empty-board" style="display:none;">
 
             <div class="empty-icon">
                 🌱
@@ -647,33 +586,29 @@
 </div>
 
 
-<!-- =====================================
-     GLOBAL RANKING SCRIPT
-===================================== -->
-
 <script>
 
 const RANKING_API =
-    "https://script.google.com/macros/s/AKfycbxTB-EwExcTnCWd0kq_ohEaaRdR35t--RkY5cfD42Nx9wdQtCuq90HraHnp6Az0pMR21A/exec";
+"https://script.google.com/macros/s/AKfycbxTB-EwExcTnCWd0kq_ohEaaRdR35t--RkY5cfD42Nx9wdQtCuq90HraHnp6Az0pMR21A/exec";
 
 
 const podium =
-    document.getElementById("podium");
+document.getElementById("podium");
 
 const rankList =
-    document.getElementById("rankList");
+document.getElementById("rankList");
 
 const emptyBoard =
-    document.getElementById("emptyBoard");
+document.getElementById("emptyBoard");
 
 const totalPlayers =
-    document.getElementById("totalPlayers");
+document.getElementById("totalPlayers");
 
 const bestScore =
-    document.getElementById("bestScore");
+document.getElementById("bestScore");
 
 const bestTime =
-    document.getElementById("bestTime");
+document.getElementById("bestTime");
 
 
 /* =====================================
@@ -683,10 +618,17 @@ const bestTime =
 function loadRanking(){
 
     const callbackName =
-        "mkjLeaderboardCallback";
+    "mkjLeaderboardCallback_" + Date.now();
 
 
-    window[callbackName] = function(data){
+    window[callbackName] =
+    function(data){
+
+        console.log(
+            "MOR KHAO JAI RANKING:",
+            data
+        );
+
 
         if(
             !data ||
@@ -702,72 +644,78 @@ function loadRanking(){
 
 
         const scores =
-            data.rankings
-                .filter(item => item.name)
-                .map(item => ({
+        data.rankings
+        .filter(item => item && item.name)
+        .map(item => ({
 
-                    name:
-                        String(item.name),
+            name:
+            String(item.name),
 
-                    score:
-                        Number(item.score || 0),
+            score:
+            Number(item.score || 0),
 
-                    total:
-                        Number(item.total || 0),
+            total:
+            Number(item.total || 5),
 
-                    time:
-                        Number(item.time || 0)
+            time:
+            Number(item.time || 0)
 
-                }));
+        }));
 
 
-        /* =====================================
-           SORT
-           คะแนนมากก่อน
-           คะแนนเท่ากัน → เวลาน้อยก่อน
-        ===================================== */
+        scores.sort(
+            function(a,b){
 
-        scores.sort((a,b) => {
+                if(
+                    b.score !== a.score
+                ){
 
-            if(b.score !== a.score){
+                    return b.score - a.score;
 
-                return b.score - a.score;
+                }
+
+                return a.time - b.time;
 
             }
-
-            return a.time - b.time;
-
-        });
+        );
 
 
         renderRanking(scores);
+
+
+        delete window[callbackName];
+
+        script.remove();
 
     };
 
 
     const script =
-        document.createElement("script");
+    document.createElement("script");
 
 
     script.src =
-        RANKING_API
-        +
-        "?callback="
-        +
-        callbackName
-        +
-        "&_="
-        +
-        Date.now();
+    RANKING_API
+    +
+    "?callback="
+    +
+    callbackName
+    +
+    "&_="
+    +
+    Date.now();
 
 
-    script.onerror = function(){
+    script.onerror =
+    function(){
 
-        console.log(
-            "Ranking API could not be loaded."
+        console.error(
+            "ไม่สามารถโหลด Ranking API ได้"
         );
 
         showEmpty();
+
+        delete window[callbackName];
 
     };
 
@@ -778,12 +726,13 @@ function loadRanking(){
 
 
 /* =====================================
-   RENDER RANKING
+   RENDER
 ===================================== */
 
 function renderRanking(scores){
 
     podium.innerHTML = "";
+
     rankList.innerHTML = "";
 
 
@@ -796,84 +745,96 @@ function renderRanking(scores){
     }
 
 
-    podium.classList.remove("hidden");
-    rankList.classList.remove("hidden");
-    emptyBoard.classList.add("hidden");
+    emptyBoard.style.display =
+    "none";
 
 
-    /* =====================================
-       STATS
-    ===================================== */
+    podium.style.display =
+    "grid";
+
+
+    rankList.style.display =
+    "flex";
+
+
+    /* STATS */
 
     totalPlayers.textContent =
-        scores.length;
+    scores.length;
 
 
     bestScore.textContent =
-        `${scores[0].score}/${scores[0].total || 5}`;
+    scores[0].score
+    +
+    "/"
+    +
+    scores[0].total;
 
 
     const validTimes =
-        scores
-            .map(item => item.time)
-            .filter(time => time > 0);
+    scores
+    .map(item => item.time)
+    .filter(time => time > 0);
 
 
-    const fastestTime =
-        validTimes.length
-        ? Math.min(...validTimes)
-        : 0;
+    if(validTimes.length){
+
+        bestTime.textContent =
+        formatTime(
+            Math.min(...validTimes)
+        );
+
+    }
 
 
-    bestTime.textContent =
-        fastestTime
-        ? formatTime(fastestTime)
-        : "--:--";
-
-
-    /* =====================================
-       TOP 3
-    ===================================== */
+    /* TOP 3 */
 
     const top3 =
-        scores.slice(0,3);
+    scores.slice(0,3);
 
 
     const medals =
-        ["🥇","🥈","🥉"];
+    ["🥇","🥈","🥉"];
 
 
     const classes =
-        ["first","second","third"];
+    ["first","second","third"];
 
 
     const order =
-        [1,0,2];
+    [1,0,2];
 
 
-    order.forEach(index => {
+    order.forEach(
+    function(index){
 
-        if(!top3[index]) return;
+        if(!top3[index]){
+            return;
+        }
 
 
         const item =
-            top3[index];
+        top3[index];
 
 
         const card =
-            document.createElement("div");
+        document.createElement("div");
 
 
         card.className =
-            `podium-card ${classes[index]}`;
+        "podium-card "
+        +
+        classes[index];
 
 
         card.innerHTML = `
 
             ${
                 index === 0
-                ? `<div class="crown">👑</div>`
-                : ""
+                ?
+                '<div class="crown">👑</div>'
+                :
+                ''
             }
 
             <div class="rank-medal">
@@ -887,7 +848,7 @@ function renderRanking(scores){
             <div class="podium-score">
                 ${item.score}
                 <small>
-                    / ${item.total || 5}
+                    / ${item.total}
                 </small>
             </div>
 
@@ -899,69 +860,65 @@ function renderRanking(scores){
     });
 
 
-    /* =====================================
-       RANK LIST
-    ===================================== */
+    /* RANK LIST */
 
     scores
-        .slice(3)
-        .forEach((item,index) => {
+    .slice(3)
+    .forEach(
+    function(item,index){
 
-            const actualRank =
-                index + 4;
-
-
-            const row =
-                document.createElement("div");
+        const actualRank =
+        index + 4;
 
 
-            row.className =
-                "rank-row";
+        const row =
+        document.createElement("div");
 
 
-            row.innerHTML = `
+        row.className =
+        "rank-row";
 
-                <div class="rank-number">
-                    #${actualRank}
+
+        row.innerHTML = `
+
+            <div class="rank-number">
+                #${actualRank}
+            </div>
+
+            <div class="rank-info">
+
+                <div class="rank-name">
+                    ${escapeHtml(item.name)}
                 </div>
 
-
-                <div class="rank-info">
-
-                    <div class="rank-name">
-                        ${escapeHtml(item.name)}
-                    </div>
-
-
-                    <div class="rank-detail">
-
-                        <span>
-                            ⏱ ${formatTime(item.time)}
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="rank-score">
-
-                    <strong>
-                        ${item.score}/${item.total || 5}
-                    </strong>
+                <div class="rank-detail">
 
                     <span>
-                        คะแนน
+                        ⏱ ${formatTime(item.time)}
                     </span>
 
                 </div>
 
-            `;
+            </div>
+
+            <div class="rank-score">
+
+                <strong>
+                    ${item.score}/${item.total}
+                </strong>
+
+                <span>
+                    คะแนน
+                </span>
+
+            </div>
+
+        `;
 
 
-            rankList.appendChild(row);
+        rankList.appendChild(row);
 
-        });
+    });
 
 }
 
@@ -973,43 +930,55 @@ function renderRanking(scores){
 function showEmpty(){
 
     podium.innerHTML = "";
+
     rankList.innerHTML = "";
 
-    podium.classList.add("hidden");
-    rankList.classList.add("hidden");
-    emptyBoard.classList.remove("hidden");
+
+    podium.style.display =
+    "none";
+
+
+    rankList.style.display =
+    "none";
+
+
+    emptyBoard.style.display =
+    "block";
+
 
     totalPlayers.textContent =
-        "0";
+    "0";
+
 
     bestScore.textContent =
-        "0";
+    "0";
+
 
     bestTime.textContent =
-        "--:--";
+    "--:--";
 
 }
 
 
 /* =====================================
-   FORMAT TIME
+   TIME
 ===================================== */
 
 function formatTime(seconds){
 
     seconds =
-        Number(seconds || 0);
+    Number(seconds || 0);
 
 
     const min =
-        Math.floor(seconds / 60);
+    Math.floor(seconds / 60);
 
 
     const sec =
-        seconds % 60;
+    seconds % 60;
 
 
-    return(
+    return (
         String(min).padStart(2,"0")
         +
         ":"
@@ -1021,7 +990,7 @@ function formatTime(seconds){
 
 
 /* =====================================
-   SAFE TEXT
+   SAFE HTML
 ===================================== */
 
 function escapeHtml(text){
@@ -1029,25 +998,19 @@ function escapeHtml(text){
     return String(text).replace(
         /[&<>"']/g,
 
-        char => ({
+        function(char){
 
-            "&":
-                "&amp;",
+            return {
 
-            "<":
-                "&lt;",
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
 
-            ">":
-                "&gt;",
+            }[char];
 
-            '"':
-                "&quot;",
-
-            "'":
-                "&#039;"
-
-        })[char]
-
+        }
     );
 
 }
