@@ -341,8 +341,8 @@ function showQuestion() {
 
 /* =========================================
    7. ANSWER
-   ตอบผิด = ยังอยู่ข้อเดิม
-   ตอบถูก = ไปข้อถัดไป
+   เลือกคำตอบได้ครั้งเดียว
+   ถูกหรือผิดก็ไปข้อถัดไป
 ========================================= */
 
 function answer(selected, clickedButton) {
@@ -359,12 +359,27 @@ function answer(selected, clickedButton) {
 
 
     /* =====================================
+       LOCK ทันที
+       ป้องกันการกดคำตอบซ้ำ
+    ===================================== */
+
+    locked = true;
+
+
+    /* ปิดปุ่มทั้งหมด */
+
+    buttons.forEach(button => {
+
+        button.disabled = true;
+
+    });
+
+
+    /* =====================================
        CORRECT
     ===================================== */
 
     if (selected === q.meaning) {
-
-        locked = true;
 
         correct++;
 
@@ -394,7 +409,7 @@ function answer(selected, clickedButton) {
         feedback.classList.add("good");
 
 
-        /* Highlight correct */
+        /* ไฮไลต์คำตอบที่ถูก */
 
         buttons.forEach(button => {
 
@@ -404,42 +419,16 @@ function answer(selected, clickedButton) {
 
             }
 
-            button.disabled = true;
-
         });
 
 
         updateStreak(true);
-
-
-        /*
-           ตอบถูกแล้วค่อยไปข้อถัดไป
-        */
-
-        setTimeout(() => {
-
-            currentQuestion++;
-
-
-            if (currentQuestion < questions.length) {
-
-                showQuestion();
-
-            } else {
-
-                finishGame();
-
-            }
-
-        }, 1400);
 
     }
 
 
     /* =====================================
        WRONG
-       ห้ามไปข้อถัดไป
-       ให้กดคำตอบใหม่ได้
     ===================================== */
 
     else {
@@ -455,7 +444,7 @@ function answer(selected, clickedButton) {
 
 
         feedback.textContent =
-            `ยังไม่ใช่ค่ะ คำตอบนี้ไม่ตรงกับความหมายของคำศัพท์ ลองเลือกใหม่อีกครั้งนะคะ`;
+            `ยังไม่ถูกค่ะ คำตอบที่ถูกคือ “${q.meaning}”`;
 
 
         feedback.classList.remove("good");
@@ -463,24 +452,44 @@ function answer(selected, clickedButton) {
         feedback.classList.add("bad");
 
 
-        /*
-           ปุ่มที่ตอบผิดกดซ้ำไม่ได้
-           แต่ปุ่มอื่นยังสามารถกดได้
-        */
+        /* แสดงคำตอบที่ถูก */
 
-        clickedButton.disabled = true;
+        buttons.forEach(button => {
+
+            if (button.textContent === q.meaning) {
+
+                button.classList.add("correct");
+
+            }
+
+        });
 
 
         updateStreak(false);
 
-
-        /*
-           ไม่เปลี่ยน currentQuestion
-           ไม่เรียก showQuestion()
-           ผู้เล่นจึงยังอยู่ข้อเดิม
-        */
-
     }
+
+
+    /* =====================================
+       ไปข้อถัดไป
+    ===================================== */
+
+    setTimeout(() => {
+
+        currentQuestion++;
+
+
+        if (currentQuestion < questions.length) {
+
+            showQuestion();
+
+        } else {
+
+            finishGame();
+
+        }
+
+    }, 1200);
 
 }
 
