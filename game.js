@@ -106,6 +106,8 @@ let startTime = 0;
 let timer = null;
 let locked = false;
 
+const RANKING_API =
+    "https://script.google.com/macros/s/AKfycbxTB-EwExcTnCWd0kq_ohEaaRdR35t--RkY5cfD42Nx9wdQtCuq90HraHnp6Az0pMR21A/exec";
 
 /* =========================================
    3. BAD WORD FILTER
@@ -523,6 +525,44 @@ function updateStreak(animate = false) {
 
 }
 
+/* =========================================
+   SEND SCORE TO GOOGLE SHEETS
+========================================= */
+
+function sendScoreToServer(seconds) {
+
+    const data = {
+        name: player,
+        score: correct,
+        total: questions.length,
+        time: seconds
+    };
+
+
+    fetch(RANKING_API, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify(data),
+
+        keepalive: true
+
+    }).catch(error => {
+
+        console.log(
+            "Ranking server error:",
+            error
+        );
+
+    });
+
+}
 
 /* =========================================
    9. FINISH
@@ -535,6 +575,7 @@ function finishGame() {
             (Date.now() - startTime) / 1000
         );
 
+   sendScoreToServer(seconds);
 
     clearInterval(timer);
 
