@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>กระดานจัดอันดับ · หมอเข้าใจ</title>
+
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -103,6 +104,7 @@
     0%,100%{
         transform:translateY(0) rotate(-3deg);
     }
+
     50%{
         transform:translateY(-9px) rotate(3deg);
     }
@@ -243,8 +245,13 @@
 }
 
 @keyframes crownFloat{
-    0%,100%{transform:translateX(-50%) translateY(0)}
-    50%{transform:translateX(-50%) translateY(-5px)}
+    0%,100%{
+        transform:translateX(-50%) translateY(0);
+    }
+
+    50%{
+        transform:translateX(-50%) translateY(-5px);
+    }
 }
 
 .rank-medal{
@@ -492,6 +499,7 @@
 <div class="page-shell leader-page">
 
     <div class="leader-top">
+
         <a href="game.html" class="back-link">
             ← กลับเกม
         </a>
@@ -527,22 +535,54 @@
     <div class="leader-stats">
 
         <div class="leader-stat">
-            <div class="leader-stat-icon">👑</div>
-            <strong id="totalPlayers">0</strong>
-            <span>ผู้เล่น</span>
+
+            <div class="leader-stat-icon">
+                👑
+            </div>
+
+            <strong id="totalPlayers">
+                0
+            </strong>
+
+            <span>
+                ผู้เล่น
+            </span>
+
         </div>
 
-        <div class="leader-stat">
-            <div class="leader-stat-icon">🎯</div>
-            <strong id="bestScore">0</strong>
-            <span>คะแนนสูงสุด</span>
-        </div>
 
         <div class="leader-stat">
-    <div class="leader-stat-icon">⚡</div>
-    <strong id="bestTime">--:--</strong>
-    <span>เวลาที่ดีที่สุด</span>
-</div>
+
+            <div class="leader-stat-icon">
+                🎯
+            </div>
+
+            <strong id="bestScore">
+                0
+            </strong>
+
+            <span>
+                คะแนนสูงสุด
+            </span>
+
+        </div>
+
+
+        <div class="leader-stat">
+
+            <div class="leader-stat-icon">
+                ⚡
+            </div>
+
+            <strong id="bestTime">
+                --:--
+            </strong>
+
+            <span>
+                เวลาที่ดีที่สุด
+            </span>
+
+        </div>
 
     </div>
 
@@ -552,13 +592,23 @@
     <section class="form-card board">
 
         <div class="board-heading">
-            <h2>🏆 อันดับทั้งหมด</h2>
-            <span>Top Players</span>
+
+            <h2>
+                🏆 อันดับทั้งหมด
+            </h2>
+
+            <span>
+                Top Players
+            </span>
+
         </div>
+
 
         <div id="podium" class="podium"></div>
 
+
         <div id="rankList" class="rank-list"></div>
+
 
         <div id="emptyBoard" class="empty-board hidden">
 
@@ -597,7 +647,9 @@
 </div>
 
 
-<script>
+<!-- =====================================
+     GLOBAL RANKING SCRIPT
+===================================== -->
 
 <script>
 
@@ -633,9 +685,10 @@ function loadRanking(){
     const callbackName =
         "mkjLeaderboardCallback";
 
+
     window[callbackName] = function(data){
 
-        if (
+        if(
             !data ||
             !data.success ||
             !Array.isArray(data.rankings)
@@ -652,10 +705,19 @@ function loadRanking(){
             data.rankings
                 .filter(item => item.name)
                 .map(item => ({
-                    name: String(item.name),
-                    score: Number(item.score || 0),
-                    total: Number(item.total || 0),
-                    time: Number(item.time || 0)
+
+                    name:
+                        String(item.name),
+
+                    score:
+                        Number(item.score || 0),
+
+                    total:
+                        Number(item.total || 0),
+
+                    time:
+                        Number(item.time || 0)
+
                 }));
 
 
@@ -667,8 +729,10 @@ function loadRanking(){
 
         scores.sort((a,b) => {
 
-            if (b.score !== a.score) {
+            if(b.score !== a.score){
+
                 return b.score - a.score;
+
             }
 
             return a.time - b.time;
@@ -683,6 +747,7 @@ function loadRanking(){
 
     const script =
         document.createElement("script");
+
 
     script.src =
         RANKING_API
@@ -722,7 +787,7 @@ function renderRanking(scores){
     rankList.innerHTML = "";
 
 
-    if (!scores.length){
+    if(!scores.length){
 
         showEmpty();
 
@@ -748,16 +813,22 @@ function renderRanking(scores){
         `${scores[0].score}/${scores[0].total || 5}`;
 
 
+    const validTimes =
+        scores
+            .map(item => item.time)
+            .filter(time => time > 0);
+
+
     const fastestTime =
-        Math.min(
-            ...scores
-                .map(item => item.time)
-                .filter(time => time >= 0)
-        );
+        validTimes.length
+        ? Math.min(...validTimes)
+        : 0;
 
 
     bestTime.textContent =
-        formatTime(fastestTime);
+        fastestTime
+        ? formatTime(fastestTime)
+        : "--:--";
 
 
     /* =====================================
@@ -767,11 +838,14 @@ function renderRanking(scores){
     const top3 =
         scores.slice(0,3);
 
+
     const medals =
         ["🥇","🥈","🥉"];
 
+
     const classes =
         ["first","second","third"];
+
 
     const order =
         [1,0,2];
@@ -779,7 +853,7 @@ function renderRanking(scores){
 
     order.forEach(index => {
 
-        if (!top3[index]) return;
+        if(!top3[index]) return;
 
 
         const item =
@@ -812,7 +886,9 @@ function renderRanking(scores){
 
             <div class="podium-score">
                 ${item.score}
-                <small>/ ${item.total || 5}</small>
+                <small>
+                    / ${item.total || 5}
+                </small>
             </div>
 
         `;
@@ -903,9 +979,14 @@ function showEmpty(){
     rankList.classList.add("hidden");
     emptyBoard.classList.remove("hidden");
 
-    totalPlayers.textContent = "0";
-    bestScore.textContent = "0";
-    bestTime.textContent = "--:--";
+    totalPlayers.textContent =
+        "0";
+
+    bestScore.textContent =
+        "0";
+
+    bestTime.textContent =
+        "--:--";
 
 }
 
@@ -928,7 +1009,7 @@ function formatTime(seconds){
         seconds % 60;
 
 
-    return (
+    return(
         String(min).padStart(2,"0")
         +
         ":"
@@ -947,13 +1028,26 @@ function escapeHtml(text){
 
     return String(text).replace(
         /[&<>"']/g,
+
         char => ({
-            "&":"&amp;",
-            "<":"&lt;",
-            ">":"&gt;",
-            '"':"&quot;",
-            "'":"&#039;"
+
+            "&":
+                "&amp;",
+
+            "<":
+                "&lt;",
+
+            ">":
+                "&gt;",
+
+            '"':
+                "&quot;",
+
+            "'":
+                "&#039;"
+
         })[char]
+
     );
 
 }
@@ -967,8 +1061,10 @@ loadRanking();
 
 </script>
 
+
 <script src="language.js"></script>
 
 <script src="mkj-navigation.js"></script>
+
 </body>
 </html>
