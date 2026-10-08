@@ -4,451 +4,211 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>คลังภาษามือสุขภาพ · หมอเข้าใจ</title>
+<title>คลังคำศัพท์สุขภาพ | หมอเข้าใจ</title>
 
 <style>
+:root{
+    --cream:#FFFDF7;
+    --cream-2:#F8F4E9;
+    --sage:#7FBDAA;
+    --sage-dark:#5D9C88;
+    --sage-soft:#E8F4EF;
+    --text:#45534D;
+    --muted:#89958F;
+    --white:#FFFFFF;
+    --shadow:0 10px 30px rgba(70,90,80,.08);
+}
 
 *{
     box-sizing:border-box;
 }
 
-:root{
-    --bg:#f6f3ed;
-    --card:#fffdf9;
-    --text:#33433e;
-    --muted:#708187;
-    --sage:#9db6aa;
-    --sage-dark:#6f8f82;
-    --cream:#eee7dc;
-    --line:#e8e4dc;
-    --shadow:0 18px 50px rgba(82,93,87,.10);
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     margin:0;
-    min-height:100vh;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "SF Pro Text",
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    background:var(--cream);
     color:var(--text);
-    background:
-        radial-gradient(circle at 10% 5%, rgba(190,211,201,.42), transparent 28%),
-        radial-gradient(circle at 90% 15%, rgba(236,218,192,.42), transparent 25%),
-        linear-gradient(180deg,#faf8f3 0%,#f4f1eb 100%);
-    padding:28px 18px 60px;
-}
-
-/* =========================
-   PAGE
-========================= */
-
-.page{
-    width:min(1050px,100%);
-    margin:auto;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
+    "Noto Sans Thai",sans-serif;
 }
 
 .back{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
+    display:inline-block;
+    margin:24px 28px 0;
+    color:var(--sage-dark);
     text-decoration:none;
-    color:#60767A;
-    font-size:14px;
-    font-weight:600;
-    padding:8px 12px;
-    border-radius:14px;
-    transition:.2s ease;
+    font-weight:700;
 }
 
-.back:hover{
-    background:rgba(255,255,255,.7);
-    transform:translateX(-2px);
+.container{
+    width:min(1100px,calc(100% - 36px));
+    margin:auto;
 }
-
-/* =========================
-   HERO
-========================= */
 
 .hero{
-    margin-top:12px;
-    padding:42px 34px 38px;
-    border:1px solid rgba(255,255,255,.9);
-    border-radius:34px;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.88),
-            rgba(241,237,228,.72)
-        );
-    box-shadow:var(--shadow);
-    position:relative;
-    overflow:hidden;
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(172,198,185,.18);
-    right:-60px;
-    top:-75px;
-}
-
-.hero::after{
-    content:"";
-    position:absolute;
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    background:rgba(238,218,189,.20);
-    left:-35px;
-    bottom:-45px;
-}
-
-.eyebrow{
-    position:relative;
-    z-index:1;
-    margin:0 0 8px;
-    color:var(--sage-dark);
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:.04em;
+    text-align:center;
+    padding:55px 20px 30px;
 }
 
 .hero h1{
-    position:relative;
-    z-index:1;
     margin:0;
-    font-size:clamp(31px,5vw,48px);
-    letter-spacing:-.045em;
-    line-height:1.15;
+    font-size:clamp(30px,5vw,46px);
+    color:#55766B;
 }
 
-.hero p:last-child{
-    position:relative;
-    z-index:1;
-    margin:12px 0 0;
+.hero p{
+    margin:12px auto 0;
+    max-width:650px;
     color:var(--muted);
-    font-size:15px;
-    line-height:1.8;
-}
-
-/* =========================
-   SEARCH
-========================= */
-
-.tools{
-    display:flex;
-    gap:12px;
-    margin:22px 0 18px;
+    line-height:1.7;
 }
 
 .search-box{
-    flex:1;
-    position:relative;
+    margin:20px auto 26px;
+    max-width:650px;
 }
 
 .search-box input{
     width:100%;
-    border:1px solid rgba(220,218,210,.9);
-    background:rgba(255,255,255,.82);
-    border-radius:18px;
-    padding:15px 18px 15px 44px;
+    border:none;
     outline:none;
+    background:#fff;
+    border-radius:18px;
+    padding:17px 20px;
+    font-size:16px;
     color:var(--text);
-    font-size:15px;
-    font-family:inherit;
-    box-shadow:0 8px 25px rgba(82,93,87,.05);
-    transition:.2s ease;
+    box-shadow:var(--shadow);
 }
 
-.search-box input:focus{
-    border-color:#a9c0b5;
-    box-shadow:
-        0 0 0 4px rgba(157,182,170,.14),
-        0 10px 28px rgba(82,93,87,.07);
-}
-
-.search-icon{
-    position:absolute;
-    left:16px;
-    top:50%;
-    transform:translateY(-50%);
-    color:#9aa49f;
-    font-size:17px;
-}
-
-/* =========================
-   CATEGORY
-========================= */
-
-.category-bar{
+.categories{
     display:flex;
-    gap:9px;
     flex-wrap:wrap;
-    margin-bottom:24px;
+    gap:9px;
+    justify-content:center;
+    margin-bottom:30px;
 }
 
 .category-btn{
-    border:1px solid #e4e2da;
-    background:rgba(255,255,255,.70);
-    color:#75827d;
-    padding:9px 14px;
+    border:none;
+    background:#fff;
+    color:#688078;
+    padding:10px 16px;
     border-radius:999px;
-    font-family:inherit;
-    font-size:13px;
-    font-weight:650;
     cursor:pointer;
-    transition:
-        transform .18s ease,
-        background .18s ease,
-        color .18s ease,
-        box-shadow .18s ease;
+    font-weight:700;
+    box-shadow:0 5px 18px rgba(70,90,80,.06);
+    transition:.2s;
 }
 
 .category-btn:hover{
     transform:translateY(-2px);
-    background:#fff;
 }
 
 .category-btn.active{
-    background:#91ad9f;
-    color:white;
-    border-color:#91ad9f;
-    box-shadow:0 8px 20px rgba(111,143,130,.20);
+    background:var(--sage);
+    color:#fff;
 }
-
-/* =========================
-   SECTION
-========================= */
-
-.section{
-    margin-top:30px;
-}
-
-.section-title{
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:14px;
-}
-
-.section-title h2{
-    margin:0;
-    font-size:20px;
-    letter-spacing:-.025em;
-}
-
-.section-title span{
-    color:#9aa39f;
-    font-size:13px;
-}
-
-/* =========================
-   VOCABULARY GRID
-========================= */
 
 .vocab-grid{
     display:grid;
-    grid-template-columns:
-        repeat(3,minmax(0,1fr));
-    gap:15px;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    padding-bottom:50px;
 }
 
 .vocab-card{
-    appearance:none;
-    border:1px solid rgba(229,226,217,.9);
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.94),
-            rgba(250,247,241,.91)
-        );
-    color:var(--text);
-    border-radius:23px;
-    padding:21px 20px;
-    min-height:128px;
+    border:none;
+    background:#fff;
+    border-radius:22px;
+    padding:22px 18px;
+    min-height:145px;
     text-align:left;
     cursor:pointer;
-    position:relative;
-    overflow:hidden;
-    font-family:inherit;
-    box-shadow:
-        0 9px 25px rgba(83,93,87,.055);
-    transition:
-        transform .22s cubic-bezier(.2,.8,.2,1),
-        box-shadow .22s ease,
-        border-color .22s ease;
-}
-
-.vocab-card::before{
-    content:"";
-    position:absolute;
-    width:75px;
-    height:75px;
-    border-radius:50%;
-    right:-24px;
-    bottom:-30px;
-    background:rgba(164,190,177,.13);
-    transition:.25s ease;
+    box-shadow:var(--shadow);
+    transition:.22s ease;
 }
 
 .vocab-card:hover{
-    transform:translateY(-5px) scale(1.01);
-    border-color:#cddbd4;
-    box-shadow:
-        0 18px 38px rgba(83,93,87,.11);
-}
-
-.vocab-card:hover::before{
-    transform:scale(1.5);
-    background:rgba(164,190,177,.20);
-}
-
-.vocab-card:active{
-    transform:scale(.97);
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(70,90,80,.13);
 }
 
 .vocab-icon{
-    width:38px;
-    height:38px;
+    width:45px;
+    height:45px;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:13px;
-    background:#edf3ef;
-    color:#769487;
-    font-size:18px;
+    border-radius:14px;
+    background:var(--sage-soft);
+    color:var(--sage-dark);
+    font-size:23px;
     margin-bottom:15px;
 }
 
-.vocab-th{
-    font-size:18px;
-    font-weight:750;
-    letter-spacing:-.025em;
+.vocab-card h3{
+    margin:0 0 6px;
+    font-size:17px;
+    color:#4E625A;
 }
 
-.vocab-en{
-    margin-top:5px;
-    color:#99a29e;
+.vocab-card p{
+    margin:0;
     font-size:13px;
+    color:var(--muted);
 }
-
-.vocab-arrow{
-    position:absolute;
-    right:17px;
-    top:18px;
-    width:27px;
-    height:27px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f1eee8;
-    color:#89968f;
-    font-size:14px;
-    transition:.2s ease;
-}
-
-.vocab-card:hover .vocab-arrow{
-    background:#dce9e2;
-    color:#6f8f82;
-    transform:translateX(2px);
-}
-
-/* =========================
-   EMPTY
-========================= */
 
 .empty{
-    display:none;
+    grid-column:1/-1;
     text-align:center;
-    padding:45px 20px;
-    border-radius:24px;
-    background:rgba(255,255,255,.65);
-    border:1px solid #e8e5de;
-    color:#929b97;
+    padding:60px 20px;
+    color:var(--muted);
 }
 
-/* =========================
-   MODAL
-========================= */
+/* MODAL */
 
 .modal{
     position:fixed;
     inset:0;
-    z-index:999;
+    background:rgba(49,64,58,.38);
+    backdrop-filter:blur(8px);
     display:none;
     align-items:center;
     justify-content:center;
-    padding:22px;
-    background:rgba(46,57,52,.20);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
+    padding:20px;
+    z-index:99999;
 }
 
 .modal.show{
     display:flex;
-    animation:fadeIn .25s ease;
 }
 
-@keyframes fadeIn{
+.modal-box{
+    width:min(760px,100%);
+    max-height:92vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:26px;
+    box-shadow:0 25px 70px rgba(30,50,42,.2);
+    animation:modalIn .2s ease;
+}
+
+@keyframes modalIn{
     from{
         opacity:0;
+        transform:scale(.96) translateY(10px);
     }
     to{
         opacity:1;
-    }
-}
-
-.modal-window{
-    width:min(650px,100%);
-    max-height:90vh;
-    overflow:auto;
-    border-radius:31px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.96),
-            rgba(248,245,239,.96)
-        );
-    border:1px solid rgba(255,255,255,.95);
-    box-shadow:
-        0 35px 90px rgba(36,47,42,.20),
-        0 5px 20px rgba(36,47,42,.08);
-    transform:scale(.92) translateY(14px);
-    opacity:0;
-    animation:macOpen .38s cubic-bezier(.16,1,.3,1) forwards;
-}
-
-@keyframes macOpen{
-    to{
         transform:scale(1) translateY(0);
-        opacity:1;
     }
 }
 
-/* macOS-like top bar */
-
-.mac-bar{
-    height:48px;
+.modal-bar{
+    height:45px;
     display:flex;
     align-items:center;
-    padding:0 18px;
-    border-bottom:1px solid rgba(225,223,216,.8);
-    background:rgba(250,248,243,.72);
+    padding:0 16px;
+    border-bottom:1px solid #eee;
 }
 
 .mac-dots{
@@ -456,475 +216,278 @@ body{
     gap:7px;
 }
 
-.mac-dot{
+.mac-dots span{
     width:11px;
     height:11px;
     border-radius:50%;
-    background:#d7d4cd;
+    background:#ddd;
 }
 
-.mac-dot:first-child{
-    background:#e7b5ac;
-}
-
-.mac-dot:nth-child(2){
-    background:#e4d19a;
-}
-
-.mac-dot:nth-child(3){
-    background:#b6d0bd;
-}
-
-.mac-title{
+.modal-title{
     flex:1;
     text-align:center;
-    margin-right:42px;
-    color:#8c9691;
-    font-size:12px;
-    font-weight:650;
+    font-size:13px;
+    color:#8A9690;
+    margin-right:45px;
 }
 
 .modal-content{
-    padding:30px;
+    padding:28px;
 }
 
-.modal-category{
-    display:inline-flex;
-    padding:7px 11px;
+.modal-content h2{
+    margin:0;
+    color:#55766B;
+}
+
+.english{
+    color:var(--muted);
+    margin-top:6px;
+}
+
+.category-label{
+    display:inline-block;
+    margin-top:12px;
+    padding:6px 11px;
+    background:var(--sage-soft);
+    color:var(--sage-dark);
     border-radius:999px;
-    background:#edf3ef;
-    color:#719083;
     font-size:12px;
     font-weight:700;
 }
 
-.modal h2{
-    margin:15px 0 5px;
-    font-size:35px;
-    letter-spacing:-.045em;
-}
-
-.modal-english{
-    color:#929b97;
-    font-size:15px;
-}
-
-/* =========================
-   VIDEO
-========================= */
+/* VIDEO */
 
 .sign-area{
-    margin-top:25px;
-    min-height:250px;
-    border-radius:24px;
-    border:1px dashed #d6ddd8;
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(220,233,226,.45),
-            rgba(248,246,241,.75)
-        );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:20px;
-    color:#8a9791;
+    margin-top:22px;
+    background:#F5F1E8;
+    border-radius:20px;
     overflow:hidden;
 }
 
 .video-wrap{
     width:100%;
-}
-
-#signVideo{
-    display:none;
-    width:100%;
-    max-height:390px;
-    border-radius:18px;
-    background:#e9e7e1;
-    object-fit:contain;
-    box-shadow:0 10px 30px rgba(70,80,75,.10);
-}
-
-.video-placeholder{
-    width:100%;
-}
-
-.sign-placeholder-icon{
-    width:64px;
-    height:64px;
-    margin:auto;
+    aspect-ratio:16/9;
+    position:relative;
+    background:#EDE8DC;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:21px;
-    background:#e7f0eb;
-    color:#78958a;
-    font-size:28px;
 }
 
-.sign-placeholder-title{
-    margin-top:14px;
-    color:#65756e;
-    font-weight:750;
-    font-size:16px;
+#signVideo{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#F3EFE5;
+    display:none;
 }
 
-.sign-placeholder-text{
-    margin-top:6px;
-    font-size:13px;
-    line-height:1.7;
+#videoPlaceholder{
+    text-align:center;
+    color:#929D97;
+    padding:30px;
 }
 
 .video-controls{
     display:none;
     gap:10px;
+    flex-wrap:wrap;
     margin-top:12px;
 }
 
-.video-control-btn{
-    flex:1;
-    border:1px solid #dfe6e1;
-    background:#f5f7f4;
-    color:#71857b;
-    border-radius:15px;
-    padding:11px 13px;
-    font-family:inherit;
-    font-size:13px;
-    font-weight:750;
+.video-controls button{
+    border:none;
+    background:#E8F4EF;
+    color:#527C6D;
+    padding:10px 15px;
+    border-radius:999px;
     cursor:pointer;
-    transition:.2s ease;
+    font-weight:700;
 }
 
-.video-control-btn:hover{
-    background:#eaf1ed;
-    transform:translateY(-1px);
-}
-
-.video-control-btn.active{
-    background:#91ad9f;
-    border-color:#91ad9f;
+.video-controls button.active{
+    background:var(--sage);
     color:white;
-    box-shadow:0 7px 18px rgba(111,143,130,.18);
 }
 
-/* =========================
-   MODAL TIP
-========================= */
-
-.modal-tip{
-    margin-top:17px;
+.tip{
+    margin-top:18px;
     padding:15px 17px;
-    border-radius:17px;
-    background:#f3efe8;
-    color:#7c8782;
-    font-size:13px;
-    line-height:1.7;
+    background:#FFF8E9;
+    border-radius:15px;
+    color:#7F7561;
+    line-height:1.6;
+    font-size:14px;
 }
 
 .close-btn{
     width:100%;
-    margin-top:18px;
-    border:0;
-    border-radius:17px;
-    padding:14px;
-    background:#8ea99c;
-    color:white;
-    font-family:inherit;
-    font-size:14px;
-    font-weight:750;
+    margin-top:20px;
+    border:none;
+    background:var(--sage);
+    color:#fff;
+    padding:13px;
+    border-radius:15px;
+    font-size:15px;
+    font-weight:800;
     cursor:pointer;
-    transition:.2s ease;
 }
 
-.close-btn:hover{
-    background:#78978a;
-    transform:translateY(-1px);
-}
-
-.close-btn:active{
-    transform:scale(.98);
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-    margin-top:35px;
+footer{
     text-align:center;
-    color:#9aa29e;
-    font-size:12px;
+    padding:10px 20px 40px;
+    color:#9AA49F;
+    font-size:13px;
     line-height:1.7;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
-@media(max-width:800px){
-
+@media(max-width:850px){
     .vocab-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
+        grid-template-columns:repeat(3,1fr);
     }
-
 }
 
-@media(max-width:560px){
-
-    body{
-        padding:18px 13px 45px;
-    }
-
-    .hero{
-        padding:30px 22px 27px;
-        border-radius:27px;
-    }
-
-    .hero h1{
-        font-size:31px;
-    }
-
-    .tools{
-        margin-top:17px;
-    }
-
+@media(max-width:650px){
     .vocab-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
 
     .vocab-card{
-        min-height:108px;
-        padding:18px;
-        border-radius:20px;
-    }
-
-    .modal{
-        padding:12px;
-    }
-
-    .modal-window{
-        border-radius:27px;
+        min-height:135px;
+        padding:17px 15px;
     }
 
     .modal-content{
-        padding:23px 19px 20px;
+        padding:20px;
     }
 
-    .modal h2{
-        font-size:30px;
+    .hero{
+        padding-top:40px;
     }
-
-    .sign-area{
-        min-height:220px;
-        padding:15px;
-    }
-
-    #signVideo{
-        max-height:300px;
-    }
-
-    .video-controls{
-        gap:8px;
-    }
-
-    .video-control-btn{
-        padding:10px 8px;
-        font-size:12px;
-    }
-
 }
 
+@media(max-width:420px){
+    .vocab-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .category-btn{
+        font-size:13px;
+        padding:9px 12px;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<main class="page">
+<a href="javascript:history.back()" class="back">← กลับ</a>
 
-    <a href="javascript:history.back()" class="back">
-        ← กลับ
-    </a>
+<div class="container">
 
     <section class="hero">
-
-        <p class="eyebrow">
-            MOR KHAO JAI · HEALTH VOCABULARY
-        </p>
-
-        <h1>
-            คลังภาษามือสุขภาพ
-        </h1>
-
+        <h1>คลังคำศัพท์สุขภาพ</h1>
         <p>
-            รวมคำศัพท์ที่เกี่ยวข้องกับอาการ ร่างกาย การตรวจ
-            การรักษา และการสื่อสารในโรงพยาบาล
+            เรียนรู้คำศัพท์และประโยคเกี่ยวกับสุขภาพ
+            ผ่านภาษามือไทย เพื่อช่วยให้การสื่อสารในโรงพยาบาลชัดเจนขึ้น
         </p>
-
-    </section>
-
-
-    <div class="tools">
 
         <div class="search-box">
-
-            <span class="search-icon">⌕</span>
-
             <input
-                type="search"
-                id="search"
-                placeholder="ค้นหาคำศัพท์ เช่น ปวดท้อง หมอ เจาะเลือด..."
-                autocomplete="off"
+                type="text"
+                id="searchInput"
+                placeholder="ค้นหาคำศัพท์ เช่น ปวดหัว หมอ ยา..."
             >
-
         </div>
 
-    </div>
+        <div class="categories">
 
+            <button class="category-btn active" data-category="all">
+                ทั้งหมด
+            </button>
 
-    <div class="category-bar">
+            <button class="category-btn" data-category="symptom">
+                อาการและความรู้สึก
+            </button>
 
-        <button class="category-btn active" data-category="all">
-            ทั้งหมด
-        </button>
+            <button class="category-btn" data-category="symptomQuestion">
+                คำถามเกี่ยวกับอาการ
+            </button>
 
-        <button class="category-btn" data-category="symptom">
-            อาการและความรู้สึก
-        </button>
+            <button class="category-btn" data-category="pregnancy">
+                การตั้งครรภ์และการคลอด
+            </button>
 
-        <button class="category-btn" data-category="symptomQuestion">
-            คำถามเกี่ยวกับอาการ
-        </button>
+            <button class="category-btn" data-category="hearing">
+                การได้ยินและการสื่อสาร
+            </button>
 
-        <button class="category-btn" data-category="pregnancy">
-            การตั้งครรภ์และการคลอด
-        </button>
+            <button class="category-btn" data-category="test">
+                การตรวจ
+            </button>
 
-        <button class="category-btn" data-category="hearing">
-            การได้ยินและการสื่อสาร
-        </button>
+            <button class="category-btn" data-category="medicine">
+                การใช้ยา
+            </button>
 
-        <button class="category-btn" data-category="test">
-            การตรวจ
-        </button>
+            <button class="category-btn" data-category="appointment">
+                การนัดหมาย
+            </button>
 
-        <button class="category-btn" data-category="medicine">
-            การใช้ยา
-        </button>
+            <button class="category-btn" data-category="staff">
+                บุคลากรทางการแพทย์
+            </button>
 
-        <button class="category-btn" data-category="appointment">
-            การนัดหมาย
-        </button>
-
-        <button class="category-btn" data-category="staff">
-            บุคลากรทางการแพทย์
-        </button>
-
-        <button class="category-btn" data-category="hospitalStaff">
-            บุคคลอื่นในโรงพยาบาล
-        </button>
-
-    </div>
-
-
-    <section class="section">
-
-        <div class="section-title">
-
-            <h2>
-                คำศัพท์
-            </h2>
-
-            <span id="count">
-                0 คำ
-            </span>
+            <button class="category-btn" data-category="hospitalStaff">
+                บุคคลอื่นในโรงพยาบาล
+            </button>
 
         </div>
-
-
-        <div
-            class="vocab-grid"
-            id="vocabGrid"
-        ></div>
-
-
-        <div
-            class="empty"
-            id="empty"
-        >
-            ไม่พบคำศัพท์ที่ค้นหา
-        </div>
-
     </section>
 
+    <main id="vocabGrid" class="vocab-grid"></main>
 
-    <p class="footer">
-        ต้นแบบเพื่อการเรียนรู้และพัฒนาต่อ<br>
-        วิดีโอภาษามือควรผ่านการตรวจสอบจากผู้ใช้ภาษามือจริงก่อนนำไปใช้งาน
-    </p>
+</div>
 
-</main>
+<footer>
+    วิดีโอภาษามือควรผ่านการตรวจสอบจากผู้ใช้ภาษามือไทยจริง
+    เพื่อให้การนำเสนอมีความเหมาะสมและถูกต้อง
+</footer>
 
 
-<!-- =========================
-     MODAL
-========================= -->
+<!-- MODAL -->
 
-<div
-    class="modal"
-    id="modal"
-    aria-hidden="true"
->
+<div class="modal" id="modal">
 
-    <div
-        class="modal-window"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modalTitle"
-    >
+    <div class="modal-box">
 
-        <div class="mac-bar">
-
+        <div class="modal-bar">
             <div class="mac-dots">
-
-                <span class="mac-dot"></span>
-                <span class="mac-dot"></span>
-                <span class="mac-dot"></span>
-
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
 
-            <div
-                class="mac-title"
-                id="macTitle"
-            >
-                คำศัพท์สุขภาพ
+            <div class="modal-title" id="modalMacTitle">
+                หมอเข้าใจ
             </div>
-
         </div>
-
 
         <div class="modal-content">
 
-            <span
-                class="modal-category"
-                id="modalCategory"
-            >
-                อาการ
-            </span>
+            <h2 id="modalTitle">คำศัพท์</h2>
 
-            <h2 id="modalTitle">
-                ปวด
-            </h2>
-
-            <div
-                class="modal-english"
-                id="modalEnglish"
-            >
-                Pain
+            <div class="english" id="modalEnglish">
+                English
             </div>
 
+            <div class="category-label" id="modalCategory">
+                หมวดหมู่
+            </div>
 
             <div class="sign-area">
 
@@ -937,68 +500,42 @@ body{
                         preload="metadata"
                     ></video>
 
-
-                    <div
-                        class="video-placeholder"
-                        id="videoPlaceholder"
-                    >
-
-                        <div class="sign-placeholder-icon">
-                            ♡
-                        </div>
-
-                        <div class="sign-placeholder-title">
-                            ยังไม่มีวิดีโอสำหรับคำนี้
-                        </div>
-
-                        <div class="sign-placeholder-text">
-                            เมื่อเพิ่มคลิปลงในโฟลเดอร์ videos
-                            วิดีโอของคำนี้จะแสดงตรงนี้
-                        </div>
-
+                    <div id="videoPlaceholder">
+                        <div style="font-size:36px;margin-bottom:10px;">🎥</div>
+                        <div>ยังไม่มีวิดีโอสำหรับคำนี้</div>
                     </div>
 
                 </div>
 
             </div>
 
-
-            <div
-                class="video-controls"
-                id="videoControls"
-            >
+            <div class="video-controls" id="videoControls">
 
                 <button
-                    class="video-control-btn"
-                    id="slowBtn"
                     type="button"
+                    id="slowBtn"
                 >
                     🐢 เล่นช้า 0.5×
                 </button>
 
                 <button
-                    class="video-control-btn"
-                    id="loopBtn"
                     type="button"
+                    id="loopBtn"
                 >
                     🔁 เล่นซ้ำ
                 </button>
 
             </div>
 
-
-            <div class="modal-tip">
-
-                คำศัพท์นี้ใช้สำหรับการเรียนรู้และการสื่อสาร
-                ไม่ใช่การวินิจฉัยหรือประเมินอาการทางการแพทย์
-
+            <div class="tip">
+                คลิปแต่ละคำมีความยาวประมาณ 10–15 วินาที
+                สามารถเปิดดูซ้ำและปรับความเร็วเป็น 0.5× ได้
             </div>
 
-
             <button
+                type="button"
                 class="close-btn"
                 id="closeModal"
-                type="button"
             >
                 ปิด
             </button>
@@ -1012,385 +549,331 @@ body{
 
 <script>
 
-/* =====================================================
-   HEALTH VOCABULARY
-   ===================================================== */
-
 const vocabulary = [
 
     {
-        th:'ปวดท้อง',
-        en:'Stomachache',
-        category:'symptom',
-        icon:'◌'
+        th:"ปวดท้อง",
+        en:"Stomachache",
+        category:"symptom",
+        icon:"◌"
+    },
+    {
+        th:"ท้องเสีย",
+        en:"Diarrhea",
+        category:"symptom",
+        icon:"⌁"
+    },
+    {
+        th:"คลื่นไส้",
+        en:"Nausea",
+        category:"symptom",
+        icon:"⌁"
+    },
+    {
+        th:"อาเจียนไหม",
+        en:"Are you vomiting?",
+        category:"symptomQuestion",
+        icon:"⌁"
+    },
+    {
+        th:"กินข้าวได้ไหม",
+        en:"Can you eat?",
+        category:"symptomQuestion",
+        icon:"○"
+    },
+    {
+        th:"เจ็บ",
+        en:"Pain / Hurt",
+        category:"symptom",
+        icon:"♡"
+    },
+    {
+        th:"ปวด",
+        en:"Pain",
+        category:"symptom",
+        icon:"♡"
+    },
+    {
+        th:"เจ็บหน้าอกไหม",
+        en:"Do you have chest pain?",
+        category:"symptomQuestion",
+        icon:"♡"
+    },
+    {
+        th:"ปวดแขนไหม",
+        en:"Does your arm hurt?",
+        category:"symptomQuestion",
+        icon:"○"
+    },
+    {
+        th:"ปวดหัวไหม",
+        en:"Do you have a headache?",
+        category:"symptomQuestion",
+        icon:"◌"
+    },
+    {
+        th:"ไม่สบายนานรึยัง",
+        en:"How long have you been unwell?",
+        category:"symptomQuestion",
+        icon:"○"
+    },
+    {
+        th:"มีไข้สูงไหม",
+        en:"Do you have a high fever?",
+        category:"symptomQuestion",
+        icon:"°"
+    },
+    {
+        th:"มีน้ำมูกไหม",
+        en:"Do you have a runny nose?",
+        category:"symptomQuestion",
+        icon:"⌁"
+    },
+    {
+        th:"เจ็บคอไหม",
+        en:"Do you have a sore throat?",
+        category:"symptomQuestion",
+        icon:"◌"
+    },
+    {
+        th:"ป่วยเป็นอะไร",
+        en:"What are you sick with?",
+        category:"symptomQuestion",
+        icon:"?"
+    },
+    {
+        th:"ไม่สบาย",
+        en:"Feel unwell",
+        category:"symptom",
+        icon:"○"
+    },
+    {
+        th:"น้ำหนักลดไหม",
+        en:"Have you lost weight?",
+        category:"symptomQuestion",
+        icon:"↓"
+    },
+    {
+        th:"น้ำหนักเพิ่มไหม",
+        en:"Have you gained weight?",
+        category:"symptomQuestion",
+        icon:"↑"
+    },
+    {
+        th:"ที่ไม่สบายหายรึยัง",
+        en:"Have you recovered?",
+        category:"symptomQuestion",
+        icon:"✓"
+    },
+    {
+        th:"นิดหน่อย",
+        en:"A little",
+        category:"symptom",
+        icon:"·"
+    },
+    {
+        th:"มาก",
+        en:"A lot / Severe",
+        category:"symptom",
+        icon:"＋"
+    },
+    {
+        th:"ดีขึ้นไหม",
+        en:"Are you feeling better?",
+        category:"symptomQuestion",
+        icon:"↑"
     },
 
     {
-        th:'ท้องเสีย',
-        en:'Diarrhea',
-        category:'symptom',
-        icon:'⌁'
+        th:"ตั้งครรภ์",
+        en:"Pregnancy",
+        category:"pregnancy",
+        icon:"○"
+    },
+    {
+        th:"คลอดลูก",
+        en:"Childbirth",
+        category:"pregnancy",
+        icon:"♡"
     },
 
     {
-        th:'คลื่นไส้',
-        en:'Nausea',
-        category:'symptom',
-        icon:'⌁'
+        th:"หูตึง",
+        en:"Hard of hearing",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"หูหนวกตาบอด",
+        en:"Deafblind",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"เป็นใบ้",
+        en:"Non-speaking",
+        category:"hearing",
+        icon:"◌"
+    },
+    {
+        th:"ล่ามภาษามือ",
+        en:"Sign language interpreter",
+        category:"hearing",
+        icon:"✦"
     },
 
     {
-        th:'อาเจียนไหม',
-        en:'Are you vomiting?',
-        category:'symptomQuestion',
-        icon:'⌁'
+        th:"เจาะเลือด",
+        en:"Blood draw",
+        category:"test",
+        icon:"＋"
+    },
+    {
+        th:"เลือด",
+        en:"Blood",
+        category:"test",
+        icon:"＋"
+    },
+    {
+        th:"X-ray",
+        en:"X-ray",
+        category:"test",
+        icon:"＋"
+    },
+    {
+        th:"CT-scan",
+        en:"CT scan",
+        category:"test",
+        icon:"＋"
     },
 
     {
-        th:'กินข้าวได้ไหม',
-        en:'Can you eat?',
-        category:'symptomQuestion',
-        icon:'○'
+        th:"กินยาหลังอาหาร",
+        en:"Take medicine after meals",
+        category:"medicine",
+        icon:"＋"
+    },
+    {
+        th:"กินยาก่อนอาหาร",
+        en:"Take medicine before meals",
+        category:"medicine",
+        icon:"＋"
+    },
+    {
+        th:"เช้าเที่ยงเย็น",
+        en:"Morning, noon, and evening",
+        category:"medicine",
+        icon:"☀"
+    },
+    {
+        th:"ก่อนนอน",
+        en:"Before bed",
+        category:"medicine",
+        icon:"◐"
     },
 
     {
-        th:'เจ็บ',
-        en:'Pain / Hurt',
-        category:'symptom',
-        icon:'♡'
+        th:"ครั้งหน้าพบกัน",
+        en:"See you at the next appointment",
+        category:"appointment",
+        icon:"□"
     },
 
     {
-        th:'ปวด',
-        en:'Pain',
-        category:'symptom',
-        icon:'♡'
+        th:"หมอ",
+        en:"Doctor",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"สูติแพทย์",
+        en:"Obstetrician",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"นักกายภาพบำบัด",
+        en:"Physical therapist",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"พยาบาล",
+        en:"Nurse",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"จิตแพทย์",
+        en:"Psychiatrist",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"ทันตแพทย์",
+        en:"Dentist",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"แพทย์หูคอจมูก",
+        en:"ENT doctor / Otolaryngologist",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"จักษุแพทย์",
+        en:"Ophthalmologist",
+        category:"staff",
+        icon:"◉"
+    },
+    {
+        th:"อายุรแพทย์",
+        en:"Internist",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"กุมารแพทย์",
+        en:"Pediatrician",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"ศัลยแพทย์",
+        en:"Surgeon",
+        category:"staff",
+        icon:"＋"
+    },
+    {
+        th:"เจ้าหน้าที่/บุคลากร",
+        en:"Staff / Healthcare personnel",
+        category:"staff",
+        icon:"＋"
     },
 
     {
-        th:'เจ็บหน้าอกไหม',
-        en:'Do you have chest pain?',
-        category:'symptomQuestion',
-        icon:'♡'
+        th:"คนเข็นเปล",
+        en:"Patient transport staff",
+        category:"hospitalStaff",
+        icon:"□"
     },
-
     {
-        th:'ปวดแขนไหม',
-        en:'Does your arm hurt?',
-        category:'symptomQuestion',
-        icon:'○'
+        th:"ยาม",
+        en:"Security guard",
+        category:"hospitalStaff",
+        icon:"＋"
     },
-
     {
-        th:'ปวดหัวไหม',
-        en:'Do you have a headache?',
-        category:'symptomQuestion',
-        icon:'◌'
-    },
-
-    {
-        th:'ไม่สบายนานรึยัง',
-        en:'How long have you been unwell?',
-        category:'symptomQuestion',
-        icon:'○'
-    },
-
-    {
-        th:'มีไข้สูงไหม',
-        en:'Do you have a high fever?',
-        category:'symptomQuestion',
-        icon:'°'
-    },
-
-    {
-        th:'มีน้ำมูกไหม',
-        en:'Do you have a runny nose?',
-        category:'symptomQuestion',
-        icon:'⌁'
-    },
-
-    {
-        th:'เจ็บคอไหม',
-        en:'Do you have a sore throat?',
-        category:'symptomQuestion',
-        icon:'◌'
-    },
-
-    {
-        th:'ป่วยเป็นอะไร',
-        en:'What are you sick with?',
-        category:'symptomQuestion',
-        icon:'?'
-    },
-
-    {
-        th:'ไม่สบาย',
-        en:'Feel unwell',
-        category:'symptom',
-        icon:'○'
-    },
-
-    {
-        th:'น้ำหนักลดไหม',
-        en:'Have you lost weight?',
-        category:'symptomQuestion',
-        icon:'↓'
-    },
-
-    {
-        th:'น้ำหนักเพิ่มไหม',
-        en:'Have you gained weight?',
-        category:'symptomQuestion',
-        icon:'↑'
-    },
-
-    {
-        th:'ที่ไม่สบายหายรึยัง',
-        en:'Have you recovered?',
-        category:'symptomQuestion',
-        icon:'✓'
-    },
-
-    {
-        th:'นิดหน่อย',
-        en:'A little',
-        category:'symptom',
-        icon:'·'
-    },
-
-    {
-        th:'มาก',
-        en:'A lot / Severe',
-        category:'symptom',
-        icon:'＋'
-    },
-
-    {
-        th:'ดีขึ้นไหม',
-        en:'Are you feeling better?',
-        category:'symptomQuestion',
-        icon:'↑'
-    },
-
-    {
-        th:'ตั้งครรภ์',
-        en:'Pregnancy',
-        category:'pregnancy',
-        icon:'○'
-    },
-
-    {
-        th:'คลอดลูก',
-        en:'Childbirth',
-        category:'pregnancy',
-        icon:'♡'
-    },
-
-    {
-        th:'หูตึง',
-        en:'Hard of hearing',
-        category:'hearing',
-        icon:'◌'
-    },
-
-    {
-        th:'หูหนวกตาบอด',
-        en:'Deafblind',
-        category:'hearing',
-        icon:'◌'
-    },
-
-    {
-        th:'เป็นใบ้',
-        en:'Non-speaking',
-        category:'hearing',
-        icon:'◌'
-    },
-
-    {
-        th:'ล่ามภาษามือ',
-        en:'Sign language interpreter',
-        category:'hearing',
-        icon:'✦'
-    },
-
-    {
-        th:'เจาะเลือด',
-        en:'Blood draw',
-        category:'test',
-        icon:'＋'
-    },
-
-    {
-        th:'เลือด',
-        en:'Blood',
-        category:'test',
-        icon:'＋'
-    },
-
-    {
-        th:'X-ray',
-        en:'X-ray',
-        category:'test',
-        icon:'＋'
-    },
-
-    {
-        th:'CT-scan',
-        en:'CT scan',
-        category:'test',
-        icon:'＋'
-    },
-
-    {
-        th:'กินยาหลังอาหาร',
-        en:'Take medicine after meals',
-        category:'medicine',
-        icon:'＋'
-    },
-
-    {
-        th:'กินยาก่อนอาหาร',
-        en:'Take medicine before meals',
-        category:'medicine',
-        icon:'＋'
-    },
-
-    {
-        th:'เช้าเที่ยงเย็น',
-        en:'Morning, noon, and evening',
-        category:'medicine',
-        icon:'☀'
-    },
-
-    {
-        th:'ก่อนนอน',
-        en:'Before bed',
-        category:'medicine',
-        icon:'◐'
-    },
-
-    {
-        th:'ครั้งหน้าพบกัน',
-        en:'See you at the next appointment',
-        category:'appointment',
-        icon:'□'
-    },
-
-    {
-        th:'หมอ',
-        en:'Doctor',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'สูติแพทย์',
-        en:'Obstetrician',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'นักกายภาพบำบัด',
-        en:'Physical therapist',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'พยาบาล',
-        en:'Nurse',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'จิตแพทย์',
-        en:'Psychiatrist',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'ทันตแพทย์',
-        en:'Dentist',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'แพทย์หูคอจมูก',
-        en:'ENT doctor / Otolaryngologist',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'จักษุแพทย์',
-        en:'Ophthalmologist',
-        category:'staff',
-        icon:'◉'
-    },
-
-    {
-        th:'อายุรแพทย์',
-        en:'Internist',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'กุมารแพทย์',
-        en:'Pediatrician',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'ศัลยแพทย์',
-        en:'Surgeon',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'เจ้าหน้าที่/บุคลากร',
-        en:'Staff / Healthcare personnel',
-        category:'staff',
-        icon:'＋'
-    },
-
-    {
-        th:'คนเข็นเปล',
-        en:'Patient transport staff',
-        category:'hospitalStaff',
-        icon:'□'
-    },
-
-    {
-        th:'ยาม',
-        en:'Security guard',
-        category:'hospitalStaff',
-        icon:'＋'
-    },
-
-    {
-        th:'ญาติผู้ป่วย',
-        en:'Patient’s family member',
-        category:'hospitalStaff',
-        icon:'♡'
+        th:"ญาติผู้ป่วย",
+        en:"Patient's family member",
+        category:"hospitalStaff",
+        icon:"♡"
     }
 
 ];
 
-
-/* =====================================================
-   CATEGORY LABEL
-   ===================================================== */
-
 const categoryNames = {
-    all:"คำศัพท์สุขภาพ",
     symptom:"อาการและความรู้สึก",
     symptomQuestion:"คำถามเกี่ยวกับอาการ",
     pregnancy:"การตั้งครรภ์และการคลอด",
@@ -1402,319 +885,153 @@ const categoryNames = {
     hospitalStaff:"บุคคลอื่นในโรงพยาบาล"
 };
 
-
-/* =====================================================
-   ELEMENTS
-   ===================================================== */
-
-const grid =
-    document.getElementById("vocabGrid");
-
-const search =
-    document.getElementById("search");
-
-const count =
-    document.getElementById("count");
-
-const empty =
-    document.getElementById("empty");
-
-const modal =
-    document.getElementById("modal");
-
-const modalTitle =
-    document.getElementById("modalTitle");
-
-const modalEnglish =
-    document.getElementById("modalEnglish");
-
-const modalCategory =
-    document.getElementById("modalCategory");
-
-const macTitle =
-    document.getElementById("macTitle");
-
-const closeModal =
-    document.getElementById("closeModal");
-
-const signVideo =
-    document.getElementById("signVideo");
-
-const videoPlaceholder =
-    document.getElementById("videoPlaceholder");
-
-const videoControls =
-    document.getElementById("videoControls");
-
-const slowBtn =
-    document.getElementById("slowBtn");
-
-const loopBtn =
-    document.getElementById("loopBtn");
-
 let currentCategory = "all";
+let searchText = "";
 
-let slowMode = false;
+const grid = document.getElementById("vocabGrid");
+const searchInput = document.getElementById("searchInput");
 
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalEnglish = document.getElementById("modalEnglish");
+const modalCategory = document.getElementById("modalCategory");
+const modalMacTitle = document.getElementById("modalMacTitle");
+
+const signVideo = document.getElementById("signVideo");
+const videoPlaceholder = document.getElementById("videoPlaceholder");
+const videoControls = document.getElementById("videoControls");
+
+const slowBtn = document.getElementById("slowBtn");
+const loopBtn = document.getElementById("loopBtn");
+
+let slowMode = true;
 let loopMode = false;
 
 
-/* =====================================================
-   VIDEO FILE NAME
-   ===================================================== */
-
 /*
-   ใช้ชื่อคำศัพท์เป็นชื่อไฟล์โดยอัตโนมัติ
+==================================================
+สร้างชื่อไฟล์วิดีโออัตโนมัติ
+==================================================
 
-   เช่น
-   ปวด → videos/ปวด.mp4
-   ปวดท้อง → videos/ปวดท้อง.mp4
+เช่น
 
-   เครื่องหมาย / จะถูกเปลี่ยนเป็น -
-   เพื่อป้องกันปัญหากับชื่อไฟล์
+ปวด
+→ videos/ปวด.mov
 
-   เช่น
-   เจ้าหน้าที่/บุคลากร
-   →
-   เจ้าหน้าที่-บุคลากร.mp4
+ปวดท้อง
+→ videos/ปวดท้อง.mov
+
+เจ้าหน้าที่/บุคลากร
+→ videos/เจ้าหน้าที่-บุคลากร.mov
+
 */
 
 function getVideoFile(item){
 
-    const safeName =
-        item.th
-            .replaceAll("/", "-")
-            .replaceAll("\\", "-")
-            .trim();
+    let fileName = item.th
+        .replaceAll("/", "-")
+        .replaceAll("\\", "-")
+        .trim();
 
-    return `videos/${encodeURIComponent(safeName)}.mp4`;
-
+    return "videos/" + encodeURIComponent(fileName) + ".mov";
 }
 
 
-/* =====================================================
-   RENDER
-   ===================================================== */
+/*
+==================================================
+RENDER
+==================================================
+*/
 
 function render(){
 
-    const keyword =
-        search.value
-            .trim()
-            .toLowerCase();
+    const filtered = vocabulary.filter(item => {
 
-    const filtered =
-        vocabulary.filter(item => {
+        const categoryMatch =
+            currentCategory === "all" ||
+            item.category === currentCategory;
 
-            const matchCategory =
-                currentCategory === "all"
-                ||
-                item.category === currentCategory;
+        const searchMatch =
+            item.th.toLowerCase().includes(searchText) ||
+            item.en.toLowerCase().includes(searchText);
 
-            const matchSearch =
-                !keyword
-                ||
-                item.th.toLowerCase().includes(keyword)
-                ||
-                item.en.toLowerCase().includes(keyword);
-
-            return matchCategory && matchSearch;
-
-        });
-
-
-    grid.innerHTML = "";
-
-
-    filtered.forEach(item => {
-
-        const button =
-            document.createElement("button");
-
-        button.type = "button";
-
-        button.className = "vocab-card";
-
-        button.innerHTML = `
-
-            <span class="vocab-arrow">
-                ›
-            </span>
-
-            <div class="vocab-icon">
-                ${item.icon}
-            </div>
-
-            <div class="vocab-th">
-                ${item.th}
-            </div>
-
-            <div class="vocab-en">
-                ${item.en}
-            </div>
-
-        `;
-
-
-        button.addEventListener(
-            "click",
-            () => openModal(item)
-        );
-
-
-        grid.appendChild(button);
+        return categoryMatch && searchMatch;
 
     });
 
+    grid.innerHTML = "";
 
-    count.textContent =
-        `${filtered.length} คำ`;
+    if(filtered.length === 0){
 
-    empty.style.display =
-        filtered.length
-        ? "none"
-        : "block";
+        grid.innerHTML = `
+            <div class="empty">
+                ไม่พบคำศัพท์ที่ค้นหา
+            </div>
+        `;
 
-}
+        return;
+    }
 
+    filtered.forEach(item => {
 
-/* =====================================================
-   SHOW VIDEO
-   ===================================================== */
+        const card = document.createElement("button");
 
-function showVideo(item){
+        card.className = "vocab-card";
 
-    const videoPath =
-        getVideoFile(item);
+        card.innerHTML = `
+            <div class="vocab-icon">${item.icon}</div>
 
-    signVideo.pause();
+            <h3>${item.th}</h3>
 
-    signVideo.removeAttribute("src");
+            <p>${item.en}</p>
+        `;
 
-    signVideo.load();
-
-    signVideo.style.display =
-        "block";
-
-    videoPlaceholder.style.display =
-        "none";
-
-    videoControls.style.display =
-        "flex";
-
-    signVideo.loop =
-        loopMode;
-
-    signVideo.playbackRate =
-        slowMode ? 0.5 : 1;
-
-    signVideo.src =
-        videoPath;
-
-    signVideo.load();
-
-
-    signVideo.onloadeddata = () => {
-
-        signVideo.style.display =
-            "block";
-
-        videoPlaceholder.style.display =
-            "none";
-
-        videoControls.style.display =
-            "flex";
-
-        signVideo.playbackRate =
-            slowMode ? 0.5 : 1;
-
-        signVideo.loop =
-            loopMode;
-
-        signVideo.play().catch(() => {
-            /*
-              ถ้า browser ไม่อนุญาต autoplay
-              ผู้ใช้กดปุ่ม Play จากตัววิดีโอได้
-            */
+        card.addEventListener("click", () => {
+            openModal(item);
         });
 
-    };
+        grid.appendChild(card);
 
-
-    signVideo.onerror = () => {
-
-        signVideo.pause();
-
-        signVideo.removeAttribute("src");
-
-        signVideo.load();
-
-        signVideo.style.display =
-            "none";
-
-        videoControls.style.display =
-            "none";
-
-        videoPlaceholder.style.display =
-            "block";
-
-    };
+    });
 
 }
 
 
-/* =====================================================
-   OPEN MODAL
-   ===================================================== */
+/*
+==================================================
+OPEN MODAL
+==================================================
+*/
 
 function openModal(item){
 
-    modalTitle.textContent =
-        item.th;
+    modalTitle.textContent = item.th;
 
-    modalEnglish.textContent =
-        item.en;
+    modalEnglish.textContent = item.en;
+
+    modalMacTitle.textContent = item.th;
 
     modalCategory.textContent =
-        categoryNames[item.category]
-        || "การสื่อสาร";
-
-    macTitle.textContent =
-        item.th;
-
-
-    slowBtn.classList.toggle(
-        "active",
-        slowMode
-    );
-
-    loopBtn.classList.toggle(
-        "active",
-        loopMode
-    );
-
+        categoryNames[item.category] || "คำศัพท์สุขภาพ";
 
     modal.classList.add("show");
 
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-    document.body.style.overflow =
-        "hidden";
-
+    document.body.style.overflow = "hidden";
 
     showVideo(item);
 
 }
 
 
-/* =====================================================
-   CLOSE MODAL
-   ===================================================== */
+/*
+==================================================
+LOAD VIDEO
+==================================================
+*/
 
-function close(){
+function showVideo(item){
+
+    const videoPath = getVideoFile(item);
 
     signVideo.pause();
 
@@ -1722,165 +1039,217 @@ function close(){
 
     signVideo.load();
 
-    signVideo.style.display =
-        "none";
+    signVideo.loop = loopMode;
 
-    videoControls.style.display =
-        "none";
+    signVideo.playbackRate = slowMode ? 0.5 : 1;
 
-    videoPlaceholder.style.display =
-        "block";
+    videoPlaceholder.style.display = "none";
 
+    videoControls.style.display = "flex";
 
-    modal.classList.remove("show");
+    signVideo.style.display = "block";
 
-    modal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
+    signVideo.src = videoPath;
 
-    document.body.style.overflow =
-        "";
+    signVideo.load();
 
-}
-
-
-closeModal.addEventListener(
-    "click",
-    close
-);
-
-
-modal.addEventListener(
-    "click",
-    event => {
-
-        if(
-            event.target === modal
-        ){
-
-            close();
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key === "Escape"
-        ){
-
-            close();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   SLOW PLAYBACK
-   ===================================================== */
-
-slowBtn.addEventListener(
-    "click",
-    () => {
-
-        slowMode =
-            !slowMode;
+    signVideo.onloadeddata = () => {
 
         signVideo.playbackRate =
             slowMode ? 0.5 : 1;
 
-        slowBtn.classList.toggle(
-            "active",
-            slowMode
-        );
+        signVideo.loop = loopMode;
 
+        signVideo.play().catch(() => {});
+
+    };
+
+    signVideo.onerror = () => {
+
+        signVideo.pause();
+
+        signVideo.style.display = "none";
+
+        videoControls.style.display = "none";
+
+        videoPlaceholder.style.display = "block";
+
+        videoPlaceholder.innerHTML = `
+            <div style="font-size:36px;margin-bottom:10px;">
+                🎥
+            </div>
+
+            <div>
+                ยังไม่มีวิดีโอสำหรับคำว่า
+                <strong>${item.th}</strong>
+            </div>
+
+            <div style="
+                margin-top:8px;
+                font-size:12px;
+                color:#A0AAA5;
+            ">
+                ต้องใช้ไฟล์
+                <strong>${item.th.replaceAll("/","-")}.mov</strong>
+                ในโฟลเดอร์ videos
+            </div>
+        `;
+
+    };
+
+}
+
+
+/*
+==================================================
+SLOW 0.5×
+==================================================
+*/
+
+slowBtn.addEventListener("click", () => {
+
+    slowMode = !slowMode;
+
+    signVideo.playbackRate =
+        slowMode ? 0.5 : 1;
+
+    slowBtn.classList.toggle(
+        "active",
+        slowMode
+    );
+
+    slowBtn.textContent =
+        slowMode
+            ? "🐢 เล่นช้า 0.5×"
+            : "▶ เล่นปกติ 1×";
+
+});
+
+
+/*
+==================================================
+LOOP
+==================================================
+*/
+
+loopBtn.addEventListener("click", () => {
+
+    loopMode = !loopMode;
+
+    signVideo.loop = loopMode;
+
+    loopBtn.classList.toggle(
+        "active",
+        loopMode
+    );
+
+    loopBtn.textContent =
+        loopMode
+            ? "🔁 เล่นซ้ำ: เปิด"
+            : "🔁 เล่นซ้ำ";
+
+});
+
+
+/*
+==================================================
+CLOSE MODAL
+==================================================
+*/
+
+function closeModal(){
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+    signVideo.pause();
+
+    signVideo.removeAttribute("src");
+
+    signVideo.load();
+
+}
+
+
+document
+    .getElementById("closeModal")
+    .addEventListener("click", closeModal);
+
+
+modal.addEventListener("click", event => {
+
+    if(event.target === modal){
+        closeModal();
     }
-);
+
+});
 
 
-/* =====================================================
-   LOOP
-   ===================================================== */
+document.addEventListener("keydown", event => {
 
-loopBtn.addEventListener(
-    "click",
-    () => {
-
-        loopMode =
-            !loopMode;
-
-        signVideo.loop =
-            loopMode;
-
-        loopBtn.classList.toggle(
-            "active",
-            loopMode
-        );
-
+    if(event.key === "Escape"){
+        closeModal();
     }
-);
+
+});
 
 
-/* =====================================================
-   CATEGORY BUTTONS
-   ===================================================== */
+/*
+==================================================
+CATEGORY
+==================================================
+*/
 
 document
     .querySelectorAll(".category-btn")
     .forEach(button => {
 
-        button.addEventListener(
-            "click",
-            () => {
+        button.addEventListener("click", () => {
 
-                document
-                    .querySelectorAll(".category-btn")
-                    .forEach(item => {
+            document
+                .querySelectorAll(".category-btn")
+                .forEach(btn => {
+                    btn.classList.remove("active");
+                });
 
-                        item.classList.remove(
-                            "active"
-                        );
+            button.classList.add("active");
 
-                    });
+            currentCategory =
+                button.dataset.category;
 
+            render();
 
-                button.classList.add(
-                    "active"
-                );
-
-
-                currentCategory =
-                    button.dataset.category;
-
-                render();
-
-            }
-        );
+        });
 
     });
 
 
-/* =====================================================
-   SEARCH
-   ===================================================== */
+/*
+==================================================
+SEARCH
+==================================================
+*/
 
-search.addEventListener(
-    "input",
-    render
-);
+searchInput.addEventListener("input", event => {
+
+    searchText =
+        event.target.value
+            .trim()
+            .toLowerCase();
+
+    render();
+
+});
 
 
-/* =====================================================
-   START
-   ===================================================== */
+/*
+==================================================
+START
+==================================================
+*/
+
+slowBtn.classList.add("active");
 
 render();
 
