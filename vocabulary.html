@@ -702,7 +702,7 @@ body{
             <input
                 type="search"
                 id="search"
-                placeholder="ค้นหาคำศัพท์ เช่น ปวด ไข้ หัวใจ..."
+                placeholder="ค้นหาคำศัพท์ เช่น ปวดท้อง หมอ เจาะเลือด..."
                 autocomplete="off"
             >
 
@@ -713,61 +713,16 @@ body{
 
     <div class="category-bar">
 
-        <button
-            class="category-btn active"
-            data-category="all"
-        >
-            ทั้งหมด
-        </button>
-
-        <button
-            class="category-btn"
-            data-category="symptom"
-        >
-            อาการ
-        </button>
-
-        <button
-            class="category-btn"
-            data-category="body"
-        >
-            ร่างกาย
-        </button>
-
-        <button
-            class="category-btn"
-            data-category="hospital"
-        >
-            โรงพยาบาล
-        </button>
-
-        <button
-            class="category-btn"
-            data-category="test"
-        >
-            การตรวจ
-        </button>
-
-        <button
-            class="category-btn"
-            data-category="treatment"
-        >
-            การรักษา
-        </button>
-
-        <button
-            class="category-btn"
-            data-category="communication"
-        >
-            การสื่อสาร
-        </button>
-
-        <button
-            class="category-btn"
-            data-category="hearing"
-        >
-            การได้ยิน
-        </button>
+        <button class="category-btn active" data-category="all">ทั้งหมด</button>
+        <button class="category-btn" data-category="symptom">อาการและความรู้สึก</button>
+        <button class="category-btn" data-category="symptomQuestion">คำถามเกี่ยวกับอาการ</button>
+        <button class="category-btn" data-category="pregnancy">การตั้งครรภ์และการคลอด</button>
+        <button class="category-btn" data-category="hearing">การได้ยินและการสื่อสาร</button>
+        <button class="category-btn" data-category="test">การตรวจ</button>
+        <button class="category-btn" data-category="medicine">การใช้ยา</button>
+        <button class="category-btn" data-category="appointment">การนัดหมาย</button>
+        <button class="category-btn" data-category="staff">บุคลากรทางการแพทย์</button>
+        <button class="category-btn" data-category="hospitalStaff">บุคคลอื่นในโรงพยาบาล</button>
 
     </div>
 
@@ -921,592 +876,369 @@ body{
 
 const vocabulary = [
 
-    /* =========================
-       อาการ
-    ========================= */
-
-    {
-        th:"ปวด",
-        en:"Pain",
-        category:"symptom",
-        icon:"♡"
-    },
-
-    {
-        th:"ปวดหัว",
-        en:"Headache",
-        category:"symptom",
-        icon:"◌"
-    },
-
-    {
-        th:"ปวดท้อง",
-        en:"Stomachache",
-        category:"symptom",
-        icon:"◌"
-    },
-
-    {
-        th:"เจ็บหน้าอก",
-        en:"Chest pain",
-        category:"symptom",
-        icon:"♡"
-    },
-
-    {
-        th:"เจ็บคอ",
-        en:"Sore throat",
-        category:"symptom",
-        icon:"◌"
-    },
-
-    {
-        th:"ไอ",
-        en:"Cough",
-        category:"symptom",
-        icon:"⌁"
-    },
-
-    {
-        th:"มีไข้",
-        en:"Fever",
-        category:"symptom",
-        icon:"°"
-    },
-
-    {
-        th:"เวียนหัว",
-        en:"Dizziness",
-        category:"symptom",
-        icon:"◎"
-    },
-
-    {
-        th:"คลื่นไส้",
-        en:"Nausea",
-        category:"symptom",
-        icon:"⌁"
-    },
-
-    {
-        th:"อาเจียน",
-        en:"Vomiting",
-        category:"symptom",
-        icon:"⌁"
-    },
-
-    {
-        th:"ท้องเสีย",
-        en:"Diarrhea",
-        category:"symptom",
-        icon:"⌁"
-    },
-
-    {
-        th:"อ่อนเพลีย",
-        en:"Fatigue",
-        category:"symptom",
-        icon:"○"
-    },
-
-    {
-        th:"หายใจลำบาก",
-        en:"Difficulty breathing",
-        category:"symptom",
-        icon:"⌁"
-    },
-
-    {
-        th:"บวม",
-        en:"Swelling",
-        category:"symptom",
-        icon:"○"
-    },
-
-    {
-        th:"แผล",
-        en:"Wound",
-        category:"symptom",
-        icon:"＋"
-    },
-
-    {
-        th:"เลือดออก",
-        en:"Bleeding",
-        category:"symptom",
-        icon:"＋"
-    },
-
-
-    /* =========================
-       ร่างกาย
-    ========================= */
-
-    {
-        th:"ศีรษะ",
-        en:"Head",
-        category:"body",
-        icon:"○"
-    },
-
-    {
-        th:"ตา",
-        en:"Eye",
-        category:"body",
-        icon:"◉"
-    },
-
-    {
-        th:"หู",
-        en:"Ear",
-        category:"body",
-        icon:"◌"
-    },
-
     {
-        th:"จมูก",
-        en:"Nose",
-        category:"body",
-        icon:"⌁"
+        th:'ปวดท้อง',
+        en:'Stomachache',
+        category:'symptom',
+        icon:'◌'
     },
 
     {
-        th:"ปาก",
-        en:"Mouth",
-        category:"body",
-        icon:"◡"
+        th:'ท้องเสีย',
+        en:'Diarrhea',
+        category:'symptom',
+        icon:'⌁'
     },
 
     {
-        th:"คอ",
-        en:"Neck / Throat",
-        category:"body",
-        icon:"○"
+        th:'คลื่นไส้',
+        en:'Nausea',
+        category:'symptom',
+        icon:'⌁'
     },
 
     {
-        th:"ผิวหนัง",
-        en:"Skin",
-        category:"body",
-        icon:"○"
+        th:'อาเจียนไหม',
+        en:'Are you vomiting?',
+        category:'symptomQuestion',
+        icon:'⌁'
     },
 
     {
-        th:"สมอง",
-        en:"Brain",
-        category:"body",
-        icon:"◌"
+        th:'กินข้าวได้ไหม',
+        en:'Can you eat?',
+        category:'symptomQuestion',
+        icon:'○'
     },
 
     {
-        th:"หัวใจ",
-        en:"Heart",
-        category:"body",
-        icon:"♡"
+        th:'เจ็บ',
+        en:'Pain / Hurt',
+        category:'symptom',
+        icon:'♡'
     },
 
     {
-        th:"ปอด",
-        en:"Lungs",
-        category:"body",
-        icon:"○"
+        th:'ปวด',
+        en:'Pain',
+        category:'symptom',
+        icon:'♡'
     },
 
     {
-        th:"กระเพาะอาหาร",
-        en:"Stomach",
-        category:"body",
-        icon:"○"
+        th:'เจ็บหน้าอกไหม',
+        en:'Do you have chest pain?',
+        category:'symptomQuestion',
+        icon:'♡'
     },
 
     {
-        th:"ลำไส้",
-        en:"Intestine",
-        category:"body",
-        icon:"○"
+        th:'ปวดแขนไหม',
+        en:'Does your arm hurt?',
+        category:'symptomQuestion',
+        icon:'○'
     },
 
     {
-        th:"ตับ",
-        en:"Liver",
-        category:"body",
-        icon:"○"
+        th:'ปวดหัวไหม',
+        en:'Do you have a headache?',
+        category:'symptomQuestion',
+        icon:'◌'
     },
 
     {
-        th:"ไต",
-        en:"Kidney",
-        category:"body",
-        icon:"○"
+        th:'ไม่สบายนานรึยัง',
+        en:'How long have you been unwell?',
+        category:'symptomQuestion',
+        icon:'○'
     },
 
     {
-        th:"เลือด",
-        en:"Blood",
-        category:"body",
-        icon:"＋"
+        th:'มีไข้สูงไหม',
+        en:'Do you have a high fever?',
+        category:'symptomQuestion',
+        icon:'°'
     },
 
     {
-        th:"หลอดเลือด",
-        en:"Blood vessel",
-        category:"body",
-        icon:"⌁"
+        th:'มีน้ำมูกไหม',
+        en:'Do you have a runny nose?',
+        category:'symptomQuestion',
+        icon:'⌁'
     },
 
     {
-        th:"หน้าอก",
-        en:"Chest",
-        category:"body",
-        icon:"○"
+        th:'เจ็บคอไหม',
+        en:'Do you have a sore throat?',
+        category:'symptomQuestion',
+        icon:'◌'
     },
 
     {
-        th:"ท้อง",
-        en:"Abdomen",
-        category:"body",
-        icon:"○"
+        th:'ป่วยเป็นอะไร',
+        en:'What are you sick with?',
+        category:'symptomQuestion',
+        icon:'?'
     },
 
     {
-        th:"หลัง",
-        en:"Back",
-        category:"body",
-        icon:"○"
+        th:'ไม่สบาย',
+        en:'Feel unwell',
+        category:'symptom',
+        icon:'○'
     },
 
     {
-        th:"แขน",
-        en:"Arm",
-        category:"body",
-        icon:"○"
+        th:'น้ำหนักลดไหม',
+        en:'Have you lost weight?',
+        category:'symptomQuestion',
+        icon:'↓'
     },
 
     {
-        th:"ขา",
-        en:"Leg",
-        category:"body",
-        icon:"○"
+        th:'น้ำหนักเพิ่มไหม',
+        en:'Have you gained weight?',
+        category:'symptomQuestion',
+        icon:'↑'
     },
 
-
-    /* =========================
-       โรงพยาบาล
-    ========================= */
-
     {
-        th:"โรงพยาบาล",
-        en:"Hospital",
-        category:"hospital",
-        icon:"＋"
+        th:'ที่ไม่สบายหายรึยัง',
+        en:'Have you recovered?',
+        category:'symptomQuestion',
+        icon:'✓'
     },
 
     {
-        th:"หมอ",
-        en:"Doctor",
-        category:"hospital",
-        icon:"＋"
+        th:'นิดหน่อย',
+        en:'A little',
+        category:'symptom',
+        icon:'·'
     },
 
     {
-        th:"พยาบาล",
-        en:"Nurse",
-        category:"hospital",
-        icon:"＋"
+        th:'มาก',
+        en:'A lot / Severe',
+        category:'symptom',
+        icon:'＋'
     },
 
     {
-        th:"ผู้ป่วย",
-        en:"Patient",
-        category:"hospital",
-        icon:"○"
+        th:'ดีขึ้นไหม',
+        en:'Are you feeling better?',
+        category:'symptomQuestion',
+        icon:'↑'
     },
 
     {
-        th:"ห้องตรวจ",
-        en:"Examination room",
-        category:"hospital",
-        icon:"＋"
+        th:'ตั้งครรภ์',
+        en:'Pregnancy',
+        category:'pregnancy',
+        icon:'○'
     },
 
     {
-        th:"ห้องฉุกเฉิน",
-        en:"Emergency room",
-        category:"hospital",
-        icon:"!"
+        th:'คลอดลูก',
+        en:'Childbirth',
+        category:'pregnancy',
+        icon:'♡'
     },
 
     {
-        th:"ห้องผ่าตัด",
-        en:"Operating room",
-        category:"hospital",
-        icon:"＋"
+        th:'หูตึง',
+        en:'Hard of hearing',
+        category:'hearing',
+        icon:'◌'
     },
 
     {
-        th:"ร้านขายยา",
-        en:"Pharmacy",
-        category:"hospital",
-        icon:"＋"
+        th:'หูหนวกตาบอด',
+        en:'Deafblind',
+        category:'hearing',
+        icon:'◌'
     },
 
     {
-        th:"นัดหมาย",
-        en:"Appointment",
-        category:"hospital",
-        icon:"□"
+        th:'เป็นใบ้',
+        en:'Non-speaking',
+        category:'hearing',
+        icon:'◌'
     },
 
     {
-        th:"แผนก",
-        en:"Department",
-        category:"hospital",
-        icon:"＋"
+        th:'ล่ามภาษามือ',
+        en:'Sign language interpreter',
+        category:'communication',
+        icon:'✦'
     },
-
 
-    /* =========================
-       การตรวจ
-    ========================= */
-
     {
-        th:"ตรวจร่างกาย",
-        en:"Physical examination",
-        category:"test",
-        icon:"＋"
+        th:'เจาะเลือด',
+        en:'Blood draw',
+        category:'test',
+        icon:'＋'
     },
 
     {
-        th:"ตรวจเลือด",
-        en:"Blood test",
-        category:"test",
-        icon:"＋"
+        th:'เลือด',
+        en:'Blood',
+        category:'test',
+        icon:'＋'
     },
 
     {
-        th:"วัดความดัน",
-        en:"Blood pressure measurement",
-        category:"test",
-        icon:"＋"
+        th:'X-ray',
+        en:'X-ray',
+        category:'test',
+        icon:'＋'
     },
 
     {
-        th:"เอกซเรย์",
-        en:"X-ray",
-        category:"test",
-        icon:"＋"
+        th:'CT-scan',
+        en:'CT scan',
+        category:'test',
+        icon:'＋'
     },
 
     {
-        th:"อัลตราซาวด์",
-        en:"Ultrasound",
-        category:"test",
-        icon:"◎"
+        th:'กินยาหลังอาหาร',
+        en:'Take medicine after meals',
+        category:'medicine',
+        icon:'＋'
     },
 
     {
-        th:"ตรวจปัสสาวะ",
-        en:"Urine test",
-        category:"test",
-        icon:"＋"
+        th:'กินยาก่อนอาหาร',
+        en:'Take medicine before meals',
+        category:'medicine',
+        icon:'＋'
     },
-
-
-    /* =========================
-       การรักษา
-    ========================= */
 
     {
-        th:"ยา",
-        en:"Medicine",
-        category:"treatment",
-        icon:"＋"
+        th:'เช้าเที่ยงเย็น',
+        en:'Morning, noon, and evening',
+        category:'medicine',
+        icon:'☀'
     },
 
     {
-        th:"ฉีดยา",
-        en:"Injection",
-        category:"treatment",
-        icon:"＋"
+        th:'ก่อนนอน',
+        en:'Before bed',
+        category:'medicine',
+        icon:'◐'
     },
 
     {
-        th:"ผ่าตัด",
-        en:"Surgery",
-        category:"treatment",
-        icon:"＋"
+        th:'ครั้งหน้าพบกัน',
+        en:'See you at the next appointment',
+        category:'appointment',
+        icon:'□'
     },
 
     {
-        th:"นอนโรงพยาบาล",
-        en:"Hospitalization",
-        category:"treatment",
-        icon:"□"
+        th:'หมอ',
+        en:'Doctor',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"รักษา",
-        en:"Treatment",
-        category:"treatment",
-        icon:"＋"
+        th:'สูติแพทย์',
+        en:'Obstetrician',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"อาการดีขึ้น",
-        en:"Symptoms are better",
-        category:"treatment",
-        icon:"↑"
+        th:'นักกายภาพบำบัด',
+        en:'Physical therapist',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"อาการแย่ลง",
-        en:"Symptoms are worse",
-        category:"treatment",
-        icon:"↓"
+        th:'พยาบาล',
+        en:'Nurse',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"ยังมีอาการ",
-        en:"Still have symptoms",
-        category:"treatment",
-        icon:"○"
+        th:'จิตแพทย์',
+        en:'Psychiatrist',
+        category:'staff',
+        icon:'＋'
     },
 
-
-    /* =========================
-       การสื่อสาร
-    ========================= */
-
     {
-        th:"สื่อสาร",
-        en:"Communicate",
-        category:"communication",
-        icon:"⌁"
+        th:'ทันตแพทย์',
+        en:'Dentist',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"ภาษามือ",
-        en:"Sign language",
-        category:"communication",
-        icon:"✦"
+        th:'แพทย์หูคอจมูก',
+        en:'ENT doctor / Otolaryngologist',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"เขียน",
-        en:"Writing",
-        category:"communication",
-        icon:"✎"
+        th:'จักษุแพทย์',
+        en:'Ophthalmologist',
+        category:'staff',
+        icon:'◉'
     },
 
     {
-        th:"พิมพ์",
-        en:"Typing",
-        category:"communication",
-        icon:"⌨"
+        th:'อายุรแพทย์',
+        en:'Internist',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"มองหน้า",
-        en:"Face the patient",
-        category:"communication",
-        icon:"◉"
+        th:'กุมารแพทย์',
+        en:'Pediatrician',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"พูดให้ชัดเจน",
-        en:"Speak clearly",
-        category:"communication",
-        icon:"⌁"
+        th:'ศัลยแพทย์',
+        en:'Surgeon',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"พูดซ้ำ",
-        en:"Repeat",
-        category:"communication",
-        icon:"↻"
+        th:'เจ้าหน้าที่/บุคลากร',
+        en:'Staff / Healthcare personnel',
+        category:'staff',
+        icon:'＋'
     },
 
     {
-        th:"เข้าใจ",
-        en:"Understand",
-        category:"communication",
-        icon:"✓"
+        th:'คนเข็นเปล',
+        en:'Patient transport staff',
+        category:'hospitalStaff',
+        icon:'□'
     },
 
     {
-        th:"ต้องการความช่วยเหลือด้านการสื่อสาร",
-        en:"Need communication support",
-        category:"communication",
-        icon:"♡"
+        th:'ยาม',
+        en:'Security guard',
+        category:'hospitalStaff',
+        icon:'＋'
     },
 
-    {
-        th:"ปวดหู",
-        en:"Earache",
-        category:"hearing",
-        icon:"◌"
-    },
-    {
-        th:"หูอื้อ",
-        en:"Blocked / muffled ear",
-        category:"hearing",
-        icon:"◌"
-    },
-    {
-        th:"เสียงดังในหู",
-        en:"Ringing in the ear",
-        category:"hearing",
-        icon:"◌"
-    },
-    {
-        th:"ได้ยินไม่ชัด",
-        en:"Hard of hearing",
-        category:"hearing",
-        icon:"◌"
-    },
-    {
-        th:"เครื่องช่วยฟัง",
-        en:"Hearing aid",
-        category:"hearing",
-        icon:"◌"
-    },
-    {
-        th:"ประสาทหูเทียม",
-        en:"Cochlear implant",
-        category:"hearing",
-        icon:"◌"
-    },
-    {
-        th:"ตรวจการได้ยิน",
-        en:"Hearing test",
-        category:"hearing",
-        icon:"◌"
-    },
-    {
-        th:"ล่ามภาษามือ",
-        en:"Sign language interpreter",
-        category:"communication",
-        icon:"✦"
-    },
-    {
-        th:"ฉันไม่เข้าใจ",
-        en:"I don't understand",
-        category:"communication",
-        icon:"?"
-    },
-    {
-        th:"ช่วยเขียนให้ดูหน่อย",
-        en:"Please write it down",
-        category:"communication",
-        icon:"✎"
-    },
     {
-        th:"ช่วยพูดช้าลงหน่อย",
-        en:"Please speak more slowly",
-        category:"communication",
-        icon:"⌁"
+        th:'ญาติผู้ป่วย',
+        en:'Patient’s family member',
+        category:'hospitalStaff',
+        icon:'♡'
     }
-
 
 ];
 
@@ -1516,23 +1248,16 @@ const vocabulary = [
    ===================================================== */
 
 const categoryNames = {
-
     all:"คำศัพท์สุขภาพ",
-
-    symptom:"อาการ",
-
-    body:"ร่างกาย",
-
-    hospital:"โรงพยาบาล",
-
+    symptom:"อาการและความรู้สึก",
+    symptomQuestion:"คำถามเกี่ยวกับอาการ",
+    pregnancy:"การตั้งครรภ์และการคลอด",
+    hearing:"การได้ยินและการสื่อสาร",
     test:"การตรวจ",
-
-    treatment:"การรักษา",
-
-    communication:"การสื่อสาร",
-
-    hearing:"การได้ยิน"
-
+    medicine:"การใช้ยา",
+    appointment:"การนัดหมาย",
+    staff:"บุคลากรทางการแพทย์",
+    hospitalStaff:"บุคคลอื่นในโรงพยาบาล"
 };
 
 
