@@ -539,10 +539,10 @@
         </div>
 
         <div class="leader-stat">
-            <div class="leader-stat-icon">🔥</div>
-            <strong id="bestStreak">0</strong>
-            <span>Streak สูงสุด</span>
-        </div>
+    <div class="leader-stat-icon">⚡</div>
+    <strong id="bestTime">--:--</strong>
+    <span>เวลาที่ดีที่สุด</span>
+</div>
 
     </div>
 
@@ -552,7 +552,7 @@
     <section class="form-card board">
 
         <div class="board-heading">
-            <h2>🏆 อันดับวันนี้</h2>
+            <h2>🏆 อันดับทั้งหมด</h2>
             <span>Top Players</span>
         </div>
 
@@ -599,6 +599,12 @@
 
 <script>
 
+<script>
+
+const RANKING_API =
+    "https://script.google.com/macros/s/AKfycbxTB-EwExcTnCWd0kq_ohEaaRdR35t--RkY5cfD42Nx9wdQtCuq90HraHnp6Az0pMR21A/exec";
+
+
 const podium =
     document.getElementById("podium");
 
@@ -614,189 +620,294 @@ const totalPlayers =
 const bestScore =
     document.getElementById("bestScore");
 
-const bestStreak =
-    document.getElementById("bestStreak");
+const bestTime =
+    document.getElementById("bestTime");
 
 
 /* =====================================
-   LOAD SCORES
+   LOAD GLOBAL RANKING
 ===================================== */
 
-let scores = [];
+function loadRanking(){
 
-try {
+    const callbackName =
+        "mkjLeaderboardCallback";
 
-    scores =
-        JSON.parse(
-            localStorage.getItem("mkj-scores") || "[]"
+    window[callbackName] = function(data){
+
+        if (
+            !data ||
+            !data.success ||
+            !Array.isArray(data.rankings)
+        ){
+
+            showEmpty();
+
+            return;
+
+        }
+
+
+        const scores =
+            data.rankings
+                .filter(item => item.name)
+                .map(item => ({
+                    name: String(item.name),
+                    score: Number(item.score || 0),
+                    total: Number(item.total || 0),
+                    time: Number(item.time || 0)
+                }));
+
+
+        /* =====================================
+           SORT
+           คะแนนมากก่อน
+           คะแนนเท่ากัน → เวลาน้อยก่อน
+        ===================================== */
+
+        scores.sort((a,b) => {
+
+            if (b.score !== a.score) {
+                return b.score - a.score;
+            }
+
+            return a.time - b.time;
+
+        });
+
+
+        renderRanking(scores);
+
+    };
+
+
+    const script =
+        document.createElement("script");
+
+    script.src =
+        RANKING_API
+        +
+        "?callback="
+        +
+        callbackName
+        +
+        "&_="
+        +
+        Date.now();
+
+
+    script.onerror = function(){
+
+        console.log(
+            "Ranking API could not be loaded."
         );
 
-} catch(error){
+        showEmpty();
 
-    scores = [];
+    };
+
+
+    document.body.appendChild(script);
 
 }
 
 
-/* เรียงคะแนนจากมาก → น้อย
-   ถ้าคะแนนเท่ากัน ใช้เวลาน้อยกว่าอยู่ก่อน
-*/
-
-scores.sort((a,b) => {
-
-    if ((b.correct || 0) !== (a.correct || 0)) {
-        return (b.correct || 0) - (a.correct || 0);
-    }
-
-    return (a.time || 9999) - (b.time || 9999);
-
-});
-
-
 /* =====================================
-   STATS
+   RENDER RANKING
 ===================================== */
 
-totalPlayers.textContent =
-    scores.length;
+function renderRanking(scores){
 
-bestScore.textContent =
-    scores.length
-        ? `${scores[0].correct || 0}/5`
-        : "0";
+    podium.innerHTML = "";
+    rankList.innerHTML = "";
 
-bestStreak.textContent =
-    scores.length
-        ? Math.max(
-            ...scores.map(x => x.streak || 0)
-          )
-        : "0";
+
+    if (!scores.length){
+
+        showEmpty();
+
+        return;
+
+    }
+
+
+    podium.classList.remove("hidden");
+    rankList.classList.remove("hidden");
+    emptyBoard.classList.add("hidden");
+
+
+    /* =====================================
+       STATS
+    ===================================== */
+
+    totalPlayers.textContent =
+        scores.length;
+
+
+    bestScore.textContent =
+        `${scores[0].score}/${scores[0].total || 5}`;
+
+
+    const fastestTime =
+        Math.min(
+            ...scores
+                .map(item => item.time)
+                .filter(time => time >= 0)
+        );
+
+
+    bestTime.textContent =
+        formatTime(fastestTime);
+
+
+    /* =====================================
+       TOP 3
+    ===================================== */
+
+    const top3 =
+        scores.slice(0,3);
+
+    const medals =
+        ["🥇","🥈","🥉"];
+
+    const classes =
+        ["first","second","third"];
+
+    const order =
+        [1,0,2];
+
+
+    order.forEach(index => {
+
+        if (!top3[index]) return;
+
+
+        const item =
+            top3[index];
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            `podium-card ${classes[index]}`;
+
+
+        card.innerHTML = `
+
+            ${
+                index === 0
+                ? `<div class="crown">👑</div>`
+                : ""
+            }
+
+            <div class="rank-medal">
+                ${medals[index]}
+            </div>
+
+            <div class="podium-name">
+                ${escapeHtml(item.name)}
+            </div>
+
+            <div class="podium-score">
+                ${item.score}
+                <small>/ ${item.total || 5}</small>
+            </div>
+
+        `;
+
+
+        podium.appendChild(card);
+
+    });
+
+
+    /* =====================================
+       RANK LIST
+    ===================================== */
+
+    scores
+        .slice(3)
+        .forEach((item,index) => {
+
+            const actualRank =
+                index + 4;
+
+
+            const row =
+                document.createElement("div");
+
+
+            row.className =
+                "rank-row";
+
+
+            row.innerHTML = `
+
+                <div class="rank-number">
+                    #${actualRank}
+                </div>
+
+
+                <div class="rank-info">
+
+                    <div class="rank-name">
+                        ${escapeHtml(item.name)}
+                    </div>
+
+
+                    <div class="rank-detail">
+
+                        <span>
+                            ⏱ ${formatTime(item.time)}
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="rank-score">
+
+                    <strong>
+                        ${item.score}/${item.total || 5}
+                    </strong>
+
+                    <span>
+                        คะแนน
+                    </span>
+
+                </div>
+
+            `;
+
+
+            rankList.appendChild(row);
+
+        });
+
+}
 
 
 /* =====================================
    EMPTY
 ===================================== */
 
-if (!scores.length) {
+function showEmpty(){
+
+    podium.innerHTML = "";
+    rankList.innerHTML = "";
 
     podium.classList.add("hidden");
     rankList.classList.add("hidden");
     emptyBoard.classList.remove("hidden");
 
+    totalPlayers.textContent = "0";
+    bestScore.textContent = "0";
+    bestTime.textContent = "--:--";
+
 }
-
-
-/* =====================================
-   TOP 3
-===================================== */
-
-const top3 = scores.slice(0,3);
-
-const medals = ["🥇","🥈","🥉"];
-
-const classes = ["first","second","third"];
-
-const order = [1,0,2];
-
-order.forEach(index => {
-
-    if (!top3[index]) return;
-
-    const item =
-        top3[index];
-
-    const card =
-        document.createElement("div");
-
-    card.className =
-        `podium-card ${classes[index]}`;
-
-    card.innerHTML = `
-
-        ${
-            index === 0
-            ? `<div class="crown">👑</div>`
-            : ""
-        }
-
-        <div class="rank-medal">
-            ${medals[index]}
-        </div>
-
-        <div class="podium-name">
-            ${escapeHtml(item.name || "ผู้เล่น")}
-        </div>
-
-        <div class="podium-score">
-            ${item.correct || 0}
-            <small>/ 5</small>
-        </div>
-
-    `;
-
-    podium.appendChild(card);
-
-});
-
-
-/* =====================================
-   RANK LIST
-===================================== */
-
-scores.slice(3).forEach((item,index) => {
-
-    const actualRank =
-        index + 4;
-
-    const row =
-        document.createElement("div");
-
-    row.className =
-        "rank-row";
-
-    row.innerHTML = `
-
-        <div class="rank-number">
-            #${actualRank}
-        </div>
-
-        <div class="rank-info">
-
-            <div class="rank-name">
-                ${escapeHtml(item.name || "ผู้เล่น")}
-            </div>
-
-            <div class="rank-detail">
-
-                <span>
-                    🔥 ${item.streak || 0} Streak
-                </span>
-
-                <span>
-                    ⏱ ${formatTime(item.time || 0)}
-                </span>
-
-            </div>
-
-        </div>
-
-        <div class="rank-score">
-
-            <strong>
-                ${item.correct || 0}/5
-            </strong>
-
-            <span>
-                คะแนน
-            </span>
-
-        </div>
-
-    `;
-
-    rankList.appendChild(row);
-
-});
 
 
 /* =====================================
@@ -805,11 +916,17 @@ scores.slice(3).forEach((item,index) => {
 
 function formatTime(seconds){
 
+    seconds =
+        Number(seconds || 0);
+
+
     const min =
         Math.floor(seconds / 60);
 
+
     const sec =
         seconds % 60;
+
 
     return (
         String(min).padStart(2,"0")
@@ -840,6 +957,13 @@ function escapeHtml(text){
     );
 
 }
+
+
+/* =====================================
+   START
+===================================== */
+
+loadRanking();
 
 </script>
 
