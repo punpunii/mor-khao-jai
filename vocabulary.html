@@ -509,6 +509,10 @@ body{
     font-size:15px;
 }
 
+/* =========================
+   VIDEO
+========================= */
+
 .sign-area{
     margin-top:25px;
     min-height:250px;
@@ -524,8 +528,27 @@ body{
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:25px;
+    padding:20px;
     color:#8a9791;
+    overflow:hidden;
+}
+
+.video-wrap{
+    width:100%;
+}
+
+#signVideo{
+    display:none;
+    width:100%;
+    max-height:390px;
+    border-radius:18px;
+    background:#e9e7e1;
+    object-fit:contain;
+    box-shadow:0 10px 30px rgba(70,80,75,.10);
+}
+
+.video-placeholder{
+    width:100%;
 }
 
 .sign-placeholder-icon{
@@ -553,6 +576,42 @@ body{
     font-size:13px;
     line-height:1.7;
 }
+
+.video-controls{
+    display:none;
+    gap:10px;
+    margin-top:12px;
+}
+
+.video-control-btn{
+    flex:1;
+    border:1px solid #dfe6e1;
+    background:#f5f7f4;
+    color:#71857b;
+    border-radius:15px;
+    padding:11px 13px;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:750;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.video-control-btn:hover{
+    background:#eaf1ed;
+    transform:translateY(-1px);
+}
+
+.video-control-btn.active{
+    background:#91ad9f;
+    border-color:#91ad9f;
+    color:white;
+    box-shadow:0 7px 18px rgba(111,143,130,.18);
+}
+
+/* =========================
+   MODAL TIP
+========================= */
 
 .modal-tip{
     margin-top:17px;
@@ -660,6 +719,20 @@ body{
 
     .sign-area{
         min-height:220px;
+        padding:15px;
+    }
+
+    #signVideo{
+        max-height:300px;
+    }
+
+    .video-controls{
+        gap:8px;
+    }
+
+    .video-control-btn{
+        padding:10px 8px;
+        font-size:12px;
     }
 
 }
@@ -713,16 +786,45 @@ body{
 
     <div class="category-bar">
 
-        <button class="category-btn active" data-category="all">ทั้งหมด</button>
-        <button class="category-btn" data-category="symptom">อาการและความรู้สึก</button>
-        <button class="category-btn" data-category="symptomQuestion">คำถามเกี่ยวกับอาการ</button>
-        <button class="category-btn" data-category="pregnancy">การตั้งครรภ์และการคลอด</button>
-        <button class="category-btn" data-category="hearing">การได้ยินและการสื่อสาร</button>
-        <button class="category-btn" data-category="test">การตรวจ</button>
-        <button class="category-btn" data-category="medicine">การใช้ยา</button>
-        <button class="category-btn" data-category="appointment">การนัดหมาย</button>
-        <button class="category-btn" data-category="staff">บุคลากรทางการแพทย์</button>
-        <button class="category-btn" data-category="hospitalStaff">บุคคลอื่นในโรงพยาบาล</button>
+        <button class="category-btn active" data-category="all">
+            ทั้งหมด
+        </button>
+
+        <button class="category-btn" data-category="symptom">
+            อาการและความรู้สึก
+        </button>
+
+        <button class="category-btn" data-category="symptomQuestion">
+            คำถามเกี่ยวกับอาการ
+        </button>
+
+        <button class="category-btn" data-category="pregnancy">
+            การตั้งครรภ์และการคลอด
+        </button>
+
+        <button class="category-btn" data-category="hearing">
+            การได้ยินและการสื่อสาร
+        </button>
+
+        <button class="category-btn" data-category="test">
+            การตรวจ
+        </button>
+
+        <button class="category-btn" data-category="medicine">
+            การใช้ยา
+        </button>
+
+        <button class="category-btn" data-category="appointment">
+            การนัดหมาย
+        </button>
+
+        <button class="category-btn" data-category="staff">
+            บุคลากรทางการแพทย์
+        </button>
+
+        <button class="category-btn" data-category="hospitalStaff">
+            บุคคลอื่นในโรงพยาบาล
+        </button>
 
     </div>
 
@@ -826,21 +928,61 @@ body{
 
             <div class="sign-area">
 
-                <div>
+                <div class="video-wrap">
 
-                    <div class="sign-placeholder-icon">
-                        ♡
-                    </div>
+                    <video
+                        id="signVideo"
+                        playsinline
+                        controls
+                        preload="metadata"
+                    ></video>
 
-                    <div class="sign-placeholder-title">
-                        พื้นที่สำหรับวิดีโอภาษามือ
-                    </div>
 
-                    <div class="sign-placeholder-text">
-                        สามารถใส่วิดีโอภาษามือของคำนี้ได้ที่นี่
+                    <div
+                        class="video-placeholder"
+                        id="videoPlaceholder"
+                    >
+
+                        <div class="sign-placeholder-icon">
+                            ♡
+                        </div>
+
+                        <div class="sign-placeholder-title">
+                            ยังไม่มีวิดีโอสำหรับคำนี้
+                        </div>
+
+                        <div class="sign-placeholder-text">
+                            เมื่อเพิ่มคลิปลงในโฟลเดอร์ videos
+                            วิดีโอของคำนี้จะแสดงตรงนี้
+                        </div>
+
                     </div>
 
                 </div>
+
+            </div>
+
+
+            <div
+                class="video-controls"
+                id="videoControls"
+            >
+
+                <button
+                    class="video-control-btn"
+                    id="slowBtn"
+                    type="button"
+                >
+                    🐢 เล่นช้า 0.5×
+                </button>
+
+                <button
+                    class="video-control-btn"
+                    id="loopBtn"
+                    type="button"
+                >
+                    🔁 เล่นซ้ำ
+                </button>
 
             </div>
 
@@ -1068,7 +1210,7 @@ const vocabulary = [
     {
         th:'ล่ามภาษามือ',
         en:'Sign language interpreter',
-        category:'communication',
+        category:'hearing',
         icon:'✦'
     },
 
@@ -1295,7 +1437,59 @@ const macTitle =
 const closeModal =
     document.getElementById("closeModal");
 
+const signVideo =
+    document.getElementById("signVideo");
+
+const videoPlaceholder =
+    document.getElementById("videoPlaceholder");
+
+const videoControls =
+    document.getElementById("videoControls");
+
+const slowBtn =
+    document.getElementById("slowBtn");
+
+const loopBtn =
+    document.getElementById("loopBtn");
+
 let currentCategory = "all";
+
+let slowMode = false;
+
+let loopMode = false;
+
+
+/* =====================================================
+   VIDEO FILE NAME
+   ===================================================== */
+
+/*
+   ใช้ชื่อคำศัพท์เป็นชื่อไฟล์โดยอัตโนมัติ
+
+   เช่น
+   ปวด → videos/ปวด.mp4
+   ปวดท้อง → videos/ปวดท้อง.mp4
+
+   เครื่องหมาย / จะถูกเปลี่ยนเป็น -
+   เพื่อป้องกันปัญหากับชื่อไฟล์
+
+   เช่น
+   เจ้าหน้าที่/บุคลากร
+   →
+   เจ้าหน้าที่-บุคลากร.mp4
+*/
+
+function getVideoFile(item){
+
+    const safeName =
+        item.th
+            .replaceAll("/", "-")
+            .replaceAll("\\", "-")
+            .trim();
+
+    return `videos/${encodeURIComponent(safeName)}.mp4`;
+
+}
 
 
 /* =====================================================
@@ -1385,6 +1579,91 @@ function render(){
 
 
 /* =====================================================
+   SHOW VIDEO
+   ===================================================== */
+
+function showVideo(item){
+
+    const videoPath =
+        getVideoFile(item);
+
+    signVideo.pause();
+
+    signVideo.removeAttribute("src");
+
+    signVideo.load();
+
+    signVideo.style.display =
+        "block";
+
+    videoPlaceholder.style.display =
+        "none";
+
+    videoControls.style.display =
+        "flex";
+
+    signVideo.loop =
+        loopMode;
+
+    signVideo.playbackRate =
+        slowMode ? 0.5 : 1;
+
+    signVideo.src =
+        videoPath;
+
+    signVideo.load();
+
+
+    signVideo.onloadeddata = () => {
+
+        signVideo.style.display =
+            "block";
+
+        videoPlaceholder.style.display =
+            "none";
+
+        videoControls.style.display =
+            "flex";
+
+        signVideo.playbackRate =
+            slowMode ? 0.5 : 1;
+
+        signVideo.loop =
+            loopMode;
+
+        signVideo.play().catch(() => {
+            /*
+              ถ้า browser ไม่อนุญาต autoplay
+              ผู้ใช้กดปุ่ม Play จากตัววิดีโอได้
+            */
+        });
+
+    };
+
+
+    signVideo.onerror = () => {
+
+        signVideo.pause();
+
+        signVideo.removeAttribute("src");
+
+        signVideo.load();
+
+        signVideo.style.display =
+            "none";
+
+        videoControls.style.display =
+            "none";
+
+        videoPlaceholder.style.display =
+            "block";
+
+    };
+
+}
+
+
+/* =====================================================
    OPEN MODAL
    ===================================================== */
 
@@ -1397,10 +1676,23 @@ function openModal(item){
         item.en;
 
     modalCategory.textContent =
-        categoryNames[item.category];
+        categoryNames[item.category]
+        || "การสื่อสาร";
 
     macTitle.textContent =
         item.th;
+
+
+    slowBtn.classList.toggle(
+        "active",
+        slowMode
+    );
+
+    loopBtn.classList.toggle(
+        "active",
+        loopMode
+    );
+
 
     modal.classList.add("show");
 
@@ -1412,6 +1704,9 @@ function openModal(item){
     document.body.style.overflow =
         "hidden";
 
+
+    showVideo(item);
+
 }
 
 
@@ -1420,6 +1715,22 @@ function openModal(item){
    ===================================================== */
 
 function close(){
+
+    signVideo.pause();
+
+    signVideo.removeAttribute("src");
+
+    signVideo.load();
+
+    signVideo.style.display =
+        "none";
+
+    videoControls.style.display =
+        "none";
+
+    videoPlaceholder.style.display =
+        "block";
+
 
     modal.classList.remove("show");
 
@@ -1467,6 +1778,52 @@ document.addEventListener(
             close();
 
         }
+
+    }
+);
+
+
+/* =====================================================
+   SLOW PLAYBACK
+   ===================================================== */
+
+slowBtn.addEventListener(
+    "click",
+    () => {
+
+        slowMode =
+            !slowMode;
+
+        signVideo.playbackRate =
+            slowMode ? 0.5 : 1;
+
+        slowBtn.classList.toggle(
+            "active",
+            slowMode
+        );
+
+    }
+);
+
+
+/* =====================================================
+   LOOP
+   ===================================================== */
+
+loopBtn.addEventListener(
+    "click",
+    () => {
+
+        loopMode =
+            !loopMode;
+
+        signVideo.loop =
+            loopMode;
+
+        loopBtn.classList.toggle(
+            "active",
+            loopMode
+        );
 
     }
 );
@@ -1529,7 +1886,7 @@ render();
 
 </script>
 
-<script src="language.js"></script>
 <script src="mkj-navigation.js"></script>
+
 </body>
 </html>
