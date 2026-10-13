@@ -222,6 +222,7 @@ select:focus {
 }
 
 /* COMMUNICATION */
+.device-field { margin-top: 24px; padding-top: 20px; border-top: 1px solid #d9e5df; }
 
 .communication-intro {
     background: #f8fbfa;
@@ -797,7 +798,7 @@ select:focus {
             <div>
 
                 <h2>
-                    ข้อมูลพื้นฐาน
+                    ชื่อ (Name)
                 </h2>
 
                 <p>
@@ -924,11 +925,11 @@ select:focus {
             <div>
 
                 <h2>
-                    เหตุผลที่มาพบแพทย์
+                    อาการหลักที่มาพบแพทย์
                 </h2>
 
                 <p>
-                    บอกสิ่งที่ต้องการให้แพทย์ช่วยดูหรือประเมิน
+                    อาการหลักที่ทำให้มาพบแพทย์ เขียนสั้น ๆ ด้วยคำของคุณเอง
                 </p>
 
             </div>
@@ -939,12 +940,12 @@ select:focus {
         <div class="field">
 
             <label for="reason">
-                วันนี้มาพบแพทย์เรื่องอะไร?
+                อาการหลักที่อยากมาพบแพทย์คืออะไร?
             </label>
 
             <textarea
                 id="reason"
-                placeholder="เช่น ปวดหัวมา 3 วัน อยากให้แพทย์ช่วยตรวจ"
+                placeholder="เช่น ปวดท้องด้านขวา / ปวดหัวมาก"
             ></textarea>
 
         </div>
@@ -965,11 +966,11 @@ select:focus {
             <div>
 
                 <h2>
-                    อาการปัจจุบัน
+                    รายละเอียดอาการครั้งนี้
                 </h2>
 
                 <p>
-                    เลือกอาการที่ตรงกับคุณและเพิ่มรายละเอียดได้
+                    ช่วยเล่าว่าเริ่มเมื่อไร เป็นอย่างไร และมีอาการอะไรอีกบ้าง
                 </p>
 
             </div>
@@ -1106,12 +1107,12 @@ select:focus {
         <div class="field">
 
             <label for="symptomDetails">
-                รายละเอียดอาการ <span class="optional">(ถ้ามี)</span>
+                เล่ารายละเอียดอาการ <span class="optional">(ถ้ามี)</span>
             </label>
 
             <textarea
                 id="symptomDetails"
-                placeholder="เล่าอาการด้วยคำของคุณเอง เช่น เริ่มเป็นอย่างไร เป็นตลอดหรือเป็น ๆ หาย ๆ และมีอะไรที่สังเกตได้บ้าง"
+                placeholder="เช่น เริ่มปวดเมื่อวาน ปวดตลอดหรือเป็น ๆ หาย ๆ อะไรทำให้ดีขึ้นหรือแย่ลง และมีอาการอื่นร่วมไหม"
             ></textarea>
 
         </div>
@@ -1133,11 +1134,11 @@ select:focus {
             <div>
 
                 <h2>
-                    ประวัติสุขภาพ
+                    ประวัติสุขภาพเดิม
                 </h2>
 
                 <p>
-                    ข้อมูลสำคัญที่แพทย์ควรทราบ
+                    โรคประจำตัว ยาที่ใช้ การแพ้ยา และประวัติการรักษา
                 </p>
 
             </div>
@@ -1192,18 +1193,30 @@ select:focus {
         <div class="field">
 
             <label for="pastHistory">
-                มีประวัติการรักษาหรือผ่าตัดที่สำคัญไหม?
+                เคยรักษาตัวหรือผ่าตัดอะไรไหม?
             </label>
 
             <textarea
                 id="pastHistory"
-                placeholder="เช่น เคยผ่าตัด... / เคยรักษา... / ไม่มี"
+                placeholder="เช่น เคยผ่าตัด / เคยนอนโรงพยาบาล / ไม่มี"
+            ></textarea>
+
+        </div>
+
+        <div class="field">
+
+            <label for="familyHistory">
+                โรคสำคัญในครอบครัว <span class="optional">(ถ้าทราบ)</span>
+            </label>
+
+            <textarea
+                id="familyHistory"
+                placeholder="คนในครอบครัวมีโรคสำคัญอะไรไหม เช่น เบาหวาน ความดัน หรือโรคที่เป็นกันในครอบครัว"
             ></textarea>
 
         </div>
 
     </section>
-
 
     <!-- 05 COMMUNICATION -->
 
@@ -1408,7 +1421,7 @@ select:focus {
         </div>
 
     
-        <div class="field">
+        <div class="field device-field">
             <label>อุปกรณ์ช่วยการได้ยินที่ใช้อยู่</label>
             <div class="choice-grid">
                 <div class="choice"><input type="radio" name="device" id="dvNone" value="ไม่ใช้"><label for="dvNone">ไม่ใช้</label></div>
@@ -1419,48 +1432,6 @@ select:focus {
 
         </div>
     </section>
-
-
-    <!-- 06 ADDITIONAL -->
-
-    <section class="history-card">
-
-        <div class="section-head">
-
-            <div class="section-number">
-                06
-            </div>
-
-            <div>
-
-                <h2>
-                    ข้อมูลเพิ่มเติม
-                </h2>
-
-                <p>
-                    สิ่งที่อยากให้แพทย์หรือเจ้าหน้าที่ทราบ
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="field">
-
-            <label for="additional">
-                มีอะไรที่อยากบอกเพิ่มเติมไหม?
-            </label>
-
-            <textarea
-                id="additional"
-                placeholder="พิมพ์ข้อมูลที่อยากให้แพทย์ทราบ"
-            ></textarea>
-
-        </div>
-
-    </section>
-
 
     <!-- CREATE -->
 
@@ -1491,7 +1462,7 @@ select:focus {
             </h2>
 
             <p>
-                ข้อมูลประวัติและความต้องการด้านการสื่อสารถูกรวมไว้ในใบเดียว
+                ข้อมูลสำหรับแจ้งอาการและประวัติสุขภาพให้บุคลากรทางการแพทย์
             </p>
 
         </div>
@@ -1557,7 +1528,7 @@ select:focus {
                 <div class="document-row">
 
                     <div class="document-label">
-                        เหตุผลที่มาพบแพทย์
+                        อาการหลักที่มาพบแพทย์
                     </div>
 
                     <div
@@ -1585,7 +1556,7 @@ select:focus {
                 <div class="document-row">
 
                     <div class="document-label">
-                        รายละเอียดอาการ
+                        Present illness (PI) · รายละเอียดอาการปัจจุบัน
                     </div>
 
                     <div
@@ -1662,24 +1633,11 @@ select:focus {
 
                 </div>
 
-
-                
-
-
                 <div class="document-row">
-
-                    <div class="document-label">
-                        ข้อมูลเพิ่มเติม
-                    </div>
-
-                    <div
-                        class="document-value"
-                        id="resultAdditional"
-                    ></div>
-
+                    <div class="document-label">โรคสำคัญในครอบครัว</div>
+                    <div class="document-value" id="resultFamilyHistory"></div>
                 </div>
-
-            </div>
+</div>
 
         </div>
 
@@ -1973,6 +1931,8 @@ document
     const pastHistory =
         getValue("pastHistory");
 
+    const familyHistory = getValue("familyHistory");
+
 
     const communication =
         [
@@ -1988,13 +1948,7 @@ document
         communication.length
             ? communication.join(" , ")
             : "";
-
-
-    const additional =
-        getValue("additional");
-
-
-    /* BASIC */
+/* BASIC */
 
     let basic = "";
 
@@ -2073,19 +2027,13 @@ document
         "resultPastHistory",
         pastHistory
     );
+    setResult("resultFamilyHistory", familyHistory);
 
     setResult(
         "resultCommunication",
         communicationText
     );
-
-    setResult(
-        "resultAdditional",
-        additional
-    );
-
-
-    /* DATE */
+/* DATE */
 
     const now =
         new Date();
@@ -2126,7 +2074,7 @@ ${displayValue(deviceText)}
 ข้อมูลพื้นฐาน
 ${displayValue(basic)}
 
-เหตุผลที่มาพบแพทย์
+อาการหลักที่มาพบแพทย์
 ${displayValue(reason)}
 
 อาการที่เลือก / อาการอื่น ๆ
@@ -2138,7 +2086,7 @@ ${displayValue(symptomLocation)}
 วันที่เริ่มมีอาการ
 ${symptomDate ? formatThaiDate(symptomDate) : "ไม่ได้ระบุ"}
 
-รายละเอียดอาการ
+รายละเอียดอาการครั้งนี้
 ${displayValue(details)}
 
 รูปที่แนบ
@@ -2156,8 +2104,10 @@ ${displayValue(medicine)}
 ประวัติการรักษาหรือผ่าตัด
 ${displayValue(pastHistory)}
 
-ข้อมูลเพิ่มเติม
-${displayValue(additional)}`;
+โรคสำคัญในครอบครัว
+${displayValue(familyHistory)}
+
+`;
 
 
     document.getElementById(
