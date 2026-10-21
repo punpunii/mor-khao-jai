@@ -55,7 +55,7 @@ const vocabularyPool = [
     { meaning: "กุมารแพทย์", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564471/%E0%B8%81%E0%B8%B8%E0%B8%A1%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4", explanation: "หมอเด็ก" },
     { meaning: "ศัลยแพทย์", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564345/%E0%B8%A8%E0%B8%B1%E0%B8%A5%E0%B8%A2%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4", explanation: "หมอผ่าตัด" },
     { meaning: "เจ้าหน้าที่/บุคลากร", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564408/%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88_%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%A5%E0%B8%B2%E0%B8%81%E0%B8%A3.mp4", explanation: "บุคลากรผู้ให้บริการในโรงพยาบาล" },
-    { meaning: "คนเข็นเปล", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564346/%E0%B8%84%E0%B8%99%E0%B9%80%E0%B8%82%E0%B9%87%E0%B8%99%E0%B8%8B%E0%B9%80%E0%B8%9B%E0%B8%A5.mp4", explanation: "เจ้าหน้าที่เคลื่อนย้ายผู้ป่วย" },
+    { meaning: "คนเข็นเปล", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564346/%E0%B8%84%E0%B8%99%E0%B9%80%E0%B8%82%E0%B9%87%E0%B8%99%E0%B9%80%E0%B8%9B%E0%B8%A5.mp4", explanation: "เจ้าหน้าที่เคลื่อนย้ายผู้ป่วย" },
     { meaning: "ยาม", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564343/%E0%B8%A2%E0%B8%B2%E0%B8%A1.mp4", explanation: "เจ้าหน้าที่รักษาความปลอดภัย" },
     { meaning: "ญาติผู้ป่วย", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564481/%E0%B8%8D%E0%B8%B2%E0%B8%95%E0%B8%B4%E0%B8%84%E0%B8%99%E0%B9%84%E0%B8%82%E0%B9%89.mp4", explanation: "ครอบครัวหรือผู้ดูแลผู้ป่วย" }
 ];
