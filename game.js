@@ -10,7 +10,7 @@ const vocabularyPool = [
     { meaning: "ปวดท้อง", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557078/%E0%B8%9B%E0%B8%A7%E0%B8%94%E0%B8%97%E0%B9%89%E0%B8%AD%E0%B8%87.mp4", explanation: "ใช้เมื่อรู้สึกปวดหรือไม่สบายบริเวณท้อง" },
     { meaning: "ท้องเสีย", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556858/%E0%B8%97%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2.mp4", explanation: "อาการถ่ายอุจจาระเหลวหรือเป็นน้ำมากกว่าปกติ" },
     { meaning: "คลื่นไส้", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556683/%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%84%E0%B8%AA%E0%B9%89.mp4", explanation: "อาการพะอืดพะอม อยากจะอาเจียน" },
-    { meaning: "อาเจียนไหม", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556906/%E0%B8%AD%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B8%B5%E0%B8%A2%E0%B9%89%E0%B8%99%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4", explanation: "คำถามถามผู้ป่วยว่ามีอาการอ้วกหรืออาเจียนหรือไม่" },
+    { meaning: "อาเจียนไหม", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556906/%E0%B8%AD%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B8%B5%E0%B8%A2%E0%B9%99%E0%B8%99%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4", explanation: "คำถามถามผู้ป่วยว่ามีอาการอ้วกหรืออาเจียนหรือไม่" },
     { meaning: "กินข้าวได้ไหม", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557024/%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B9%84%E0%B8%94%E0%B9%89%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4", explanation: "คำถามประเมินการรับประทานอาหารของผู้ป่วย" },
     { meaning: "เจ็บ", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556747/%E0%B9%80%E0%B8%88%E0%B9%87%E0%B8%9A.mp4", explanation: "รู้สึกเจ็บปวดบริเวณร่างกาย" },
     { meaning: "ปวด", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556694/%E0%B8%9B%E0%B8%A7%E0%B8%94.mp4", explanation: "ความรู้สึกไม่สบายกายจากอาการปวด" },
@@ -24,7 +24,7 @@ const vocabularyPool = [
     { meaning: "ป่วยเป็นอะไร", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556737/%E0%B8%9B%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3%E0%B8%A1%E0%B8%B2.mp4", explanation: "สอบถามอาการเบื้องต้นของผู้ป่วย" },
     { meaning: "ไม่สบาย", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556699/%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%AA%E0%B8%9A%E0%B8%B2%E0%B8%A2.mp4", explanation: "รู้สึกมีไข้หรือร่างกายผิดปกติ" },
     { meaning: "น้ำหนักเพิ่มไหม", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556760/%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%AB%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B9%80%E0%B8%9E%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4", explanation: "ถามประวัติการเปลี่ยนแปลงของน้ำหนักตัว" },
-    { meaning: "ที่ไม่สบายหายรึยัง", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556948/%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%AA%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%AB%E0%B8%B2%E0%B8%A2%E0%B8%A3%E0%B8%B6%E0%B8%A2%E0%B8%B1%E0%B8%87.mp4", explanation: "ถามการติดตามผลการรักษาว่าหายป่วยหรือยัง" },
+    { meaning: "ที่ไม่สบายหายรึยัง", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556948/%E0%B8%97%E0%B9%89%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%AA%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%AB%E0%B8%B2%E0%B8%A2%E0%B8%A3%E0%B8%B6%E0%B8%A2%E0%B8%B1%E0%B8%87.mp4", explanation: "ถามการติดตามผลการรักษาว่าหายป่วยหรือยัง" },
     { meaning: "นิดหน่อย", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556710/%E0%B8%99%E0%B8%B4%E0%B8%94%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%AD%E0%B8%A2.mp4", explanation: "บอกระดับความรุนแรงของอาการว่าเล็กน้อย" },
     { meaning: "มาก", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556731/%E0%B8%A1%E0%B8%B2%E0%B8%81.mp4", explanation: "บอกระดับความรุนแรงของอาการว่าปวดหรือเจ็บมาก" },
     { meaning: "ดีขึ้นไหม", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556956/%E0%B8%94%E0%B8%B5%E0%B8%82%E0%B8%B6%E0%B9%89%E0%B8%99%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4", explanation: "ถามความรู้สึกหลังการรักษาว่าดีขึ้นหรือไม่" },
@@ -41,7 +41,7 @@ const vocabularyPool = [
     { meaning: "กินยาหลังอาหาร", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556918/%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B8%A2%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3.mp4", explanation: "คำแนะนำการรับประทานยาหลังทานอาหารเสร็จ" },
     { meaning: "กินยาก่อนอาหาร", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556967/%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3.mp4", explanation: "คำแนะนำการรับประทานยาก่อนมื้ออาหาร" },
     { meaning: "เช้าเที่ยงเย็น", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557274/%E0%B9%80%E0%B8%88%E0%B9%87%E0%B8%8A%E0%B8%B2%E0%B8%88%E0%B9%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%87%E0%B9%80%E0%B8%A2%E0%B9%87%E0%B8%99.mp4", explanation: "ช่วงเวลาในการทานยาวันละ 3 มื้อ" },
-    { meaning: "ก่อนนอน", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556700/%E0%B8%81%E0%B8%B8%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%99%E0%B8%AD%E0%B8%99.mp4", explanation: "การรับประทานยาก่อนเข้านอน" },
+    { meaning: "ก่อนนอน", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556700/%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%99%E0%B8%AD%E0%B8%99.mp4", explanation: "การรับประทานยาก่อนเข้านอน" },
     { meaning: "ครั้งหน้าพบกัน", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556825/%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%9E%E0%B8%9A%E0%B8%81%E0%B8%B1%E0%B8%99.mp4", explanation: "คำบอกลาการนัดหมายครั้งถัดไป" },
     { meaning: "หมอ", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564307/%E0%B8%AB%E0%B8%A1%E0%B8%AD.mp4", explanation: "แพทย์ผู้ตรวจรักษา" },
     { meaning: "สูติแพทย์", video: "https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564437/%E0%B8%AA%E0%B8%B9%E0%B8%95%E0%B8%B4%E0%B8%99%E0%B8%B2%E0%B8%A3%E0%B8%B5%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4", explanation: "แพทย์ผู้เชี่ยวชาญด้านระบบสืบพันธุ์สตรีและการตั้งครรภ์" },
@@ -64,7 +64,7 @@ const vocabularyPool = [
    2. VARIABLES
 ========================================= */
 
-let questions = []; // เก็บโจทย์ 10 ข้อที่สุ่มมา
+let questions = [];
 let player = "";
 let currentQuestion = 0;
 let correct = 0;
@@ -74,8 +74,7 @@ let startTime = 0;
 let timer = null;
 let locked = false;
 
-const RANKING_API =
-    "https://script.google.com/macros/s/AKfycbxTB-EwExcTnCWd0kq_ohEaaRdR35t--RkY5cfD42Nx9wdQtCuq90HraHnp6Az0pMR21A/exec";
+const RANKING_API = "https://script.google.com/macros/s/AKfycbxTB-EwExcTnCWd0kq_ohEaaRdR35t--RkY5cfD42Nx9wdQtCuq90HraHnp6Az0pMR21A/exec";
 
 /* =========================================
    3. BAD WORD FILTER
@@ -113,7 +112,7 @@ try {
 }
 
 /* =========================================
-   5. START GAME (สุ่ม 10 ข้อจากคลัง)
+   5. START GAME
 ========================================= */
 
 function startGame() {
@@ -121,29 +120,26 @@ function startGame() {
     const error = document.getElementById("gameError");
 
     player = input.value.trim();
-    error.textContent = "";
+    if (error) error.textContent = "";
 
     if (!player) {
-        error.textContent = "กรุณาใส่ชื่อก่อนเริ่มเกมค่ะ";
+        if (error) error.textContent = "กรุณาใส่ชื่อก่อนเริ่มเกมค่ะ";
         input.focus();
         return;
     }
 
     if (bad.some(regex => regex.test(player))) {
-        error.textContent = "กรุณาใช้ชื่อที่สุภาพค่ะ";
+        if (error) error.textContent = "กรุณาใช้ชื่อที่สุภาพค่ะ";
         input.focus();
         return;
     }
 
-    // --- สุ่ม 10 ข้อสอบจากคลังศัพท์คำว่าอะไรบ้าง ---
+    // สุ่ม 10 คำถามจากคลังศัพท์
     const shuffledPool = [...vocabularyPool].sort(() => Math.random() - 0.5);
     const selectedTen = shuffledPool.slice(0, 10);
 
-    // --- สร้างโจทย์พร้อมสุ่มตัวเลือกหลอก 4 ข้อสำหรับแต่ละคำ ---
     questions = selectedTen.map(item => {
         let answerChoices = [item.meaning];
-        
-        // สุ่มคำอื่นจากคลังมาเป็นตัวเลือกหลอกจนครบ 4 ช้อยส์
         while (answerChoices.length < 4) {
             const randomItem = vocabularyPool[Math.floor(Math.random() * vocabularyPool.length)].meaning;
             if (!answerChoices.includes(randomItem)) {
@@ -182,33 +178,28 @@ function showQuestion() {
     const q = questions[currentQuestion];
     const number = currentQuestion + 1;
 
-    /* Question number */
     document.getElementById("qnum").textContent = `ข้อ ${number} / ${questions.length}`;
 
-    /* Progress */
     const progress = (number / questions.length) * 100;
     document.getElementById("progressBar").style.width = `${progress}%`;
 
-    /* Video */
     const video = document.getElementById("signVideo");
     const placeholder = document.getElementById("videoPlaceholder");
 
     video.pause();
     video.removeAttribute("src");
-    video.load();
 
     if (q.video && q.video.trim() !== "") {
         video.src = q.video;
         video.style.display = "block";
-        placeholder.style.display = "none";
+        if (placeholder) placeholder.style.display = "none";
         video.load();
         video.play().catch(() => {});
     } else {
         video.style.display = "none";
-        placeholder.style.display = "block";
+        if (placeholder) placeholder.style.display = "block";
     }
 
-    /* Answers */
     const answers = document.getElementById("answers");
     answers.innerHTML = "";
 
@@ -224,9 +215,11 @@ function showQuestion() {
         answers.appendChild(button);
     });
 
-    /* Feedback */
-    document.getElementById("feedback").textContent = "";
-    document.getElementById("feedback").className = "feedback";
+    const feedback = document.getElementById("feedback");
+    if (feedback) {
+        feedback.textContent = "";
+        feedback.className = "feedback";
+    }
 
     updateStreak();
 }
@@ -243,12 +236,12 @@ function answer(selected, clickedButton) {
 
     locked = true;
 
-    /* ปิดปุ่มทั้งหมด */
     buttons.forEach(button => {
         button.disabled = true;
     });
 
-    /* CORRECT */
+    const feedback = document.getElementById("feedback");
+
     if (selected === q.meaning) {
         correct++;
         streak++;
@@ -259,10 +252,11 @@ function answer(selected, clickedButton) {
 
         clickedButton.classList.add("correct");
 
-        const feedback = document.getElementById("feedback");
-        feedback.textContent = `✓ ถูกต้องค่ะ ${q.explanation}`;
-        feedback.classList.remove("bad");
-        feedback.classList.add("good");
+        if (feedback) {
+            feedback.textContent = `✓ ถูกต้องค่ะ ${q.explanation}`;
+            feedback.classList.remove("bad");
+            feedback.classList.add("good");
+        }
 
         buttons.forEach(button => {
             if (button.textContent === q.meaning) {
@@ -271,17 +265,16 @@ function answer(selected, clickedButton) {
         });
 
         updateStreak(true);
-    } 
-    /* WRONG */
-    else {
+    } else {
         streak = 0;
 
         clickedButton.classList.add("wrong");
 
-        const feedback = document.getElementById("feedback");
-        feedback.textContent = `ยังไม่ถูกค่ะ คำตอบที่ถูกคือ “${q.meaning}”`;
-        feedback.classList.remove("good");
-        feedback.classList.add("bad");
+        if (feedback) {
+            feedback.textContent = `ยังไม่ถูกค่ะ คำตอบที่ถูกคือ “${q.meaning}”`;
+            feedback.classList.remove("good");
+            feedback.classList.add("bad");
+        }
 
         buttons.forEach(button => {
             if (button.textContent === q.meaning) {
@@ -292,7 +285,6 @@ function answer(selected, clickedButton) {
         updateStreak(false);
     }
 
-    /* ไปข้อถัดไป */
     setTimeout(() => {
         currentQuestion++;
 
@@ -310,6 +302,8 @@ function answer(selected, clickedButton) {
 
 function updateStreak(animate = false) {
     const element = document.getElementById("streak");
+    if (!element) return;
+
     element.textContent = `🔥 Streak ${streak}`;
 
     if (animate) {
@@ -353,9 +347,7 @@ function finishGame() {
     const seconds = Math.floor((Date.now() - startTime) / 1000);
 
     sendScoreToServer(seconds);
-    clearInterval(timer);
 
-    /* Save score */
     let scores = [];
 
     try {
@@ -374,10 +366,8 @@ function finishGame() {
 
     localStorage.setItem("mkj-scores", JSON.stringify(scores.slice(-50)));
 
-    /* Hide quiz */
     document.getElementById("quiz").classList.add("hidden");
 
-    /* Show result */
     const result = document.getElementById("result");
     result.classList.remove("hidden");
 
