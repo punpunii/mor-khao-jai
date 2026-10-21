@@ -913,7 +913,7 @@ footer{
 
             <!-- =========================
                  VIDEO
-            ========================= -->
+========================= -->
 
             <div class="sign-area">
 
@@ -962,7 +962,7 @@ footer{
 
             <!-- =========================
                  CUSTOM CONTROLS
-            ========================= -->
+========================= -->
 
             <div
                 class="video-controls"
@@ -1009,122 +1009,137 @@ footer{
 
 
 /* =========================================================
-   VOCABULARY DATA
+   VOCABULARY DATA (WITH CLOUDINARY DIRECT LINKS)
 ========================================================= */
 
 const vocabulary = [
-
 
     {
         th:"ปวดท้อง",
         en:"Stomachache",
         category:"symptom",
-        icon:"◌"
+        icon:"◌",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557078/%E0%B8%9B%E0%B8%A7%E0%B8%94%E0%B8%97%E0%B9%89%E0%B8%AD%E0%B8%87.mp4"
     },
 
     {
         th:"ท้องเสีย",
         en:"Diarrhea",
         category:"symptom",
-        icon:"⌁"
+        icon:"⌁",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556858/%E0%B8%97%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2.mp4"
     },
 
     {
         th:"คลื่นไส้",
         en:"Nausea",
         category:"symptom",
-        icon:"⌁"
+        icon:"⌁",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556683/%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%84%E0%B8%AA%E0%B9%89.mp4"
     },
 
     {
         th:"อาเจียนไหม",
         en:"Are you vomiting?",
         category:"symptomQuestion",
-        icon:"⌁"
+        icon:"⌁",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556906/%E0%B8%AD%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"กินข้าวได้ไหม",
         en:"Can you eat?",
         category:"symptomQuestion",
-        icon:"○"
+        icon:"○",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557024/%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B9%84%E0%B8%94%E0%B9%89%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"เจ็บ",
         en:"Pain / Hurt",
         category:"symptom",
-        icon:"♡"
+        icon:"♡",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556747/%E0%B9%80%E0%B8%88%E0%B9%87%E0%B8%9A.mp4"
     },
 
     {
         th:"ปวด",
         en:"Pain",
         category:"symptom",
-        icon:"♡"
+        icon:"♡",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556694/%E0%B8%9B%E0%B8%A7%E0%B8%94.mp4"
     },
 
     {
         th:"เจ็บหน้าอกไหม",
         en:"Do you have chest pain?",
         category:"symptomQuestion",
-        icon:"♡"
+        icon:"♡",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556723/%E0%B9%80%E0%B8%88%E0%B9%87%E0%B8%9A%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%AD%E0%B8%81%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"ปวดแขนไหม",
         en:"Does your arm hurt?",
         category:"symptomQuestion",
-        icon:"○"
+        icon:"○",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556737/%E0%B8%9B%E0%B8%A7%E0%B8%94%E0%B8%B1%E0%B8%82%E0%B8%99%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"ปวดหัวไหม",
         en:"Do you have a headache?",
         category:"symptomQuestion",
-        icon:"◌"
+        icon:"◌",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557081/%E0%B8%9B%E0%B8%A7%E0%B8%94%E0%B8%AB%E0%B8%B1%E0%B8%A7%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"ไม่สบายนานรึยัง",
         en:"How long have you been unwell?",
         category:"symptomQuestion",
-        icon:"○"
+        icon:"○",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557102/%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%AA%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%99%E0%B8%B2%E0%B8%99%E0%B8%A3%E0%B8%B6%E0%B8%A2%E0%B8%B1%E0%B8%87.mp4"
     },
 
     {
         th:"มีไข้สูงไหม",
         en:"Do you have a high fever?",
         category:"symptomQuestion",
-        icon:"°"
+        icon:"°",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556776/%E0%B8%A1%E0%B8%B5%E0%B9%84%E0%B8%82%E0%B9%89%E0%B8%AA%E0%B8%B9%E0%B8%87%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"มีน้ำมูกไหม",
         en:"Do you have a runny nose?",
         category:"symptomQuestion",
-        icon:"⌁"
+        icon:"⌁",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557077/%E0%B8%A1%E0%B8%B5%E0%B9%81%E0%B9%89%E0%B8%A1%E0%B8%B9%E0%B8%81%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"เจ็บคอไหม",
         en:"Do you have a sore throat?",
         category:"symptomQuestion",
-        icon:"◌"
+        icon:"◌",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556857/%E0%B9%80%E0%B8%88%E0%B9%87%E0%B8%9A%E0%B8%84%E0%B8%AD%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"ป่วยเป็นอะไร",
         en:"What are you sick with?",
         category:"symptomQuestion",
-        icon:"?"
+        icon:"?",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556737/%E0%B8%9B%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3%E0%B8%A1%E0%B8%B2.mp4"
     },
 
     {
         th:"ไม่สบาย",
         en:"Feel unwell",
         category:"symptom",
-        icon:"○"
+        icon:"○",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556699/%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%AA%E0%B8%9A%E0%B8%B2%E0%B8%A2.mp4"
     },
 
     {
@@ -1138,245 +1153,280 @@ const vocabulary = [
         th:"น้ำหนักเพิ่มไหม",
         en:"Have you gained weight?",
         category:"symptomQuestion",
-        icon:"↑"
+        icon:"↑",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556760/%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%AB%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B9%80%E0%B8%9E%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"ที่ไม่สบายหายรึยัง",
         en:"Have you recovered?",
         category:"symptomQuestion",
-        icon:"✓"
+        icon:"✓",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556948/%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%AA%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%AB%E0%B8%B2%E0%B8%A2%E0%B8%A3%E0%B8%B6%E0%B8%A2%E0%B8%B1%E0%B8%87.mp4"
     },
 
     {
         th:"นิดหน่อย",
         en:"A little",
         category:"symptom",
-        icon:"·"
+        icon:"·",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556710/%E0%B8%99%E0%B8%B4%E0%B8%94%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%AD%E0%B8%A2.mp4"
     },
 
     {
         th:"มาก",
         en:"A lot / Severe",
         category:"symptom",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556731/%E0%B8%A1%E0%B8%B2%E0%B8%81.mp4"
     },
 
     {
         th:"ดีขึ้นไหม",
         en:"Are you feeling better?",
         category:"symptomQuestion",
-        icon:"↑"
+        icon:"↑",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556956/%E0%B8%94%E0%B8%B5%E0%B8%82%E0%B8%B6%E0%B9%89%E0%B8%99%E0%B9%84%E0%B8%AB%E0%B8%A1.mp4"
     },
 
     {
         th:"ตั้งครรภ์",
         en:"Pregnancy",
         category:"pregnancy",
-        icon:"○"
+        icon:"○",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564308/%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%84%E0%B8%A3%E0%B8%A3%E0%B8%A0%E0%B9%8C.mp4"
     },
 
     {
         th:"คลอดลูก",
         en:"Childbirth",
         category:"pregnancy",
-        icon:"♡"
+        icon:"♡",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564308/%E0%B8%84%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A5%E0%B8%B9%E0%B8%81.mp4"
     },
 
     {
         th:"หูตึง",
         en:"Hard of hearing",
         category:"hearing",
-        icon:"◌"
+        icon:"◌",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564319/%E0%B8%AB%E0%B8%B9%E0%B8%95%E0%B8%B6%E0%B8%87.mp4"
     },
 
     {
         th:"หูหนวกตาบอด",
         en:"Deafblind",
         category:"hearing",
-        icon:"◌"
+        icon:"◌",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564417/%E0%B8%AB%E0%B8%B9%E0%B8%AB%E0%B8%99%E0%B8%A7%E0%B8%81%E0%B8%95%E0%B8%B2%E0%B8%9A%E0%B8%AD%E0%B8%94.mp4"
     },
 
     {
         th:"เป็นใบ้",
         en:"Non-speaking",
         category:"hearing",
-        icon:"◌"
+        icon:"◌",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564484/%E0%B9%80%E0%B8%B2%E0%B9%87%E0%B8%99%E0%B9%83%E0%B8%9A%E0%B9%89.mp4"
     },
 
     {
         th:"ล่ามภาษามือ",
         en:"Sign language interpreter",
         category:"hearing",
-        icon:"✦"
+        icon:"✦",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564341/%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%A1%E0%B8%A0%E0%B8%B2%E0%B8%A9%E0%B8%B2%E0%B8%A1%E0%B8%B7%E0%B8%AD.mp4"
     },
 
     {
         th:"เจาะเลือด",
         en:"Blood draw",
         category:"test",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557095/%E0%B9%80%E0%B8%88%E0%B8%B2%E0%B8%B0%E0%B9%80%E0%B8%A5%E0%B8%B7%E0%B8%AD%E0%B8%94.mp4"
     },
 
     {
         th:"เลือด",
         en:"Blood",
         category:"test",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557077/%E0%B9%80%E0%B8%A5%E0%B8%B7%E0%B8%AD%E0%B8%94.mp4"
     },
 
     {
         th:"X-ray",
         en:"X-ray",
         category:"test",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556707/X-ray.mp4"
     },
 
     {
         th:"CT-scan",
         en:"CT scan",
         category:"test",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556703/CT-scan.mp4"
     },
 
     {
         th:"กินยาหลังอาหาร",
         en:"Take medicine after meals",
         category:"medicine",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556918/%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B8%A2%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3.mp4"
     },
 
     {
         th:"กินยาก่อนอาหาร",
         en:"Take medicine before meals",
         category:"medicine",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556967/%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3.mp4"
     },
 
     {
         th:"เช้าเที่ยงเย็น",
         en:"Morning, noon, and evening",
         category:"medicine",
-        icon:"☀"
+        icon:"☀",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792557274/%E0%B9%80%E0%B8%8A%E0%B9%89%E0%B8%B2%E0%B8%88%E0%B9%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%87%E0%B9%80%E0%B8%A2%E0%B9%87%E0%B8%99.mp4"
     },
 
     {
         th:"ก่อนนอน",
         en:"Before bed",
         category:"medicine",
-        icon:"◐"
+        icon:"◐",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556700/%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%99%E0%B8%AD%E0%B8%99.mp4"
     },
 
     {
         th:"ครั้งหน้าพบกัน",
         en:"See you at the next appointment",
         category:"appointment",
-        icon:"□"
+        icon:"□",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792556825/%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%9E%E0%B8%9A%E0%B8%81%E0%B8%B1%E0%B8%99.mp4"
     },
 
     {
         th:"หมอ",
         en:"Doctor",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564307/%E0%B8%AB%E0%B8%A1%E0%B8%AD.mp4"
     },
 
     {
         th:"สูติแพทย์",
         en:"Obstetrician",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564437/%E0%B8%AA%E0%B8%B9%E0%B8%95%E0%B8%B4%E0%B8%99%E0%B8%B2%E0%B8%A3%E0%B8%B5%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4"
     },
 
     {
         th:"นักกายภาพบำบัด",
         en:"Physical therapist",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564452/%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%81%E0%B8%B2%E0%B8%A2%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%9A%E0%B8%B3%E0%B8%9A%E0%B8%B1%E0%B8%94.mp4"
     },
 
     {
         th:"พยาบาล",
         en:"Nurse",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564471/%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5.mp4"
     },
 
     {
         th:"จิตแพทย์",
         en:"Psychiatrist",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564440/%E0%B8%88%E0%B8%B4%E0%B8%95%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4"
     },
 
     {
         th:"ทันตแพทย์",
         en:"Dentist",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564344/%E0%B8%97%E0%B8%B1%E0%B8%99%E0%B8%95%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4"
     },
 
     {
         th:"แพทย์หูคอจมูก",
         en:"ENT doctor / Otolaryngologist",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564383/%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C%E0%B8%AB%E0%B8%B9%E0%B8%84%E0%B8%AD%E0%B8%88%E0%B8%A1%E0%B8%B9%E0%B8%81.mp4"
     },
 
     {
         th:"จักษุแพทย์",
         en:"Ophthalmologist",
         category:"staff",
-        icon:"◉"
+        icon:"◉",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564435/%E0%B8%88%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%B8%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4"
     },
 
     {
         th:"อายุรแพทย์",
         en:"Internist",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564390/%E0%B8%AD%E0%B8%B2%E0%B8%A2%E0%B8%B8%E0%B8%A3%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4"
     },
 
     {
         th:"กุมารแพทย์",
         en:"Pediatrician",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564471/%E0%B8%81%E0%B8%B8%E0%B8%A1%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4"
     },
 
     {
         th:"ศัลยแพทย์",
         en:"Surgeon",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564345/%E0%B8%A8%E0%B8%B1%E0%B8%A5%E0%B8%A2%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C.mp4"
     },
 
     {
         th:"เจ้าหน้าที่/บุคลากร",
         en:"Staff / Healthcare personnel",
         category:"staff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564408/%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88_%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%A5%E0%B8%B2%E0%B8%81%E0%B8%A3.mp4"
     },
 
     {
         th:"คนเข็นเปล",
         en:"Patient transport staff",
         category:"hospitalStaff",
-        icon:"□"
+        icon:"□",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564346/%E0%B8%84%E0%B8%99%E0%B9%80%E0%B8%82%E0%B9%87%E0%B8%99%E0%B8%8B%E0%B9%80%E0%B8%9B%E0%B8%A5.mp4"
     },
 
     {
         th:"ยาม",
         en:"Security guard",
         category:"hospitalStaff",
-        icon:"＋"
+        icon:"＋",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564343/%E0%B8%A2%E0%B8%B2%E0%B8%A1.mp4"
     },
 
     {
         th:"ญาติผู้ป่วย",
         en:"Patient's family member",
         category:"hospitalStaff",
-        icon:"♡"
+        icon:"♡",
+        videoUrl:"https://res.cloudinary.com/pgbw4kx0/video/upload/v1792564481/%E0%B8%8D%E0%B8%B2%E0%B8%95%E0%B8%B4%E0%B8%84%E0%B8%99%E0%B9%84%E0%B8%82%E0%B9%89.mp4"
     }
 
 ];
@@ -1501,31 +1551,11 @@ const loopBtn =
 
 
 /* =========================================================
-   MP4 FILE PATH
+   GET VIDEO FILE
 ========================================================= */
 
 function getVideoFile(item){
-
-    let fileName =
-        item.th
-            .replaceAll(
-                "/",
-                "-"
-            )
-            .replaceAll(
-                "\\",
-                "-"
-            )
-            .trim();
-
-    return (
-        "videos/" +
-        encodeURIComponent(
-            fileName
-        ) +
-        ".mp4"
-    );
-
+    return item.videoUrl || "";
 }
 
 
@@ -1692,6 +1722,18 @@ function showVideo(item){
             : 1;
 
 
+    if (!videoPath) {
+        signVideo.style.display = "none";
+        videoControls.style.display = "none";
+        videoPlaceholder.style.display = "block";
+        videoPlaceholder.innerHTML = `
+            <div style="font-size:36px; margin-bottom:10px;">🎥</div>
+            <div>ยังไม่มีวิดีโอสำหรับคำว่า <strong>${item.th}</strong></div>
+        `;
+        return;
+    }
+
+
     videoPlaceholder.style.display =
         "none";
 
@@ -1701,13 +1743,6 @@ function showVideo(item){
     signVideo.style.display =
         "block";
 
-
-    /*
-        สำคัญ:
-        ใช้ src ตรง ๆ เพื่อให้ Safari
-        ใช้ native video controls
-        แบบในภาพ
-    */
 
     signVideo.src =
         videoPath;
@@ -1726,10 +1761,6 @@ function showVideo(item){
             signVideo.loop =
                 loopMode;
 
-
-            /*
-                เล่นอัตโนมัติ
-            */
 
             signVideo
                 .play()
@@ -1770,28 +1801,6 @@ function showVideo(item){
                     ยังไม่มีวิดีโอสำหรับคำว่า
                     <strong>
                         ${item.th}
-                    </strong>
-                </div>
-
-                <div
-                    style="
-                        margin-top:8px;
-                        font-size:12px;
-                        color:#A0AAA5;
-                    "
-                >
-                    ต้องใช้ไฟล์
-                    <strong>
-                        ${item.th
-                            .replaceAll(
-                                "/",
-                                "-"
-                            )}.mp4
-                    </strong>
-
-                    ในโฟลเดอร์
-                    <strong>
-                        videos
                     </strong>
                 </div>
 
@@ -1881,7 +1890,7 @@ function closeModal(){
 
 
     document.body.style.overflow =
-        "";
+        "" ;
 
 
     signVideo.pause();
@@ -2032,11 +2041,6 @@ render();
 
 </script>
 
-
-<!--
-    ถ้าโปรเจกต์เดิมใช้ mkj-navigation.js
-    ให้เก็บบรรทัดนี้ไว้
--->
 
 <script src="mkj-navigation.js"></script>
 
